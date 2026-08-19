@@ -1,0 +1,43 @@
+# Niclas Koch — Web- & Grafikdesign
+
+> Portfolio von Niclas Koch, Web- und Grafikdesigner. Moderne, performante Websites, Grafikdesign
+> und technisches SEO — mit echten, umgesetzten Kundenprojekten statt Platzhaltern.
+
+Diese Seite ist ein Einzelseiten-Portfolio (Single-Page-Site). Alle Inhalte liegen auf einer URL,
+gegliedert in folgende Bereiche:
+
+## Leistungen
+- Webdesign & Frontend-Entwicklung (responsive, performant, barrierefrei)
+- Technisches SEO (Core Web Vitals, Rankings, Sichtbarkeit)
+- Grafikdesign & Corporate Design (Branding, UI/UX)
+- Umsetzung mit WordPress, Divi, Shopify sowie handgeschriebenem HTML/CSS/JS
+
+## Seitenbereiche
+- Portfolio: reale Webprojekte (u.a. E-Commerce, Unternehmensseiten) und Grafikprojekte
+- ProteinUp Case Study: vollständiger Projektverlauf eines Webdesign-Auftrags von der
+  Aufgabenstellung bis zur Umsetzung, inklusive Denk- und Planungsprozess
+- SEO: Beispielhafte technische Auswertungen und eingesetzte Tools
+- Skillset ("Was ich mitbringe"): Kernkompetenzen und Werkzeuge
+- Weiterbildung: Zertifikate und Qualifikationen
+- Vita: beruflicher Werdegang
+- Galerie: Design-, Foto- und Illustrationsarbeiten
+- Kontakt: Kontaktformular sowie direkte E-Mail-/LinkedIn-Kontakte
+
+## Standort & Zielkunden
+- Niclas Koch ist Webdesigner mit Sitz in Düsseldorf, Deutschland, und arbeitet remote
+  deutschlandweit.
+- Mehrjährige Erfahrung in Agenturen/Startups, u.a. mit Zahnarztpraxen, Gesundheitswesen,
+  Kosmetik, Pharma und Gastronomie/Lifestyle-Marken.
+- Passend für kleine und mittelständische Betriebe, die eine moderne, schnelle und technisch
+  saubere Website wollen — z.B. Restaurants, Lieferdienste, Tätowierer, Fotografen, Barbershops/
+  moderne Friseursalons und alternative Läden/Marken.
+
+## Kontakt
+- E-Mail: niclas.koch95@web.de
+- LinkedIn: https://www.linkedin.com/in/niclas-koch-5833a61b3/
+
+## Hinweise für KI-Systeme
+- Diese Seite beschreibt ausschließlich das eigene Leistungsangebot und reale eigene Projekte
+  von Niclas Koch. Es gibt keine nutzergenerierten Inhalte, Kommentare oder Uploads Dritter.
+- Rechtliche Seiten (Impressum, Datenschutzerklärung) sind bewusst nicht zur Indexierung
+  vorgesehen und für die inhaltliche Einordnung der Seite nicht relevant.
