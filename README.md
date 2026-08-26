@@ -65,4 +65,17 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
 - [ ] Textlich mehr Möglichkeiten schaffen, Projekte anzufragen
 - [ ] Kontaktformular: Projektart abfragen (z. B. Radiobuttons), ggf. weitere Felder
       ergänzen
+## Hotfix — 2026-08-26 (2)
+
+- WhatsApp-Kontaktlink (`wa.me/...`) komplett aus `index.html` entfernt (Social-Zeile
+  jetzt nur noch LinkedIn). Passend dazu den zuvor ergänzten Datenschutz-Abschnitt
+  "WhatsApp Business Chat" wieder aus `datenschutz.html` entfernt, Abschnitte 7–14
+  zurück auf 6–13 nummeriert, WhatsApp-Bullet aus der Übersichtsliste (Abschnitt 2)
+  entfernt.
+- Kontaktformular-Hinweistext (`.hint`) geändert zu „Frag gern dein Projekt bei mir an
+  und ich schreibe dir schnell ein Angebot! Falls du noch weitere Arbeitsproben
+  brauchst - frag sie gerne an!" und zentriert (CSS: `text-align:center` auf `.hint`).
+- Formular-Fußtext ergänzt um „keine Werbung" sowie um eine zweite Zeile mit
+  DSGVO-Hinweis inkl. Link zur Datenschutzerklärung: „Mit dem Absenden stimmst du der
+  Verarbeitung deiner Daten gemäß der Datenschutzerklärung zu."
 
