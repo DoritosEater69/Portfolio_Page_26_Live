@@ -127,4 +127,17 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
   auftauchen — Cookiebot erkennt das i. d. R. automatisch beim nächsten Scan, eine manuelle
   Kontrolle schadet aber nicht. Außerdem in der GA4-Property selbst die
   Datenaufbewahrungsdauer (2 oder 14 Monate) setzen, falls noch nicht geschehen.
+## Hotfix — 2026-08-26 (9)
 
+- Google Consent Mode v2 eingebunden: neues, immer laufendes Script
+  (`data-cookieconsent="ignore"`, also von Cookiebot nie geblockt) direkt nach dem
+  Cookiebot-Tag, das VOR jeder Einwilligung alle Speicherkategorien auf "denied" setzt
+  (ausser `security_storage`). Erst nach echter Zustimmung sendet ein neues
+  `updateGaConsent()` (gehaengt an dieselben `CookiebotOnConsentReady`/`OnAccept`/
+  `OnDecline`-Events, die auch hCaptcha/Adobe-XD triggern) ein
+  `gtag("consent","update",{analytics_storage:...})` basierend auf
+  `Cookiebot.consent.statistics`.
+- Ohne das waere Google Analytics zwar weiterhin erst nach Einwilligung geladen worden
+  (das war schon vorher korrekt so), aber ohne Consent-Mode-Standardwerte haette Google
+  ab 2024 in der EWR ggf. weniger/keine (modellierten) Signale verarbeitet bzw. es waere
+  nicht Googles empfohlener Standard fuer Consent-Mode-konforme Tag-Einbindung gewesen.
