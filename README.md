@@ -92,4 +92,8 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
   Kleine Aufgaben (KI Lösungen, Grafiken...). CSS-Regeln für Input/Textarea (Basis-,
   Fokus- und Light-Theme-Styling) auf `select` erweitert, damit es optisch zu den
   anderen Feldern passt.
+## Hotfix — 2026-08-26 (5)
+
+- Kontaktformular-Hint: Zeilenumbruch (`<br>`) zwischen den beiden Sätzen ergänzt,
+  damit "Falls du noch weitere Arbeitsproben brauchst..." in einer eigenen Zeile steht.
 
