@@ -3,6 +3,13 @@ ServerSignature Off
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # www. -> nicht-www (kanonische Domain, siehe canonical-Tag/Sitemap), in einem Schritt
+  # auch fuer http:// mit www., um doppelte Redirects zu vermeiden
+  RewriteCond %{HTTP_HOST} ^www\.nicworks\.de$ [NC]
+  RewriteRule ^(.*)$ https://nicworks.de/$1 [L,R=301]
+
+  # http:// -> https:// (Host ist an dieser Stelle bereits garantiert nicht-www)
   RewriteCond %{HTTPS} off
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>

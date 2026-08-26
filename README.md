@@ -170,3 +170,17 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
 - Fix: sinnvoller statischer Default-Text "Projektdetails" eingesetzt. Rein optisch aendert
   sich nichts (Modal bleibt bis zum Oeffnen unsichtbar, JS ueberschreibt den Text beim
   Oeffnen exakt wie vorher mit dem jeweiligen Projekttitel).
+
+## Hotfix — 2026-08-26 (12)
+
+- Seobility-Check gemeldet: "www." und nicht-"www." werden nicht einheitlich
+  weitergeleitet (Duplicate-Content-Risiko). www.nicworks.de lieferte die Seite bisher
+  direkt aus, statt auf die kanonische Domain (https://nicworks.de/ - siehe
+  canonical-Tag, og:url, sitemap.xml) umzuleiten.
+- Fix in `.htaccess`: neue RewriteCond/RewriteRule leitet `www.nicworks.de` (egal ob
+  http oder https) in einem einzigen 301-Redirect direkt auf `https://nicworks.de/`
+  weiter - kein doppelter Redirect-Hop. Die bestehende http->https-Regel bleibt
+  danach als zweite Stufe fuer den Fall ohne "www." erhalten.
+- WICHTIG: `.htaccess` muss zusaetzlich zu `index.html` per SFTP neu hochgeladen werden
+  (im Root-Verzeichnis, versteckte Datei - im FTP-Client ggf. "versteckte Dateien
+  anzeigen" aktivieren).
