@@ -83,4 +83,13 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
 - Kontaktformular: 20px Abstand unter dem "Nachricht senden"-Button ergänzt
   (`margin-bottom:20px` auf `.contact-form button`), damit der Bereich zu den
   form-note-Zeilen darunter (Spam-Versprechen + DSGVO-Hinweis) mehr Luft hat.
+## Hotfix — 2026-08-26 (4)
+
+- Kontaktformular: neues Pflichtfeld "Art des Projekts" (Dropdown/`<select>`) direkt
+  unter dem E-Mail-Feld ergänzt, Formspree-Feldname `project_type`. Optionen: Simple
+  Seite (Onepager), Website mit Unterseiten, Shop, Printprodukte (Flyer, Poster..),
+  Reparaturen an aktueller Seite, Auffrischen meiner Seite, Mailings / Mailing Systeme,
+  Kleine Aufgaben (KI Lösungen, Grafiken...). CSS-Regeln für Input/Textarea (Basis-,
+  Fokus- und Light-Theme-Styling) auf `select` erweitert, damit es optisch zu den
+  anderen Feldern passt.
 
