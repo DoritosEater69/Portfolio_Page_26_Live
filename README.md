@@ -184,3 +184,23 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
 - WICHTIG: `.htaccess` muss zusaetzlich zu `index.html` per SFTP neu hochgeladen werden
   (im Root-Verzeichnis, versteckte Datei - im FTP-Client ggf. "versteckte Dateien
   anzeigen" aktivieren).
+
+## Hotfix — 2026-08-26 (13)
+
+- Sicherheits-Review auf Wunsch durchgefuehrt (moegliche Angriffsflaechen geprueft):
+  eval/document.write, innerHTML-Quellen, reflektierte URL-Parameter, postMessage,
+  offene Redirects im Kontaktformular, fehlendes rel="noopener", Live-Check der
+  Security-Header (CSP/X-Frame-Options/HSTS/etc. - alle korrekt gesetzt und aktiv),
+  Zugriffsschutz auf .env/.git/.htaccess/README.md/*.zip (alle korrekt mit 403
+  gesperrt).
+- Fund: `.DS_Store` war unter https://nicworks.de/.DS_Store oeffentlich abrufbar
+  (200 statt gesperrt) - macOS-Metadatendatei, kann Datei-/Ordnernamen preisgeben.
+- Fix: generelle `<FilesMatch "^\.">`-Regel in `.htaccess` ergaenzt, die ALLE
+  Dotfiles sperrt (deckt .DS_Store und kuenftige aehnliche Faelle ab, nicht nur
+  Einzelfaelle).
+- Kein Fund (bereits sauber): keine harten Sicherheitsluecken in Formular/JS/CSP
+  gefunden. Kleinere, nicht kritische Beobachtungen siehe Chat: Server-Header
+  verraet Server-Version (meist nur ueber Hosting-Panel aenderbar, nicht per
+  .htaccess), Adobe-XD-iframe ohne sandbox-Attribut (bewusst offen gelassen, da
+  Aenderung das interaktive Prototyp-Embed brechen koennte - CSP frame-src ist
+  bereits auf xd.adobe.com beschraenkt).

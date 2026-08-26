@@ -17,6 +17,12 @@ ServerSignature Off
 <FilesMatch "^(README\.md|GITHUB-SETUP\.md|build-live\.js|package(-lock)?\.json|\.env|\.gitignore)$">
   Require all denied
 </FilesMatch>
+
+# Alle Dotfiles sperren (z.B. .DS_Store, .htaccess selbst, .env, .git-Reste) -
+# generelle Regel als zusaetzliche Absicherung, nicht nur einzelne bekannte Dateien
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
 <FilesMatch "\.(git|md|log|bak|sql|env|zip)$">
   Require all denied
 </FilesMatch>
