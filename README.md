@@ -212,3 +212,12 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
   "04.2023 - 04.2024" korrigiert und Titel zu "Wechsel zu Fellbox - Web- und
   Grafikdesign" erweitert. Neuer Eintrag ergaenzt: "seit 08.2024 - Web- und
   Grafikdesigner bei formwandler interactive".
+
+## Hotfix — 2026-08-26 (15)
+
+- Illustration "inline-027.webp" (Rauch-/Wolken-Tattoo-Motiv) komplett aus dem
+  Illustrations-Slider (GALLERY_IMAGES) entfernt, wie von Nic per Screenshot gezeigt.
+  Bilddatei selbst bleibt im img/inline/ Ordner liegen, nur aus dem Array entfernt.
+- Beide Galerie-Slider (GALLERY_IMAGES = Illustrationen, GALLERY_IMAGES_PHOTOS = Fotos)
+  waren bisher stur numerisch sortiert (002, 003, 004...) - jetzt gemischt, damit die
+  Reihenfolge beim Scrollen abwechslungsreicher wirkt.
