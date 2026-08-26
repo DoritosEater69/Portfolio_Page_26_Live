@@ -58,7 +58,7 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
 
 ## Offene Punkte / To-Do
 
-- [ ] Favicon setzen
+- [x] Favicon setzen
 - [ ] SEO nochmal checken
 - [ ] In Google Search Console eintragen
 - [ ] Analytics einrichten
@@ -103,4 +103,11 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
   `.contact-form`-Flex-`gap:12px` auf 32px). Stattdessen `margin-top:8px` auf die
   erste `.form-note`-Zeile gesetzt, sodass der Abstand jetzt exakt 20px beträgt
   (12px Gap + 8px Margin).
+## Hotfix — 2026-08-26 (7)
+
+- Favicon gesetzt: aus dem von Nic geschickten "N"-Logo (Amber auf Schwarz) `favicon.ico`
+  (16/32/48px) sowie PNGs in 16, 32, 192, 512px und ein `apple-touch-icon.png` (180px)
+  generiert. `favicon.ico` liegt im Root von `live/`, die PNGs in `img/`. Im `<head>` von
+  `index.html` entsprechende `<link rel="icon">`-/`apple-touch-icon`-Tags direkt nach dem
+  `theme-color`-Meta-Tag ergänzt (vorher gab es gar keine Favicon-Einbindung).
 
