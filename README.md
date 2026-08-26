@@ -96,4 +96,11 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
 
 - Kontaktformular-Hint: Zeilenumbruch (`<br>`) zwischen den beiden Sätzen ergänzt,
   damit "Falls du noch weitere Arbeitsproben brauchst..." in einer eigenen Zeile steht.
+## Hotfix — 2026-08-26 (6)
+
+- Kontaktformular: Abstand Button → Hinweistexte korrigiert. Vorheriges
+  `margin-bottom:20px` am Button gestrichen (das stapelte sich mit dem
+  `.contact-form`-Flex-`gap:12px` auf 32px). Stattdessen `margin-top:8px` auf die
+  erste `.form-note`-Zeile gesetzt, sodass der Abstand jetzt exakt 20px beträgt
+  (12px Gap + 8px Margin).
 
