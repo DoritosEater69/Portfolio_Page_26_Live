@@ -141,3 +141,22 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
   (das war schon vorher korrekt so), aber ohne Consent-Mode-Standardwerte haette Google
   ab 2024 in der EWR ggf. weniger/keine (modellierten) Signale verarbeitet bzw. es waere
   nicht Googles empfohlener Standard fuer Consent-Mode-konforme Tag-Einbindung gewesen.
+
+## Hotfix — 2026-08-26 (10)
+
+- Bug gefunden und behoben: Das Consent-Mode-Default-Script aus Hotfix (9) stand im
+  Quelltext NACH dem Cookiebot-Tag (`<script id="Cookiebot" src="...uc.js">`) statt davor.
+  Google/Cookiebot verlangt ausdruecklich die umgekehrte Reihenfolge: das
+  Default-Script MUSS vor dem CMP-Tag geladen werden, sonst kann Cookiebot (bei
+  Wiederkehrenden Besuchern mit bereits gespeicherter Einwilligung) seine eigene
+  Consent-Mode-Reaktion ausloesen, bevor unser `gtag("consent","default",...)` ueberhaupt
+  gelaufen ist — das `dataLayer` bekommt dann zuerst ein `update` (alles "granted") und
+  erst danach das `default` (alles "denied"), was die Spezifikation verletzt und exakt
+  erklaert, warum externe Tools/Google das Consent-Mode-Setup nicht korrekt erkannt haben.
+- Live via Chrome-Inspektion auf nicworks.de bestaetigt: in diesem Test-Browser lag noch
+  ein alter `CookieConsent`-Cookie aus einer frueheren Sitzung, `window.dataLayer` zeigte
+  das `update`-Event vor dem `default`-Event.
+- Fix: Reihenfolge im `<head>` getauscht — Default-Script steht jetzt als erstes Script
+  direkt nach `<meta charset="UTF-8">`, der Cookiebot-Tag folgt danach.
+- WICHTIG: Diese Datei muss erneut per SFTP hochgeladen werden, der vorherige Upload
+  (Hotfix 9) hatte noch die falsche Reihenfolge.
