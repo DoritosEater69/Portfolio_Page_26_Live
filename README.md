@@ -78,4 +78,9 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
 - Formular-Fußtext ergänzt um „keine Werbung" sowie um eine zweite Zeile mit
   DSGVO-Hinweis inkl. Link zur Datenschutzerklärung: „Mit dem Absenden stimmst du der
   Verarbeitung deiner Daten gemäß der Datenschutzerklärung zu."
+## Hotfix — 2026-08-26 (3)
+
+- Kontaktformular: 20px Abstand unter dem "Nachricht senden"-Button ergänzt
+  (`margin-bottom:20px` auf `.contact-form button`), damit der Bereich zu den
+  form-note-Zeilen darunter (Spam-Versprechen + DSGVO-Hinweis) mehr Luft hat.
 
