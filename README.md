@@ -160,3 +160,13 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
   direkt nach `<meta charset="UTF-8">`, der Cookiebot-Tag folgt danach.
 - WICHTIG: Diese Datei muss erneut per SFTP hochgeladen werden, der vorherige Upload
   (Hotfix 9) hatte noch die falsche Reihenfolge.
+
+## Hotfix — 2026-08-26 (11)
+
+- Leere H3 gefunden und behoben: `<h3 id="project-modal-title"></h3>` im Projekt-Modal
+  war im HTML-Quelltext leer und wurde erst per JS (`projectModalTitle.textContent = t.title`)
+  beim Oeffnen eines Projekts befuellt. Fuer SEO-/Accessibility-Crawler, die das Modal nie
+  oeffnen, ist das eine leere Ueberschrift im DOM.
+- Fix: sinnvoller statischer Default-Text "Projektdetails" eingesetzt. Rein optisch aendert
+  sich nichts (Modal bleibt bis zum Oeffnen unsichtbar, JS ueberschreibt den Text beim
+  Oeffnen exakt wie vorher mit dem jeweiligen Projekttitel).
