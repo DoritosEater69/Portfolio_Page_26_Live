@@ -204,3 +204,11 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
   .htaccess), Adobe-XD-iframe ohne sandbox-Attribut (bewusst offen gelassen, da
   Aenderung das interaktive Prototyp-Embed brechen koennte - CSP frame-src ist
   bereits auf xd.adobe.com beschraenkt).
+
+## Hotfix — 2026-08-26 (14)
+
+- Vita-Zeitleiste aktualisiert: Hylax-Zeitraum von "seit 10.2021" auf "10.2021 - 04.2023"
+  praezisiert, Fellbox-Eintrag von "seit 10.2021" (Tippfehler/Dublette) auf
+  "04.2023 - 04.2024" korrigiert und Titel zu "Wechsel zu Fellbox - Web- und
+  Grafikdesign" erweitert. Neuer Eintrag ergaenzt: "seit 08.2024 - Web- und
+  Grafikdesigner bei formwandler interactive".
