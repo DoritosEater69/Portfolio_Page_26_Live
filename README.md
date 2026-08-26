@@ -1,0 +1,68 @@
+# Portfolio-Seite — Niclas Koch (live/)
+
+## Status: EINGEFROREN seit 2026-08-19
+
+Dieser Ordner enthält die öffentliche, SEO-indexierte Variante der Portfolio-Seite von
+Niclas Koch. Er wird — wie `../bewerbung/` — seit dem 2026-08-19 **nicht mehr von Hand
+bearbeitet**. Aktive Weiterentwicklung findet ausschließlich im Geschwister-Ordner
+`../creative/` statt (eigenes Git-Repo `Portfolio_Page_26_Creative`, Details siehe dortiges
+README).
+
+## Was dieser Ordner ist
+
+`live/` wurde historisch komplett automatisch aus `../bewerbung/` erzeugt, per
+`node build-live.js` — dieses Build-Script liegt in `bewerbung/`, nicht hier. Der Ordner
+selbst wurde nie manuell editiert, sondern bei jedem Lauf des Scripts vollständig neu
+überschrieben.
+
+**Unterschiede zur `bewerbung/`-Version, aus der er generiert wurde:**
+- Kein Webprojekte-Slider und kein Fellbox-Grafikprojekt (ausgeblendet).
+- `index, follow` statt `noindex, nofollow` (öffentlich indexierbar).
+- Alle Domain-Referenzen auf `nicworks.de` statt `bewerbung.nicworks.de`.
+- Kein Passwortschutz (im Gegensatz zu `bewerbung/`, das per `.htaccess` Basic Auth
+  geschützt ist).
+
+Vorgesehen für das Root-Verzeichnis von `nicworks.de`.
+
+## Tech-Stack
+
+Gleicher Ansatz wie `bewerbung/`: reines HTML, CSS und JavaScript in einer einzigen Datei,
+kein Framework, kein Bundler. Innerhalb dieses Ordners selbst gibt es keinen eigenen
+Build-Step — `live/` *ist* bereits das Build-Ergebnis von `build-live.js`.
+
+## Git
+
+Eigenes Repo, Origin `https://github.com/DoritosEater69/Portfolio_Page_26_Live.git`,
+Branch `main`. Stand: bisher nur der initiale Commit.
+
+## Weiterentwicklung
+
+Seit dem 2026-08-19 nicht mehr aktiv. Alle neuen Änderungen an der Seite (Design, Inhalte,
+Struktur) landen ab jetzt in `../creative/` — siehe `../creative/README.md` für den
+aktuellen Stand, den vollständigen Hotfix-Verlauf und die offene Checkliste.
+
+## Hotfix — 2026-08-26
+
+Auf ausdrücklichen Wunsch als Ausnahme vom Freeze direkt in `live/` (nicht `creative/`)
+umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix handelt:
+
+- Datenschutzerklärung (`datenschutz.html`) ergänzt: **WhatsApp Business Chat**
+  (wa.me-Link) und **hCaptcha** (Kontaktformular-Spamschutz) als eigene Abschnitte
+  aufgenommen (neu: Abschnitt 5 & 6), nachfolgende Abschnitte auf 7–14 umnummeriert,
+  Übersichtsliste in Abschnitt 2 entsprechend erweitert. Grund: Beide Dienste wurden von
+  einem externen Scan auf nicworks.de als nicht in der Datenschutzerklärung aufgeführt
+  gemeldet.
+- Kontaktformular-Hinweistext in `index.html` geändert: weg von „...oder lass gern eine
+  Bewertung meiner Seite da." hin zu „...erzähl mir kurz von deinem Projekt, oder frag
+  einfach unverbindlich an." — Fokus weg von Feedback/Bewertung, hin zu Projektanfragen.
+
+## Offene Punkte / To-Do
+
+- [ ] Favicon setzen
+- [ ] SEO nochmal checken
+- [ ] In Google Search Console eintragen
+- [ ] Analytics einrichten
+- [ ] Textlich mehr Möglichkeiten schaffen, Projekte anzufragen
+- [ ] Kontaktformular: Projektart abfragen (z. B. Radiobuttons), ggf. weitere Felder
+      ergänzen
+
