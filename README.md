@@ -61,7 +61,7 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
 - [x] Favicon setzen
 - [ ] SEO nochmal checken
 - [ ] In Google Search Console eintragen
-- [ ] Analytics einrichten
+- [x] Analytics einrichten
 - [ ] Textlich mehr Möglichkeiten schaffen, Projekte anzufragen
 - [ ] Kontaktformular: Projektart abfragen (z. B. Radiobuttons), ggf. weitere Felder
       ergänzen
@@ -110,4 +110,21 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
   generiert. `favicon.ico` liegt im Root von `live/`, die PNGs in `img/`. Im `<head>` von
   `index.html` entsprechende `<link rel="icon">`-/`apple-touch-icon`-Tags direkt nach dem
   `theme-color`-Meta-Tag ergänzt (vorher gab es gar keine Favicon-Einbindung).
+## Hotfix — 2026-08-26 (8)
+
+- Google Analytics 4 (Property `G-VHTRVMJB0K`) eingebunden — deklarativ per Cookiebot
+  (`type="text/plain" data-cookieconsent="statistics"`), lädt also erst nach Einwilligung
+  in die Kategorie "Statistics", direkt nach dem Cookiebot-Script-Tag im `<head>`.
+- CSP (`script-src`, `connect-src`, `img-src`) um `googletagmanager.com` /
+  `google-analytics.com` erweitert, sonst hätte die CSP den Request geblockt.
+- `datenschutz.html`: neuer Abschnitt 6 "Google Analytics (GA4)" (Anbieter, verarbeitete
+  Daten, Rechtsgrundlage Art. 6 Abs. 1 lit. a DSGVO + § 25 Abs. 1 TDDSG, USA-Transfer via
+  EU-U.S. Data Privacy Framework, Widerrufs-/Opt-out-Hinweis), Folgeabschnitte 7-13 auf
+  7-14 verschoben, Übersichtsliste in Abschnitt 2 ergänzt.
+- **Wichtig, bitte prüfen:** In der Cookiebot-Dashboard-Konfiguration (cbid
+  `391e6db6-aa4c-4df2-bfc9-8490c4f85d94`) sicherstellen, dass die Kategorie "Statistics"
+  im Banner sichtbar/aktiv ist und die GA4-Cookies (`_ga`, `_ga_*`) im Cookie-Declaration-Scan
+  auftauchen — Cookiebot erkennt das i. d. R. automatisch beim nächsten Scan, eine manuelle
+  Kontrolle schadet aber nicht. Außerdem in der GA4-Property selbst die
+  Datenaufbewahrungsdauer (2 oder 14 Monate) setzen, falls noch nicht geschehen.
 
