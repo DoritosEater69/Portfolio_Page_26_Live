@@ -1,0 +1,81 @@
+[
+  {
+    "slug": "guenstiges-webdesign-kleine-unternehmen-2026",
+    "title": "Günstiges Webdesign für kleine Unternehmen: Worauf es 2026 wirklich ankommt",
+    "metaTitle": "Günstiges Webdesign für kleine Unternehmen: Worauf es 2026 wirklich ankommt",
+    "description": "Günstiges Webdesign heißt nicht automatisch billig gebaut. Was ein fairer Preis wirklich beinhaltet, welche Baukasten-Fallen es gibt und warum Ladezeit über Sichtbarkeit entscheidet.",
+    "date": "2026-08-16",
+    "tags": [
+      "Günstiges Webdesign",
+      "KMU",
+      "Website Kosten"
+    ],
+    "readTime": "6 Min",
+    "faq": [
+      {
+        "q": "Was kostet eine günstige, aber professionelle Website?",
+        "a": "Für eine schlanke, individuell gestaltete Website für ein kleines Unternehmen sind ab 490€ realistisch, wenn ein Einzelner ohne Agentur-Overhead arbeitet. Baukasten-Systeme sind günstiger, kosten dich aber laufende Abo-Gebühren und meistens Performance."
+      },
+      {
+        "q": "Ist eine Website vom Baukasten (Wix, Jimdo etc.) nicht auch günstig?",
+        "a": "Kurzfristig ja, langfristig oft nicht: Baukästen verlangen monatliche Gebühren auf Dauer, laden häufig langsamer (schlechtere Core Web Vitals) und lassen sich schwerer individuell an dein Business anpassen."
+      },
+      {
+        "q": "Wie schnell ist eine Website fertig?",
+        "a": "Bei einer klar umrissenen Ein- bis Mehrseiten-Website sind 1-2 Wochen von Briefing bis Live-Schaltung realistisch, wenn Inhalte (Texte, Bilder) frühzeitig vorliegen."
+      }
+    ]
+  },
+  {
+    "slug": "website-fuer-tattoo-studio-kosten",
+    "title": "Website für dein Tattoo-Studio: Was sie kosten sollte und worauf es ankommt",
+    "metaTitle": "Website für Tattoo-Studios: Kosten & worauf es beim Webdesign ankommt",
+    "description": "Eine Tattoo-Studio-Website lebt von Bildern — und genau die bremsen sie meistens aus. Worauf es bei Webdesign für Tattoo-Studios wirklich ankommt, inklusive realistischer Preise.",
+    "date": "2026-08-23",
+    "tags": [
+      "Webdesign für Tattoo-Studios",
+      "Günstiges Webdesign"
+    ],
+    "readTime": "5 Min",
+    "faq": [
+      {
+        "q": "Was kostet eine Website für ein Tattoo-Studio?",
+        "a": "Für eine bildlastige One-Pager-Website mit Galerie, Künstler-Profilen und Terminanfrage sind ab 490€ realistisch — je nach Umfang (mehrere Künstler, Online-Buchung, Shop für Merch) steigt der Preis mit dem Funktionsumfang."
+      },
+      {
+        "q": "Reicht nicht einfach ein Instagram-Profil?",
+        "a": "Instagram ist super für Reichweite, aber du hast keine Kontrolle über Algorithmus, Layout oder Google-Auffindbarkeit. Eine eigene Website rankt bei Google, lädt schneller als eine Instagram-Bio-Verlinkung und wirkt professioneller bei Erstkontakt."
+      },
+      {
+        "q": "Wie bleiben viele Bilder trotzdem schnell?",
+        "a": "Mit modernen Bildformaten (WebP/AVIF), korrekten Bildgrößen pro Endgerät (responsive Bilder) und Lazy Loading — also Bilder erst laden, wenn sie tatsächlich sichtbar werden."
+      }
+    ]
+  },
+  {
+    "slug": "webdesign-cannabis-social-club-deutschland",
+    "title": "Website für Cannabis Social Clubs in Deutschland: Was 2026 wichtig ist",
+    "metaTitle": "Webdesign für Cannabis Social Clubs (Anbauvereinigungen) in Deutschland",
+    "description": "Seit dem Cannabisgesetz (CanG) gibt es in Deutschland offiziell registrierte Anbauvereinigungen. Was ihre Website leisten muss — und wo rechtlich besondere Vorsicht gilt.",
+    "date": "2026-08-30",
+    "tags": [
+      "Webdesign für Cannabis Social Clubs",
+      "Günstiges Webdesign"
+    ],
+    "readTime": "6 Min",
+    "faq": [
+      {
+        "q": "Braucht ein Cannabis Social Club überhaupt eine Website?",
+        "a": "Ja — für Mitgliederinformation, Kontakt, Vereinsstruktur und rechtlich vorgeschriebene Pflichtangaben (Impressum, Datenschutz) ist eine eigene, seriöse Website sinnvoll, unabhängig von Social-Media-Kanälen."
+      },
+      {
+        "q": "Darf eine Anbauvereinigung für Cannabis werben?",
+        "a": "Hier gilt besondere Vorsicht: Öffentliche Werbung für den Konsum oder Anbau von Cannabis ist in Deutschland weiterhin eingeschränkt bzw. untersagt. Eine Website sollte sich auf sachliche Vereinsinformationen beschränken. Das ist keine Rechtsberatung — kläre die genauen Grenzen im Zweifel mit einem spezialisierten Anwalt."
+      },
+      {
+        "q": "Was kostet eine Website für eine Anbauvereinigung?",
+        "a": "Vergleichbar mit anderen kleinen Vereinen/Unternehmen: ab 490€ für eine schlanke, seriöse Informationsseite mit Mitgliederbereich-Vorbereitung, Kontaktformular und rechtssicheren Pflichtseiten."
+      }
+    ]
+  }
+]

@@ -1,0 +1,148 @@
+/* Blog-Stylesheet — nutzt die Farb-/Font-Tokens von nicworks.de, eigenständig gehalten
+   damit /blog/ unabhaengig vom riesigen Inline-<style> der Startseite bleibt. */
+
+@font-face{font-family:Assignate;src:url('/font/Assignate.woff2') format('woff2');font-weight:400 900;font-display:swap}
+@font-face{font-family:Inter;src:url('/font/Inter-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:Inter;src:url('/font/Inter-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:Inter;src:url('/font/Inter-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url('/font/JetBrainsMono-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url('/font/JetBrainsMono-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+
+:root{
+  --bg:#06060A; --bg-2:#0E0F16; --paper:#F3EFE6; --ink:#06060A;
+  --amber:#FFE500; --rust:#FF5C4D; --text:#F3EFE6;
+  --border:rgba(255,255,255,0.11); --glass:rgba(255,255,255,0.04);
+  --glass-strong:rgba(255,255,255,0.07); --text-dim:rgba(243,239,230,0.66);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:Inter,system-ui,sans-serif; font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--amber); text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%; height:auto; display:block; border-radius:10px}
+
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+
+/* Header */
+.blog-header{
+  border-bottom:1px solid var(--border); padding:18px 0; position:sticky; top:0;
+  background:rgba(6,6,10,0.86); backdrop-filter:blur(10px); z-index:10;
+}
+.blog-header .wrap{max-width:920px; display:flex; align-items:center; justify-content:space-between; gap:16px}
+.blog-brand{font-family:Assignate,sans-serif; font-weight:700; letter-spacing:0.02em; font-size:16px; color:var(--text)}
+.blog-brand span{color:var(--amber)}
+.blog-nav{display:flex; gap:20px; font-family:'JetBrains Mono',monospace; font-size:13px; text-transform:uppercase; letter-spacing:0.04em}
+.blog-nav a{color:var(--text-dim)}
+.blog-nav a:hover, .blog-nav a.active{color:var(--amber)}
+
+/* Hero / index intro */
+.blog-hero{max-width:920px; margin:56px auto 40px; padding:0 24px}
+.blog-hero .eyebrow{
+  font-family:'JetBrains Mono',monospace; font-size:12px; text-transform:uppercase;
+  letter-spacing:0.08em; color:var(--amber); margin-bottom:10px;
+}
+.blog-hero h1{
+  font-family:Assignate,sans-serif; font-weight:800; font-size:clamp(30px,5vw,46px);
+  line-height:1.1; margin:0 0 16px;
+}
+.blog-hero p{color:var(--text-dim); font-size:18px; max-width:60ch; margin:0}
+.price-badge{
+  display:inline-flex; align-items:center; gap:8px; margin-top:20px; padding:8px 14px;
+  border:1px solid var(--border); border-radius:999px; font-family:'JetBrains Mono',monospace;
+  font-size:13px; background:var(--glass);
+}
+.price-badge b{color:var(--amber)}
+
+/* Post list (index) */
+.post-list{max-width:920px; margin:0 auto 80px; padding:0 24px; display:grid; gap:18px}
+.post-card{
+  display:block; border:1px solid var(--border); border-radius:14px; padding:24px;
+  background:var(--glass); transition:border-color .18s, transform .18s;
+}
+.post-card:hover{border-color:var(--amber); transform:translateY(-2px); text-decoration:none}
+.post-meta{
+  font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-dim);
+  display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px; text-transform:uppercase; letter-spacing:.03em;
+}
+.post-card h2{font-family:Assignate,sans-serif; font-size:22px; margin:0 0 8px; color:var(--text); font-weight:700}
+.post-card p{margin:0; color:var(--text-dim); font-size:15px}
+.tag-pill{
+  display:inline-block; padding:3px 10px; border-radius:999px; border:1px solid var(--border);
+  font-size:11px; color:var(--text-dim);
+}
+
+/* Article page */
+.article-header{max-width:760px; margin:56px auto 8px; padding:0 24px}
+.breadcrumb{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-dim); margin-bottom:22px}
+.breadcrumb a{color:var(--text-dim)}
+.breadcrumb a:hover{color:var(--amber)}
+.article-header h1{
+  font-family:Assignate,sans-serif; font-weight:800; font-size:clamp(28px,4.4vw,40px);
+  line-height:1.15; margin:0 0 16px;
+}
+.article-meta{
+  font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-dim);
+  display:flex; gap:14px; flex-wrap:wrap; text-transform:uppercase; letter-spacing:.03em;
+  border-bottom:1px solid var(--border); padding-bottom:22px; margin-bottom:36px;
+}
+
+article.body{max-width:760px; margin:0 auto 48px; padding:0 24px}
+article.body h2{
+  font-family:Assignate,sans-serif; font-size:26px; margin:44px 0 14px; font-weight:700;
+}
+article.body h3{font-family:Assignate,sans-serif; font-size:20px; margin:32px 0 12px; font-weight:700}
+article.body p{margin:0 0 18px; color:var(--text)}
+article.body ul, article.body ol{margin:0 0 18px; padding-left:22px; color:var(--text)}
+article.body li{margin-bottom:8px}
+article.body strong{color:var(--amber)}
+article.body blockquote{
+  margin:28px 0; padding:16px 20px; border-left:3px solid var(--amber);
+  background:var(--glass); border-radius:0 10px 10px 0; color:var(--text-dim); font-style:italic;
+}
+article.body table{width:100%; border-collapse:collapse; margin:0 0 22px; font-size:15px}
+article.body th, article.body td{border:1px solid var(--border); padding:10px 12px; text-align:left}
+article.body th{background:var(--glass); font-family:'JetBrains Mono',monospace; font-size:12px; text-transform:uppercase}
+
+/* CTA box */
+.cta-box{
+  max-width:760px; margin:48px auto; padding:32px; border-radius:16px;
+  background:linear-gradient(135deg, rgba(255,229,0,0.12), rgba(255,92,77,0.08));
+  border:1px solid var(--border);
+}
+.cta-box h3{font-family:Assignate,sans-serif; font-size:22px; margin:0 0 10px}
+.cta-box p{margin:0 0 18px; color:var(--text-dim)}
+.cta-box a.btn{
+  display:inline-block; background:var(--amber); color:var(--ink); font-weight:700;
+  padding:12px 22px; border-radius:999px; font-family:'JetBrains Mono',monospace; font-size:13px;
+}
+.cta-box a.btn:hover{text-decoration:none; opacity:.88}
+
+/* FAQ */
+.faq{max-width:760px; margin:0 auto 56px; padding:0 24px}
+.faq h2{font-family:Assignate,sans-serif; font-size:24px; margin:0 0 20px}
+.faq-item{border-top:1px solid var(--border); padding:18px 0}
+.faq-item h3{font-family:Inter,sans-serif; font-size:16px; font-weight:600; margin:0 0 8px; color:var(--text)}
+.faq-item p{margin:0; color:var(--text-dim); font-size:15px}
+
+/* Related */
+.related{max-width:920px; margin:0 auto 60px; padding:0 24px}
+.related h2{font-family:Assignate,sans-serif; font-size:20px; margin:0 0 16px; color:var(--text-dim); font-weight:700}
+.related-grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+
+footer.blog-footer{
+  border-top:1px solid var(--border); padding:28px 0 60px; text-align:center;
+  font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-dim);
+}
+footer.blog-footer a{color:var(--text-dim); margin:0 8px}
+footer.blog-footer a:hover{color:var(--amber)}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .blog-hero{margin:36px auto 28px}
+  .article-header{margin:36px auto 8px}
+}

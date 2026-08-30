@@ -14,7 +14,13 @@ ServerSignature Off
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
-<FilesMatch "^(README\.md|GITHUB-SETUP\.md|build-live\.js|package(-lock)?\.json|\.env|\.gitignore)$">
+<FilesMatch "^(README\.md|GITHUB-SETUP\.md|build-live\.js|build-blog\.js|package(-lock)?\.json|\.env|\.gitignore)$">
+  Require all denied
+</FilesMatch>
+
+# Blog-Interna (Templates, Rohdaten) nicht oeffentlich ausliefern - nur die generierten
+# Seiten unter /blog/ und /blog/posts/ sind fuer Besucher/Crawler gedacht
+<FilesMatch "^(posts\.json|_template\.html|_index_template\.html)$">
   Require all denied
 </FilesMatch>
 

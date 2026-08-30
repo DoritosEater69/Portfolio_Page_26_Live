@@ -65,6 +65,13 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
 - [ ] Textlich mehr Möglichkeiten schaffen, Projekte anzufragen
 - [ ] Kontaktformular: Projektart abfragen (z. B. Radiobuttons), ggf. weitere Felder
       ergänzen
+- [ ] GitHub-Secrets fuer Auto-Deploy in `Portfolio_Page_26_Live` anlegen: `STRATO_FTP_SERVER`,
+      `STRATO_FTP_USERNAME`, `STRATO_FTP_PASSWORD` (optional `STRATO_FTP_SERVER_DIR`) - siehe
+      `.github/workflows/deploy.yml` und Hotfix-Eintrag vom 2026-08-30
+- [ ] Fine-grained GitHub PAT (nur Contents R/W auf dieses eine Repo) fuer den woechentlichen
+      Blogpost-Trigger bereitstellen, damit der automatische Commit+Push tatsaechlich live geht
+- [ ] Nach dem ersten Auto-Deploy pruefen: laden `/blog/` und `/blog/posts/*.html` korrekt auf
+      nicworks.de (Fonts, CSS, Bilder, keine 404s)
 ## Hotfix — 2026-08-26 (2)
 
 - WhatsApp-Kontaktlink (`wa.me/...`) komplett aus `index.html` entfernt (Social-Zeile
@@ -221,3 +228,49 @@ umgesetzt, da es sich um einen live-relevanten rechtlichen/inhaltlichen Fix hand
 - Beide Galerie-Slider (GALLERY_IMAGES = Illustrationen, GALLERY_IMAGES_PHOTOS = Fotos)
   waren bisher stur numerisch sortiert (002, 003, 004...) - jetzt gemischt, damit die
   Reihenfolge beim Scrollen abwechslungsreicher wirkt.
+
+
+## Hotfix — 2026-08-30
+
+Groesseres Feature-Update auf Nics ausdruecklichen Wunsch direkt in `live/` umgesetzt
+(Ausnahme vom creative/live-Freeze, wie schon am 2026-08-26 - SEO-/Content-Aenderung an der
+tatsaechlich oeffentlichen Seite, kein Routine-Redesign):
+
+- **Keyword-/Positionierungs-Umbau:** Title, Meta-Description, Meta-Keywords, OG/Twitter-Tags
+  und JSON-LD (`description`, `knowsAbout`) von "Webdesigner Duesseldorf" auf "Guenstiges
+  Webdesign" umgestellt, mit Fokus auf kleine/mittlere Unternehmen UND explizit die Nischen
+  Tattoo-Studios, Cannabis Social Clubs und Kuenstler (Nics Wunsch, weniger Konkurrenz als
+  breite KMU-Keywords). Preis-Anker "ab 490€" in Meta-Description, OG/Twitter-Description,
+  Hero-Text (`hero-light-text`), Psst-Headline (`-Digital Designer-` -> `-guenstiges
+  Webdesign-`) und im Kontaktformular-Hint ergaenzt.
+- **Neues Blog-System unter `/blog/`:** komplett eigenstaendig vom riesigen Inline-`<style>`
+  der Startseite (`blog/style.css`, referenziert dieselben Farb-/Font-Tokens: `--bg`,
+  `--amber`, `--paper`, Assignate/Inter/JetBrains Mono). Architektur bewusst
+  daten-/template-getrieben (analog zum bestehenden `build-live.js`-Muster), damit
+  woechentliche neue Artikel *token-guenstig* generierbar sind, ohne jedes Mal
+  Boilerplate-HTML neu zu schreiben:
+  - `blog/posts.json` — Metadaten aller Artikel (Titel, Beschreibung, Datum, Tags, FAQ)
+  - `blog/content/<slug>.html` — reines Artikel-Body-HTML pro Artikel
+  - `blog/_template.html` / `blog/_index_template.html` — Platzhalter-Templates
+  - `build-blog.js` — liest `posts.json` + `content/`, generiert `blog/posts/<slug>.html`
+    (inkl. Article- + FAQPage-JSON-LD-Schema fuer AI-Overviews/Google), `blog/index.html`
+    und den `<!-- BLOG-START -->...<!-- BLOG-END -->`-Block in `sitemap.xml` — komplett
+    ueberschreibend, idempotent. Aufruf: `node build-blog.js` (Node 22 lokal getestet).
+  - 3 Seed-Artikel veroeffentlicht (rueckdatiert 08/16, 08/23, 08/30 fuer eine plausible
+    Cadence): "Guenstiges Webdesign fuer kleine Unternehmen: Worauf es 2026 wirklich
+    ankommt", "Website fuer dein Tattoo-Studio: Was sie kosten sollte", "Website fuer
+    Cannabis Social Clubs in Deutschland: Was 2026 wichtig ist" (mit Rechtsberatungs-Disclaimer,
+    keine eigene Rechtsauskunft).
+  - "Blog"-Link in Side-Nav + Mobile-Nav ergaenzt (`/blog/`).
+  - `.htaccess`: `build-blog.js` zur gesperrten Dateiliste hinzugefuegt, neue Regel sperrt
+    `posts.json`/`_template.html`/`_index_template.html` vor direktem oeffentlichen Zugriff
+    (nur die generierten Seiten unter `/blog/` und `/blog/posts/` sind fuer Crawler gedacht).
+- **Auto-Deploy vorbereitet:** `.github/workflows/deploy.yml` deployed bei jedem Push auf
+  `main` automatisch per FTPS (SamKirkland/FTP-Deploy-Action) auf den Strato-Webspace.
+  Braucht noch 3 GitHub-Secrets (Strato-FTP-Zugangsdaten), die Nic selbst in den
+  Repo-Settings anlegt — Claude sieht diese Zugangsdaten nie. Siehe "Offene Punkte" oben.
+- **Woechentlicher Blogpost-Trigger:** noch NICHT eingerichtet — braucht einen von Nic
+  bereitgestellten, fein-scoped GitHub PAT (nur `Portfolio_Page_26_Live`, Contents R/W),
+  damit die automatische Session wirklich pushen kann (der lokale device_bash-Sandbox hat
+  laut [[feedback_portfolio_autocommit]] keine Git-Credentials). Sobald der PAT vorliegt,
+  wird der Trigger als eigener Schritt nachgezogen.
