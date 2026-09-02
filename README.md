@@ -277,6 +277,49 @@ tatsaechlich oeffentlichen Seite, kein Routine-Redesign):
 
 ---
 
+## Hotfix — 2026-09-02
+
+SEO-Ausbau + Blog-Template + Bugfix, direkt in `live/` auf Nics Wunsch (Branch
+`seo/strukturierte-daten-und-verlinkung`, von Nic manuell gepusht). Ab jetzt: jede
+Aenderung in `live/` wird sofort committet (beschreibende Message) und hier als Hotfix
+protokolliert.
+
+- **Strukturierte Daten (Startseite):** JSON-LD auf `@graph` umgestellt — `Person` (mit
+  fester `@id` `#person`) + `WebSite` + `ProfessionalService` (`priceRange` "ab 490 €",
+  `Offer`, `areaServed`, `serviceType`). `og:image`/`twitter:image` auf absolute URLs,
+  `og:site_name` + `og:image:alt` ergaenzt. sr-only-H1 auf Kernthema statt "All-Rounder".
+  `robots` um `max-image-preview:large`/`max-snippet:-1` erweitert. Ungenutztes
+  `<meta name="keywords">` entfernt (auch Blog-Index).
+- **Blog-Schema:** `Article` -> `BlogPosting` mit `@id`, `wordCount`, `timeRequired`,
+  `articleSection`, `keywords`, `publisher.logo`, `inLanguage`, `isPartOf`, `isAccessibleForFree`;
+  `author`/`publisher` referenzieren `#person`. Neu: `BreadcrumbList`-JSON-LD pro Beitrag,
+  generiertes `Blog`-Index-Schema mit `blogPost`-Liste.
+- **Beitrags-Template komplett ausgebaut** (`blog/_template.html`, jeder Beitrag 1:1 gleich):
+  Breadcrumb + Kicker + H1 + Standfirst + Meta-Zeile (Byline, Datum, opt. "Aktualisiert",
+  Lesezeit), "Das Wichtigste in Kuerze"-Box (`keyTakeaways`), automatisches
+  Inhaltsverzeichnis aus `<h2>` (ab 3 Ueberschriften, `build-blog.js` injiziert id-Slugs),
+  FAQ, CTA "Lass uns zusammen etwas gestalten" -> Kontaktformular, Autoren-Box (E-E-A-T),
+  "Weiterlesen". `posts.json` um `standfirst` + `keyTakeaways` pro Beitrag erweitert;
+  `build-blog.js` um `processHeadings`/`renderTldr`/`renderToc`/`validatePost` +
+  erweiterte Schema-Renderer ergaenzt.
+- **Neuer Beitrag:** "Tattoo-Studio: Reicht Instagram — oder braucht ihr eine Website?"
+  (Roadmap-Thema Nr. 2; Nr. 1 "Kosten/ab 490€" ist bereits durch
+  `website-fuer-tattoo-studio-kosten` abgedeckt, daher Nr. 2 gegen Kannibalisierung).
+- **Startseite <-> Blog:** neuer Abschnitt `#blog-teaser` mit 3 neuesten Beitraegen als
+  Cards, generiert von `build-blog.js` (`updateHomeTeaser`, Marker-Block). Card-Style im
+  Inline-`<style>` aus den Seiten-Tokens abgeleitet (`--glass`/`--border`, Assignate-Titel,
+  JetBrains-Mono-Meta, Amber-Hover), Grid `auto-fit minmax(260px,1fr)` -> 3-spaltig
+  Desktop. Darunter Textlinks "Alle Beitraege" + "Zusammen gestalten" (Kontaktformular).
+- **404-Seite** (`404.html`, `noindex`, gebrandet) + `ErrorDocument 404` in `.htaccess`.
+- **Bugfix "man kann nicht mehr scrollen":** `sideNavLinks.map(e => document.querySelector(
+  e.getAttribute("href")))` warf `SyntaxError: '/blog/' is not a valid selector`, seit die
+  Side-Nav den `/blog/`-Link hat (Hotfix 2026-08-30). Der Fehler brach das komplette
+  Inline-Script ab -> `requestAnimationFrame(raf)` lief nie -> Custom-Scroll (Mausrad/
+  Trackpad) tot. Fix: nur noch `#`-Hrefs werden aufgeloest, sonst `null`. Ausserdem
+  Psst-Headline `-guenstiges Webdesign-` -> `guenstiges Webdesign` (Bindestriche raus).
+
+---
+
 ## Geplante Blog-Artikel (20 Themen) — Fokus: Schnelles Geldverdienen, Nischen, AI-lösbar
 
 ### TO DO: 20 Blog-Artikel generieren (Seed-Content für wöchentliche Auto-Publication)
