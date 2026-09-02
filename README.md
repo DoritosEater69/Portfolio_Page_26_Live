@@ -274,3 +274,203 @@ tatsaechlich oeffentlichen Seite, kein Routine-Redesign):
   damit die automatische Session wirklich pushen kann (der lokale device_bash-Sandbox hat
   laut [[feedback_portfolio_autocommit]] keine Git-Credentials). Sobald der PAT vorliegt,
   wird der Trigger als eigener Schritt nachgezogen.
+
+---
+
+## Geplante Blog-Artikel (20 Themen) — Fokus: Schnelles Geldverdienen, Nischen, AI-lösbar
+
+### TO DO: 20 Blog-Artikel generieren (Seed-Content für wöchentliche Auto-Publication)
+
+Strategischer Fokus: **Tattoo-Studios, Cannabis Clubs, Künstler + weitere Nischen** mit schnellem Monetarisierungspotenzial. Jedes Thema ist AI-lösbar (keine Originalrecherche nötig, Standard-Patterns existieren) und trägt den Preis-Anker "ab 490€" / "ab 590€" sowie Keywords für "günstiges Webdesign".
+
+**Wichtig für alle Artikel:**
+- [ ] Jeder Artikel mit **Article + FAQPage JSON-LD-Schema** generieren (für Google AI Overviews Ranking)
+- [ ] FAQ-Section mit mind. 3-5 Q&A pro Artikel (aus posts.json `faq`-Array in _template.html einfügen)
+- [ ] Meta Description mit Kosten-Anker ("ab 490€") + Nischen-Keyword
+- [ ] Interne Links zu anderen Nischen-Artikeln (Related Posts)
+
+---
+
+### Tattoo-Studios (6 Themen)
+
+1. **Tattoo-Studio-Website ab 490€ — Das Komplettpaket für 2026**
+   - Angle: Kosten-fokussiert, "Was Tattoo-Studios wirklich brauchen"
+   - Copy-Pattern: Problem (teure Agentur) → Lösung (Komponenten-Baukasten 490€) → Gewinn (mehr Anfragen = schnelle ROI)
+   - SEO: "Tattoo Studio Website Kosten", "günstige Website Tattoo-Studio"
+   - [ ] Artikel generieren (AI-Prompt vorbereitet)
+   - [ ] FAQ + Schema
+
+2. **Warum Instagram allein für Tattoo-Studios nicht reicht (und wie eine Website die Umsätze verdoppelt)**
+   - Angle: Instagram-abhängig → Website ändert das
+   - Monetisierungslink: "Leads über Google → höhere Auslastung"
+   - SEO: "Tattoo Studio Online Marketing", "Website statt Instagram Tattoo"
+   - [ ] Artikel generieren
+   - [ ] FAQ + Schema
+
+3. **Bildergalerien für Tattoo-Studios: Portfolio-Website mit WebP/AVIF für schnellere Ladezeiten**
+   - Angle: Sichtbarkeit in Google Images, Mobile-First (wichtig für Tattoo-Recherche)
+   - Technical-lite: "Die richtige Bildoptimierung spart Serverkosten + steigert Rankings"
+   - SEO: "Tattoo Portfolio Website", "schnelle Website Tattoo-Galerie"
+   - [ ] Artikel generieren
+   - [ ] FAQ + Schema
+
+4. **Tattoo-Termin-Buchung online: Automations-Funktion für sofortiges Geldverdienen**
+   - Angle: Zeitersparnis = direkt mehr zahlende Kunden
+   - Monetize: "Weniger Telefonanrufe = weniger Admin, mehr Tätowier-Zeit = höhere Tagessätze"
+   - SEO: "Online Terminvergabe Tattoo", "Tattoo Website mit Buchungssystem"
+   - [ ] Artikel generieren
+   - [ ] FAQ + Schema
+
+5. **Die 5 häufigsten Website-Fehler bei Tattoo-Studios (und wie man sie in 1 Tag behebt)**
+   - Angle: Quick-fix Format (Listicle, "Fehler #3 kostet Sie 50€/Woche")
+   - AI-lösbar: Generische Fehler + Tattoo-Kontext
+   - SEO: "Tattoo Website Fehler", "bessere Website Tattoo-Studio"
+   - [ ] Artikel generieren
+   - [ ] FAQ + Schema
+
+6. **Künstler-Sektion: Tattoo-Artist-Portfolio vs. Studio-Site — Warum beide nötig sind**
+   - Angle: Aufteilung Personal Brand vs. Studio (verdoppelt Leads)
+   - Monetize: "Artist-Page = höhere Stundensätze, Studio-Page = volle Auslastung"
+   - SEO: "Tattoo Artist Website", "Künstler-Portfolio Tattoo"
+   - [ ] Artikel generieren
+   - [ ] FAQ + Schema
+
+---
+
+### Cannabis Social Clubs (4 Themen)
+
+7. **Cannabis-Website für Deutschland 2026: CanG-konform + Rankings — ab 590€**
+   - Angle: Compliance + SEO (unique selling point)
+   - Monetize: "CanG ist neu, konkurrenzblog-leer, First-Mover-Vorteil für CSC"
+   - SEO: "Cannabis Website Deutschland", "CSC Website CanG"
+   - [ ] Artikel generieren
+   - [ ] FAQ + Schema
+
+8. **Besucherzahlen steigern: Wie CSCs mit gezieltem Webdesign die Tür-Quote erhöhen**
+   - Angle: Local SEO + "Google My Business" für Cannabis Clubs
+   - Monetize: "Mehr Besucher pro Woche = höhere Shop-Umsätze"
+   - SEO: "Cannabis Club Website Besucher", "CSC Online Sichtbarkeit"
+   - [ ] Artikel generieren
+   - [ ] FAQ + Schema
+
+9. **Mitgliedschaftssystem auf der Website: Automatisiertes Einnahmemodell für CSCs**
+   - Angle: Passive revenue stream (Newsletter, Memberships, Events)
+   - AI-lösbar: Generisches Membership-Framework + Cannabis-Kontext
+   - SEO: "Mitgliedersystem Cannabis", "CSC Website Membership"
+   - [ ] Artikel generieren
+   - [ ] FAQ + Schema
+
+10. **CSC-Events & Workshops online bewerben: Website-To-Umsatz in unter 2 Wochen**
+    - Angle: Event-Promotion über Website sendet direkt Traffic zu lokalen Gigs
+    - Monetize: "Mehr Besucher pro Event = höhere Eintrittsgelder"
+    - SEO: "Cannabis Events Website", "CSC Workshops Online Marketing"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+---
+
+### Künstler & Creator (4 Themen)
+
+11. **Künstler-Portfolio-Website ab 490€: Wie Sie Ihre Werke zu Geld machen**
+    - Angle: Direct sales (Shop-Modul) vs. Print-on-Demand vs. Commissions
+    - Monetize: "Website = 24/7 Verkäufer, der Ihnen schläft"
+    - SEO: "Künstler Website Portfolio", "Online Kunstverkauf"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+12. **Musik-Producer & Sounddesigner: Website mit SoundCloud/Spotify-Integration für Lizenz-Verkäufe**
+    - Angle: Beats/Musik direkter monetarisieren (nicht nur Streams)
+    - AI-lösbar: Musikindustrie-Standard-Patterns
+    - SEO: "Music Producer Website", "Beats verkaufen Online"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+13. **Commissioning-Plattform auf der Website: Wie Illustratoren & Designer 5x mehr verdienen**
+    - Angle: Pre-sells & Client-Requests = höhere Marge als Galerien
+    - Monetize: "50% Deposit-System = Cashflow vorher, nicht nachher"
+    - SEO: "Illustration Commissions Website", "Freelance Designer Kundengewinnung"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+14. **Creator-Newsletter + Webshop kombiniert: Von Follower zu zahlenden Fans**
+    - Angle: Email-Listen außerhalb von Social-Media-Algorithmen
+    - Monetize: "Newsletter-Subscriber = verlässliche wiederkehrende Käufer"
+    - SEO: "Creator Website Newsletter", "Künstler Online Shop"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+---
+
+### Weitere Nischen (6 Themen)
+
+15. **Friseur-Salon: Online-Buchungssystem für Doppelte Auslastung (ab 490€)**
+    - Angle: Smartphone-Kundschaft = sofort buchbar
+    - Monetize: "Weniger freie Slots pro Woche = höhere Tageseinnahmen"
+    - SEO: "Friseur Website Termin", "Salon Buchungssystem günstig"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+16. **Kleinbäckerei: Online-Bestell-System & Lieferrouten-Optimierung durch Website**
+    - Angle: Großbäckereien haben keine Zeit für Einzelkunden — Sie schon
+    - Monetize: "Vorbestellungen = garantierte Umsätze, no-waste Production"
+    - SEO: "Bäckerei Website Online Bestellen", "Handwerk Webshop"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+17. **Fitness-Coach & Personal Trainer: Website mit Online-Kurse = Skalierbarer Umsatz**
+    - Angle: 1-zu-1 → 1-zu-viele (höhere Marge)
+    - Monetize: "Video-Kurse = nachts verdienen, was tagsüber trainiert wurde"
+    - SEO: "Personal Trainer Website", "Online Fitness Kurse verkaufen"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+18. **Freelance-Handwerker (Klempner, Elektriker, Maurer): Buchung + Bewertungen = Preiserhöhung**
+    - Angle: Handwerk wird durch gute Website zur "Brand"
+    - Monetize: "Kann 10€/Stunde mehr nehmen, wenn Kunden online vorab sehen: Professionalität"
+    - SEO: "Handwerker Website", "Klempner Online Auftrag"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+19. **Online-Sprachkurs-Anbieter: Website + Zoom-Integration = Passive Income Stream**
+    - Angle: Selbstverschleißendes Produkt (Zeit) → Kursmaterial (skalierbar)
+    - Monetize: "Ein 30€-Kurs kann 100x verkauft werden"
+    - SEO: "Sprachkurs Online Plattform", "Nachhilfe Website erstellen"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+20. **Dropshipping & Store-Besitzer: SEO-optimierte Website statt nur Amazon FBA**
+    - Angle: Eigene Website = Google-Traffic statt Amazon-abhängig
+    - Monetize: "Eigene Brand = 100% Marge, nicht 15% nach Gebühren"
+    - SEO: "Ecommerce Website günstig", "Online Shop Webdesign ab 490€"
+    - [ ] Artikel generieren
+    - [ ] FAQ + Schema
+
+---
+
+### Nächste Schritte (Sequential)
+
+1. **Artikel für alle 20 Themen generieren** (jeweils ~400-600 Wörter reines Body-HTML)
+   - Inputs: posts.json (Metadaten), blog/content/*.html (Artikel-Bodies)
+   - Generierung: `build-blog.js` (liest JSON + Bodies, schreibt HTML + Schemas)
+   
+2. **FAQ-Section pro Artikel** (mind. 3-5 Q&A aus posts.json `faq`-Array)
+   - FAQPage JSON-LD-Schema automatisch generiert von build-blog.js
+   - Sichtbar in `blog/_template.html` unter `{{FAQ_HTML}}` Platzhalter
+   
+3. **Sitemap.xml aktualisieren** (build-blog.js macht das automatisch)
+   - Alle 20 `/blog/posts/<slug>.html` URLs hinzufügen
+   - Priority 0.7, changefreq yearly für Artikel
+   - `/blog/` selbst: priority 1.0, changefreq weekly
+
+4. **GitHub Secrets bereitstellen** (Nic muss das machen)
+   - `STRATO_FTP_SERVER`, `STRATO_FTP_USERNAME`, `STRATO_FTP_PASSWORD`
+   - Danach: Auto-Deploy per `git push` aktiv
+   
+5. **GitHub PAT für wöchentliche Trigger** (Nic bereitstellen)
+   - Fine-grained PAT (nur Portfolio_Page_26_Live, Contents R/W)
+   - Dann: wöchentlicher Trigger einrichten für automatische Artikel-Generierung
+   
+6. **Deploy & Verifikation**
+   - Nach erstem Auto-Deploy prüfen: `/blog/`, `/blog/posts/*.html`, Fonts, CSS laden korrekt
+   - Google Search Console: Blog-URLs crawl-ready machen
+
