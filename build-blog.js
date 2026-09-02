@@ -7,9 +7,16 @@
  * damit posts.json klein/übersichtlich bleibt und Artikeltext direkt als HTML
  * editierbar ist (keine Escaping-Hölle in JSON).
  *
- * Aufruf: node build-blog.js
- * Idempotent — überschreibt blog/posts/*.html, blog/index.html und die
- * <url>-Einträge in sitemap.xml komplett bei jedem Lauf.
+ * Jeder Beitrag wird 1:1 gleich aufgebaut (blog/_template.html): Breadcrumb, Kicker,
+ * H1, Standfirst, Meta-Zeile, "Das Wichtigste in Kürze"-Box, Inhaltsverzeichnis,
+ * Body, FAQ, CTA (Kontaktformular), Autoren-Box, verwandte Beiträge. Strukturierte
+ * Daten pro Beitrag: BlogPosting + BreadcrumbList + FAQPage.
+ *
+ * Pflichtfelder pro Post in posts.json:
+ *   slug, title, description, date, tags[], readTime, standfirst, keyTakeaways[], faq[]
+ * Optional: metaTitle, dateModified, image
+ *
+ * Aufruf: node build-blog.js  — idempotent, überschreibt Ausgabedateien komplett.
  */
 
 const fs = require("fs");
@@ -23,6 +30,8 @@ const OUT_DIR = path.join(BLOG_DIR, "posts");
 const ARTICLE_TEMPLATE = fs.readFileSync(path.join(BLOG_DIR, "_template.html"), "utf-8");
 const INDEX_TEMPLATE = fs.readFileSync(path.join(BLOG_DIR, "_index_template.html"), "utf-8");
 const SITE = "https://nicworks.de";
+const DEFAULT_OG_IMAGE = SITE + "/img/nic.png";
+const DEFAULT_OG_IMAGE_ALT = "Niclas Koch, Web- und Grafikdesigner aus Düsseldorf";
 
 const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
 
@@ -40,7 +49,91 @@ function fillTemplate(tpl, map) {
 }
 
 function escAttr(s) {
-  return String(s).replace(/"/g, "&quot;");
+  return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function stripTags(s) {
+  return String(s).replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+}
+
+function slugify(s) {
+  return stripTags(s)
+    .toLowerCase()
+    .replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 60);
+}
+
+// "6 Min" / "6 Min." / "6" -> "PT6M"
+function isoDuration(readTime) {
+  const m = String(readTime || "").match(/(\d+)/);
+  return `PT${m ? m[1] : "5"}M`;
+}
+
+function wordCount(bodyHtml) {
+  const text = bodyHtml.replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/g, " ");
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  return words.length;
+}
+
+/**
+ * Injiziert id-Attribute in alle <h2> des Body-Fragments (für Ankerlinks) und
+ * liefert die Überschriftenliste für das Inhaltsverzeichnis zurück.
+ */
+function processHeadings(bodyHtml) {
+  const headings = [];
+  const used = new Set();
+  const out = bodyHtml.replace(/<h2(\s[^>]*)?>([\s\S]*?)<\/h2>/gi, (full, attrs = "", inner) => {
+    const existing = attrs && attrs.match(/\bid="([^"]+)"/i);
+    let id = existing ? existing[1] : slugify(inner) || "abschnitt";
+    let base = id, n = 2;
+    while (used.has(id)) id = `${base}-${n++}`;
+    used.add(id);
+    headings.push({ id, text: stripTags(inner) });
+    const cleanAttrs = (attrs || "").replace(/\s*\bid="[^"]*"/i, "");
+    return `<h2 id="${id}"${cleanAttrs}>${inner}</h2>`;
+  });
+  return { html: out, headings };
+}
+
+function renderTldr(keyTakeaways) {
+  if (!keyTakeaways || !keyTakeaways.length) return "";
+  const items = keyTakeaways.map((t) => `      <li>${t}</li>`).join("\n");
+  return (
+    `<div class="tldr">\n` +
+    `  <div class="tldr-inner">\n` +
+    `    <p class="tldr-title">Das Wichtigste in Kürze</p>\n` +
+    `    <ul>\n${items}\n    </ul>\n` +
+    `  </div>\n` +
+    `</div>`
+  );
+}
+
+function renderToc(headings) {
+  if (headings.length < 3) return "";
+  const items = headings
+    .map((h) => `      <li><a href="#${h.id}">${h.text}</a></li>`)
+    .join("\n");
+  return (
+    `<nav class="toc" aria-label="Inhalt">\n` +
+    `  <div class="toc-inner">\n` +
+    `    <p class="toc-title">Inhalt</p>\n` +
+    `    <ol>\n${items}\n    </ol>\n` +
+    `  </div>\n` +
+    `</nav>`
+  );
+}
+
+function renderUpdatedLine(post) {
+  if (!post.dateModified || post.dateModified === post.date) return "";
+  return `<span>Aktualisiert am ${humanDate(post.dateModified)}</span>`;
+}
+
+function renderOgArticleTags(tags) {
+  return (tags || [])
+    .map((t) => `<meta property="article:tag" content="${escAttr(t)}">`)
+    .join("\n");
 }
 
 function renderFaqHtml(faq) {
@@ -51,32 +144,42 @@ function renderFaqHtml(faq) {
   return `<div class="faq">\n  <h2>Häufige Fragen</h2>\n${items}\n</div>`;
 }
 
-function renderFaqSchema(faq, url) {
+function renderFaqSchema(faq) {
   if (!faq || !faq.length) return "";
   const mainEntity = faq.map((f) => ({
     "@type": "Question",
-    "name": f.q,
-    "acceptedAnswer": { "@type": "Answer", "text": f.a.replace(/<[^>]+>/g, "") },
+    "name": stripTags(f.q),
+    "acceptedAnswer": { "@type": "Answer", "text": stripTags(f.a) },
   }));
   const json = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": mainEntity };
   return `<script type="application/ld+json">\n${JSON.stringify(json, null, 2)}\n</script>`;
 }
 
-function renderArticleSchema(post, url) {
+function renderArticleSchema(post, url, bodyHtml) {
+  const person = { "@type": "Person", "@id": SITE + "/#person", "name": "Niclas Koch", "url": SITE + "/" };
   const json = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    "@id": url + "#article",
     "headline": post.title,
     "description": post.description,
+    "url": url,
     "datePublished": post.date,
     "dateModified": post.dateModified || post.date,
     "inLanguage": "de-DE",
     "isAccessibleForFree": true,
-    "author": { "@type": "Person", "@id": SITE + "/#person", "name": "Niclas Koch", "url": SITE + "/" },
-    "publisher": { "@type": "Person", "@id": SITE + "/#person", "name": "Niclas Koch", "url": SITE + "/" },
+    "articleSection": (post.tags && post.tags[0]) || "Webdesign",
+    "keywords": (post.tags || []).join(", "),
+    "wordCount": wordCount(bodyHtml),
+    "timeRequired": isoDuration(post.readTime),
+    "author": person,
+    "publisher": {
+      ...person,
+      "logo": { "@type": "ImageObject", "url": SITE + "/img/favicon/favicon-512x512.png", "width": 512, "height": 512 },
+    },
     "isPartOf": { "@type": "Blog", "@id": SITE + "/blog/#blog", "name": "Niclas Koch — Webdesign Blog", "url": SITE + "/blog/" },
     "mainEntityOfPage": { "@type": "WebPage", "@id": url },
-    "image": post.image || SITE + "/img/nic.png",
+    "image": post.image || DEFAULT_OG_IMAGE,
   };
   return `<script type="application/ld+json">\n${JSON.stringify(json, null, 2)}\n</script>`;
 }
@@ -95,6 +198,7 @@ function renderBreadcrumbSchema(post, url) {
 }
 
 function renderBlogIndexSchema(posts) {
+  const person = { "@type": "Person", "@id": SITE + "/#person", "name": "Niclas Koch", "url": SITE + "/" };
   const json = {
     "@context": "https://schema.org",
     "@type": "Blog",
@@ -104,8 +208,8 @@ function renderBlogIndexSchema(posts) {
     "description":
       "Praxisnahe Tipps zu günstigem Webdesign, Website-Kosten und Online-Präsenz für kleine Unternehmen, Tattoo-Studios, Cannabis Social Clubs und Künstler.",
     "inLanguage": "de-DE",
-    "author": { "@type": "Person", "@id": SITE + "/#person", "name": "Niclas Koch", "url": SITE + "/" },
-    "publisher": { "@type": "Person", "@id": SITE + "/#person", "name": "Niclas Koch", "url": SITE + "/" },
+    "author": person,
+    "publisher": person,
     "blogPost": posts.map((p) => ({
       "@type": "BlogPosting",
       "headline": p.title,
@@ -117,6 +221,19 @@ function renderBlogIndexSchema(posts) {
   return `<script type="application/ld+json">\n${JSON.stringify(json, null, 2)}\n</script>`;
 }
 
+function validatePost(post) {
+  const missing = [];
+  for (const f of ["slug", "title", "description", "date", "readTime", "standfirst"]) {
+    if (!post[f]) missing.push(f);
+  }
+  if (!post.tags || !post.tags.length) missing.push("tags");
+  if (!post.keyTakeaways || !post.keyTakeaways.length) missing.push("keyTakeaways");
+  if (!post.faq || post.faq.length < 3) missing.push("faq (mind. 3)");
+  if (missing.length) {
+    console.warn(`WARNUNG [${post.slug || "?"}]: fehlende/zu dünne Felder — ${missing.join(", ")}`);
+  }
+}
+
 function main() {
   const posts = JSON.parse(fs.readFileSync(POSTS_JSON, "utf-8"));
   posts.sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -126,40 +243,54 @@ function main() {
   const cards = [];
   const sitemapUrls = [];
 
-  posts.forEach((post, i) => {
+  posts.forEach((post) => {
+    validatePost(post);
     const url = `${SITE}/blog/posts/${post.slug}.html`;
     const bodyPath = path.join(CONTENT_DIR, `${post.slug}.html`);
     if (!fs.existsSync(bodyPath)) {
-      console.warn(`WARNUNG: Kein Body-Fragment gefunden für "${post.slug}" (erwartet: blog/content/${post.slug}.html) — übersprungen.`);
+      console.warn(`WARNUNG: Kein Body-Fragment für "${post.slug}" (erwartet: blog/content/${post.slug}.html) — übersprungen.`);
       return;
     }
-    const body = fs.readFileSync(bodyPath, "utf-8");
+    const rawBody = fs.readFileSync(bodyPath, "utf-8");
+    const { html: body, headings } = processHeadings(rawBody);
 
     const related = posts
       .filter((p) => p.slug !== post.slug)
       .slice(0, 3)
-      .map((p) => `<a class="post-card" href="/blog/posts/${p.slug}.html"><div class="post-meta">${humanDate(p.date)}</div><h2>${p.title}</h2></a>`)
-      .join("\n    ");
-
-    const tagsInline = (post.tags || []).join(" · ");
+      .map(
+        (p) =>
+          `<a class="post-card" href="/blog/posts/${p.slug}.html">\n` +
+          `        <div class="post-meta"><span>${humanDate(p.date)}</span></div>\n` +
+          `        <h3>${p.title}</h3>\n` +
+          `        <p>${p.description}</p>\n` +
+          `      </a>`
+      )
+      .join("\n      ");
 
     const html = fillTemplate(ARTICLE_TEMPLATE, {
       TITLE: post.metaTitle || post.title,
       TITLE_SHORT: post.title,
       H1: post.title,
+      KICKER: (post.tags && post.tags[0]) || "Webdesign",
+      STANDFIRST: post.standfirst || post.description,
       META_DESCRIPTION: post.description,
-      META_KEYWORDS: (post.tags || []).join(", "),
       CANONICAL_URL: url,
-      OG_IMAGE: post.image || SITE + "/img/nic.png",
+      OG_IMAGE: post.image || DEFAULT_OG_IMAGE,
+      OG_IMAGE_ALT: post.imageAlt || DEFAULT_OG_IMAGE_ALT,
+      OG_ARTICLE_TAGS: renderOgArticleTags(post.tags),
       PUBLISH_DATE: post.date,
+      MODIFIED_DATE: post.dateModified || post.date,
       PUBLISH_DATE_HUMAN: humanDate(post.date),
+      UPDATED_LINE: renderUpdatedLine(post),
+      ARTICLE_SECTION: (post.tags && post.tags[0]) || "Webdesign",
       READ_TIME: post.readTime || "5 Min",
-      TAGS_INLINE: tagsInline,
+      TLDR_HTML: renderTldr(post.keyTakeaways),
+      TOC_HTML: renderToc(headings),
       ARTICLE_BODY: body,
       FAQ_HTML: renderFaqHtml(post.faq),
-      ARTICLE_SCHEMA_JSON: renderArticleSchema(post, url),
-      FAQ_SCHEMA_JSON: renderFaqSchema(post.faq, url),
+      ARTICLE_SCHEMA_JSON: renderArticleSchema(post, url, body),
       BREADCRUMB_SCHEMA_JSON: renderBreadcrumbSchema(post, url),
+      FAQ_SCHEMA_JSON: renderFaqSchema(post.faq),
       RELATED_POSTS_HTML: related,
     });
 
@@ -184,66 +315,14 @@ function main() {
   fs.writeFileSync(path.join(BLOG_DIR, "index.html"), indexHtml, "utf-8");
   sitemapUrls.unshift({ loc: `${SITE}/blog/`, lastmod: posts[0] ? posts[0].date : "2026-08-30", changefreq: "weekly", priority: "0.9" });
 
-  updateSitemap(sitemapUrls, posts);
-  updateHomeTeaser(posts);
+  updateSitemap(sitemapUrls);
 
-  console.log(`OK — ${posts.length} Artikel gebaut, blog/index.html + sitemap.xml + Startseiten-Teaser aktualisiert.`);
+  console.log(`OK — ${posts.length} Artikel gebaut, blog/index.html + sitemap.xml aktualisiert.`);
 }
 
-// Baut die "Aus dem Blog"-Karten auf der Startseite (index.html) zwischen den Markern
-// BLOG-TEASER-CARDS-START / BLOG-TEASER-CARDS-END neu. Nimmt die 3 neuesten Beitraege.
-function updateHomeTeaser(posts) {
-  const indexPath = path.join(ROOT, "index.html");
-  if (!fs.existsSync(indexPath)) {
-    console.warn("WARNUNG: index.html nicht gefunden — Startseiten-Teaser übersprungen.");
-    return;
-  }
-  let html = fs.readFileSync(indexPath, "utf-8");
-  const startMarker = "<!-- BLOG-TEASER-CARDS-START";
-  const endMarker = "<!-- BLOG-TEASER-CARDS-END -->";
-  if (!html.includes(startMarker) || !html.includes(endMarker)) {
-    console.warn("WARNUNG: BLOG-TEASER-Marker in index.html fehlen — Teaser übersprungen.");
-    return;
-  }
-
-  const cards = posts
-    .slice(0, 3)
-    .map((p) => {
-      const meta = `${humanDate(p.date)} · ${p.readTime || "5 Min"}`;
-      return (
-        `      <a href="/blog/posts/${p.slug}.html" style="display:block;padding:22px;border:1px solid var(--border);border-radius:14px;background:var(--glass);text-decoration:none;color:inherit;">\n` +
-        `        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;opacity:.6;">${meta}</div>\n` +
-        `        <h3 style="margin:10px 0 8px;font-size:18px;line-height:1.3;">${p.title}</h3>\n` +
-        `        <p style="margin:0;font-size:14px;opacity:.75;line-height:1.5;">${p.description}</p>\n` +
-        `      </a>`
-      );
-    })
-    .join("\n");
-
-  const block =
-    `<!-- BLOG-TEASER-CARDS-START (auto-generiert von build-blog.js aus blog/posts.json, nicht von Hand editieren) -->\n` +
-    `${cards}\n` +
-    `    ${endMarker}`;
-
-  html = html.replace(
-    /<!-- BLOG-TEASER-CARDS-START[\s\S]*?BLOG-TEASER-CARDS-END -->/,
-    block
-  );
-  fs.writeFileSync(indexPath, html, "utf-8");
-}
-
-function updateSitemap(blogUrls, posts) {
+function updateSitemap(blogUrls) {
   const sitemapPath = path.join(ROOT, "sitemap.xml");
   let xml = fs.readFileSync(sitemapPath, "utf-8");
-
-  // Startseite: <lastmod> mitziehen — der "Aus dem Blog"-Teaser auf index.html
-  // aendert sich mit jedem neuen Beitrag, also entspricht das Datum dem neuesten Post.
-  if (posts && posts.length) {
-    xml = xml.replace(
-      /(<loc>https:\/\/nicworks\.de\/<\/loc>\s*<lastmod>)[^<]*(<\/lastmod>)/,
-      `$1${posts[0].date}$2`
-    );
-  }
 
   // Alles zwischen BLOG-START/BLOG-END Markern ersetzen (falls noch nicht vorhanden, Marker + Block vor </urlset> einfügen)
   const blockLines = blogUrls

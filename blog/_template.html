@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{TITLE}}</title>
 <meta name="description" content="{{META_DESCRIPTION}}">
-<meta name="keywords" content="{{META_KEYWORDS}}">
 <meta name="author" content="Niclas Koch">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#06060A">
 <link rel="canonical" href="{{CANONICAL_URL}}">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -18,8 +17,13 @@
 <meta property="og:title" content="{{TITLE}}">
 <meta property="og:description" content="{{META_DESCRIPTION}}">
 <meta property="og:image" content="{{OG_IMAGE}}">
+<meta property="og:image:alt" content="{{OG_IMAGE_ALT}}">
 <meta property="og:url" content="{{CANONICAL_URL}}">
 <meta property="article:published_time" content="{{PUBLISH_DATE}}">
+<meta property="article:modified_time" content="{{MODIFIED_DATE}}">
+<meta property="article:author" content="Niclas Koch">
+<meta property="article:section" content="{{ARTICLE_SECTION}}">
+{{OG_ARTICLE_TAGS}}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{TITLE}}">
 <meta name="twitter:description" content="{{META_DESCRIPTION}}">
@@ -30,8 +34,8 @@
 <link rel="stylesheet" href="/blog/style.css">
 
 {{ARTICLE_SCHEMA_JSON}}
-{{FAQ_SCHEMA_JSON}}
 {{BREADCRUMB_SCHEMA_JSON}}
+{{FAQ_SCHEMA_JSON}}
 </head>
 <body>
 
@@ -46,34 +50,59 @@
   </div>
 </header>
 
-<div class="article-header">
-  <div class="breadcrumb"><a href="/">Start</a> / <a href="/blog/">Blog</a> / {{TITLE_SHORT}}</div>
-  <h1>{{H1}}</h1>
-  <div class="article-meta">
-    <span>{{PUBLISH_DATE_HUMAN}}</span>
-    <span>{{READ_TIME}} Lesezeit</span>
-    <span>{{TAGS_INLINE}}</span>
-  </div>
-</div>
+<article class="post">
 
-<article class="body">
+  <div class="article-header">
+    <nav class="breadcrumb" aria-label="Brotkrümelnavigation">
+      <a href="/">Start</a> / <a href="/blog/">Blog</a> / <span>{{TITLE_SHORT}}</span>
+    </nav>
+    <div class="article-kicker">{{KICKER}}</div>
+    <h1>{{H1}}</h1>
+    <p class="article-standfirst">{{STANDFIRST}}</p>
+    <div class="article-meta">
+      <span class="byline">Von <a href="/#footer-area" rel="author">Niclas Koch</a></span>
+      <span>Veröffentlicht am {{PUBLISH_DATE_HUMAN}}</span>
+      {{UPDATED_LINE}}
+      <span>{{READ_TIME}} Lesezeit</span>
+    </div>
+  </div>
+
+  {{TLDR_HTML}}
+
+  {{TOC_HTML}}
+
+  <div class="article-body">
 {{ARTICLE_BODY}}
-</article>
-
-<div class="cta-box">
-  <h3>Eigene Website für dein Business — ab 490€</h3>
-  <p>Schnelle, individuelle Umsetzung aus einer Hand. Egal ob kleines Unternehmen, Tattoo-Studio, Cannabis Social Club oder Künstler-Portfolio — schreib mir kurz dein Projekt, du bekommst zeitnah ein Angebot.</p>
-  <a class="btn" href="/#footer-area">Projekt anfragen →</a>
-</div>
-
-{{FAQ_HTML}}
-
-<div class="related">
-  <h2>Weitere Artikel</h2>
-  <div class="related-grid">
-    {{RELATED_POSTS_HTML}}
   </div>
-</div>
+
+  {{FAQ_HTML}}
+
+  <div class="cta-box">
+    <h3>Lass uns zusammen etwas gestalten</h3>
+    <p>Ob Tattoo-Studio, Cannabis Social Club, Künstler-Portfolio oder kleiner Betrieb — schreib mir
+      kurz, worum es geht. Du bekommst zeitnah eine ehrliche Einschätzung und ein Angebot ab 490 €.</p>
+    <a class="btn" href="/#footer-area">Übers Kontaktformular anfragen →</a>
+  </div>
+
+  <aside class="author-box">
+    <img src="/img/nic-420.webp" alt="Niclas Koch, Web- und Grafikdesigner" width="72" height="72" loading="lazy">
+    <div>
+      <p class="author-box-name">Niclas Koch</p>
+      <p class="author-box-bio">Web- &amp; Grafikdesigner aus Düsseldorf. Baut schnelle, individuell
+        gestaltete Websites für kleine Betriebe — ohne Agentur-Overhead, mit technischem SEO von
+        Anfang an, deutschlandweit remote.</p>
+      <a href="/#footer-area">Projekt besprechen →</a>
+    </div>
+  </aside>
+
+  <div class="related">
+    <h2>Weiterlesen</h2>
+    <div class="related-grid">
+      {{RELATED_POSTS_HTML}}
+    </div>
+  </div>
+
+</article>
 
 <footer class="blog-footer">
   <span>© 2026 Niclas Koch — nicworks.de</span>
