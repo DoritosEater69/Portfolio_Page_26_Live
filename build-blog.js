@@ -316,8 +316,48 @@ function main() {
   sitemapUrls.unshift({ loc: `${SITE}/blog/`, lastmod: posts[0] ? posts[0].date : "2026-08-30", changefreq: "weekly", priority: "0.9" });
 
   updateSitemap(sitemapUrls);
+  updateHomeTeaser(posts);
 
-  console.log(`OK — ${posts.length} Artikel gebaut, blog/index.html + sitemap.xml aktualisiert.`);
+  console.log(`OK — ${posts.length} Artikel gebaut, blog/index.html + sitemap.xml + Startseiten-Cards aktualisiert.`);
+}
+
+/**
+ * Ersetzt die "Aus dem Blog"-Cards auf der Startseite (index.html) zwischen den
+ * Markern BLOG-TEASER-CARDS-START / -END durch die 3 neuesten Beiträge.
+ * Markup nutzt nur Klassen (.blog-card ...), die im Inline-<style> der Startseite
+ * aus den Design-Tokens abgeleitet sind — keine Inline-Styles hier.
+ */
+function updateHomeTeaser(posts) {
+  const indexPath = path.join(ROOT, "index.html");
+  if (!fs.existsSync(indexPath)) {
+    console.warn("WARNUNG: index.html nicht gefunden — Startseiten-Cards übersprungen.");
+    return;
+  }
+  let html = fs.readFileSync(indexPath, "utf-8");
+  if (!html.includes("BLOG-TEASER-CARDS-START") || !html.includes("<!-- BLOG-TEASER-CARDS-END -->")) {
+    console.warn("WARNUNG: BLOG-TEASER-CARDS-Marker in index.html fehlen — übersprungen.");
+    return;
+  }
+
+  const cards = posts
+    .slice(0, 3)
+    .map(
+      (p) =>
+        `    <a class="blog-card" href="/blog/posts/${p.slug}.html">\n` +
+        `      <span class="blog-card-meta">${humanDate(p.date)} · ${p.readTime || "5 Min"}</span>\n` +
+        `      <h3>${p.title}</h3>\n` +
+        `      <p>${p.description}</p>\n` +
+        `    </a>`
+    )
+    .join("\n");
+
+  const block =
+    `<!-- BLOG-TEASER-CARDS-START (auto-generiert von build-blog.js aus blog/posts.json, nicht von Hand editieren) -->\n` +
+    `${cards}\n` +
+    `    <!-- BLOG-TEASER-CARDS-END -->`;
+
+  html = html.replace(/<!-- BLOG-TEASER-CARDS-START[\s\S]*?BLOG-TEASER-CARDS-END -->/, block);
+  fs.writeFileSync(indexPath, html, "utf-8");
 }
 
 function updateSitemap(blogUrls) {
