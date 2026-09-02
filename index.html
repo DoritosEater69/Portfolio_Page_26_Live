@@ -33,7 +33,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Günstiges Webdesign für kleine Unternehmen — ab 490€ | Niclas Koch, Düsseldorf</title>
 <meta name="description" content="Günstiges Webdesign ab 490€ — schnelle, individuelle Websites für kleine und mittelständische Unternehmen, Tattoo-Studios, Cannabis Social Clubs und Künstler. Eine Person, keine Agentur-Warteschleife. Deutschlandweit remote.">
-<meta name="keywords" content="Günstiges Webdesign, Webdesign für kleine Unternehmen, schnelles Webdesign, Webdesigner Düsseldorf, Webdesign für Tattoo-Studios, Webdesign für Cannabis Social Clubs, Webdesign für Künstler, Webdesigner Remote">
 <meta name="author" content="Niclas Koch">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#06060A">
@@ -62,28 +61,72 @@
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Niclas Koch">
 <meta property="og:title" content="Günstiges Webdesign für kleine Unternehmen — ab 490€">
 <meta property="og:description" content="Schnelle, individuelle Websites ab 490€ für kleine Unternehmen, Tattoo-Studios, Cannabis Social Clubs und Künstler — eine Person statt Agentur-Umwege, deutschlandweit remote.">
-<meta property="og:image" content="img/nic.png">
+<meta property="og:image" content="https://nicworks.de/img/nic.png">
+<meta property="og:image:alt" content="Niclas Koch, Web- und Grafikdesigner aus Düsseldorf">
 <meta property="og:url" content="https://nicworks.de/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Günstiges Webdesign für kleine Unternehmen — ab 490€">
 <meta name="twitter:description" content="Schnelle, individuelle Websites ab 490€ für kleine Unternehmen, Tattoo-Studios, Cannabis Social Clubs und Künstler — eine Person statt Agentur-Umwege, deutschlandweit remote.">
-<meta name="twitter:image" content="img/nic.png">
+<meta name="twitter:image" content="https://nicworks.de/img/nic.png">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2306060A'/%3E%3Ctext x='32' y='43' font-family='JetBrains Mono, monospace' font-size='26' font-weight='700' fill='%23FFE500' text-anchor='middle'%3ENK%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Niclas Koch",
-  "jobTitle": "Web- & Grafikdesigner",
-  "description": "Günstiges Webdesign ab 490€ für kleine und mittelständische Unternehmen, Tattoo-Studios, Cannabis Social Clubs und Künstler — schnelle, individuelle Umsetzung aus einer Hand, deutschlandweit remote.",
-  "url": "https://nicworks.de/",
-  "image": "https://nicworks.de/img/nic.png",
-  "sameAs": ["https://www.linkedin.com/in/niclas-koch-5833a61b3/"],
-  "knowsAbout": ["Günstiges Webdesign", "Webdesign für kleine Unternehmen", "Webdesign für Tattoo-Studios", "Webdesign für Cannabis Social Clubs", "Webdesign für Künstler", "Grafikdesign", "Suchmaschinenoptimierung (SEO)", "Frontend-Entwicklung", "WordPress", "Divi", "Shopify", "UI/UX Design", "Figma", "Adobe XD", "Branding", "Corporate Design"],
-  "address": { "@type": "PostalAddress", "addressLocality": "Düsseldorf", "addressCountry": "DE" },
-  "areaServed": ["Düsseldorf", "Deutschland", "Remote"]
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://nicworks.de/#person",
+      "name": "Niclas Koch",
+      "jobTitle": "Web- & Grafikdesigner",
+      "description": "Günstiges Webdesign ab 490€ für kleine und mittelständische Unternehmen, Tattoo-Studios, Cannabis Social Clubs und Künstler — schnelle, individuelle Umsetzung aus einer Hand, deutschlandweit remote.",
+      "url": "https://nicworks.de/",
+      "image": "https://nicworks.de/img/nic.png",
+      "email": "mailto:niclas.koch95@web.de",
+      "sameAs": ["https://www.linkedin.com/in/niclas-koch-5833a61b3/"],
+      "knowsAbout": ["Günstiges Webdesign", "Webdesign für kleine Unternehmen", "Webdesign für Tattoo-Studios", "Webdesign für Cannabis Social Clubs", "Webdesign für Künstler", "Grafikdesign", "Suchmaschinenoptimierung (SEO)", "Frontend-Entwicklung", "WordPress", "Divi", "Shopify", "UI/UX Design", "Figma", "Adobe XD", "Branding", "Corporate Design"],
+      "address": { "@type": "PostalAddress", "addressLocality": "Düsseldorf", "addressCountry": "DE" },
+      "areaServed": ["Düsseldorf", "Deutschland", "Remote"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nicworks.de/#website",
+      "url": "https://nicworks.de/",
+      "name": "Niclas Koch",
+      "alternateName": "nicworks.de",
+      "inLanguage": "de-DE",
+      "publisher": { "@id": "https://nicworks.de/#person" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://nicworks.de/#service",
+      "name": "Niclas Koch — Webdesign",
+      "description": "Günstige, schnelle und individuell umgesetzte Websites für kleine und mittelständische Unternehmen, Tattoo-Studios, Cannabis Social Clubs und Künstler. Umsetzung aus einer Hand, deutschlandweit remote.",
+      "url": "https://nicworks.de/",
+      "image": "https://nicworks.de/img/nic.png",
+      "provider": { "@id": "https://nicworks.de/#person" },
+      "priceRange": "ab 490 €",
+      "address": { "@type": "PostalAddress", "addressLocality": "Düsseldorf", "addressCountry": "DE" },
+      "areaServed": ["Düsseldorf", "Deutschland", "Remote"],
+      "serviceType": ["Webdesign", "Frontend-Entwicklung", "Technisches SEO", "Grafikdesign"],
+      "makesOffer": {
+        "@type": "Offer",
+        "name": "Individuelle Website für kleine Unternehmen",
+        "priceCurrency": "EUR",
+        "price": "490",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "EUR",
+          "price": "490",
+          "minPrice": "490",
+          "valueAddedTaxIncluded": false
+        },
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
 }
 </script>
 
@@ -169,7 +212,7 @@
   </div>
   <p class="hero-light-text">Günstiges Webdesign ab 490€ — aus einer Hand, ohne Agentur-Umwege. Ich baue schnelle, individuelle Websites für kleine und mittelständische Unternehmen, Tattoo-Studios, Cannabis Social Clubs und Künstler, die nicht nur gut aussehen, sondern auch schnell laden, performen und gefunden werden — remote auch deutschlandweit.</p>
   <div class="hero-foreground">
-    <h1 class="sr-only">Dein zukünftiger All-Rounder?</h1>
+    <h1 class="sr-only">Niclas Koch — günstiges Webdesign für kleine Unternehmen aus Düsseldorf</h1>
   </div>
 </section>
 
@@ -472,6 +515,38 @@
     <h2>Rezensionen</h2>
   </div>
   <div class="reviews-grid" id="reviews-grid"></div>
+</section>
+
+
+<section id="blog-teaser">
+  <div class="section-head reveal">
+    <div class="eyebrow" style="justify-content:center;">Aus dem Blog</div>
+    <h2>Webdesign-Wissen für kleine Unternehmen</h2>
+    <p>Praxisnahe Beiträge zu Website-Kosten, Ladezeit und Sichtbarkeit — für Tattoo-Studios,
+      Cannabis Social Clubs, Künstler und andere kleine Betriebe.</p>
+  </div>
+  <div class="blog-teaser-grid reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1100px;margin:32px auto 0;padding:0 24px;">
+    <!-- BLOG-TEASER-CARDS-START (auto-generiert von build-blog.js aus blog/posts.json, nicht von Hand editieren) -->
+      <a href="/blog/posts/webdesign-cannabis-social-club-deutschland.html" style="display:block;padding:22px;border:1px solid var(--border);border-radius:14px;background:var(--glass);text-decoration:none;color:inherit;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;opacity:.6;">30. August 2026 · 6 Min</div>
+        <h3 style="margin:10px 0 8px;font-size:18px;line-height:1.3;">Website für Cannabis Social Clubs in Deutschland: Was 2026 wichtig ist</h3>
+        <p style="margin:0;font-size:14px;opacity:.75;line-height:1.5;">Seit dem Cannabisgesetz (CanG) gibt es in Deutschland offiziell registrierte Anbauvereinigungen. Was ihre Website leisten muss — und wo rechtlich besondere Vorsicht gilt.</p>
+      </a>
+      <a href="/blog/posts/website-fuer-tattoo-studio-kosten.html" style="display:block;padding:22px;border:1px solid var(--border);border-radius:14px;background:var(--glass);text-decoration:none;color:inherit;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;opacity:.6;">23. August 2026 · 5 Min</div>
+        <h3 style="margin:10px 0 8px;font-size:18px;line-height:1.3;">Website für dein Tattoo-Studio: Was sie kosten sollte und worauf es ankommt</h3>
+        <p style="margin:0;font-size:14px;opacity:.75;line-height:1.5;">Eine Tattoo-Studio-Website lebt von Bildern — und genau die bremsen sie meistens aus. Worauf es bei Webdesign für Tattoo-Studios wirklich ankommt, inklusive realistischer Preise.</p>
+      </a>
+      <a href="/blog/posts/guenstiges-webdesign-kleine-unternehmen-2026.html" style="display:block;padding:22px;border:1px solid var(--border);border-radius:14px;background:var(--glass);text-decoration:none;color:inherit;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;opacity:.6;">16. August 2026 · 6 Min</div>
+        <h3 style="margin:10px 0 8px;font-size:18px;line-height:1.3;">Günstiges Webdesign für kleine Unternehmen: Worauf es 2026 wirklich ankommt</h3>
+        <p style="margin:0;font-size:14px;opacity:.75;line-height:1.5;">Günstiges Webdesign heißt nicht automatisch billig gebaut. Was ein fairer Preis wirklich beinhaltet, welche Baukasten-Fallen es gibt und warum Ladezeit über Sichtbarkeit entscheidet.</p>
+      </a>
+    <!-- BLOG-TEASER-CARDS-END -->
+  </div>
+  <p class="reveal" style="text-align:center;margin-top:28px;padding:0 24px;">
+    <a href="/blog/" style="color:var(--amber-text);text-decoration:underline;">Alle Beiträge ansehen →</a>
+  </p>
 </section>
 
 <section id="footer-area">
