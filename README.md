@@ -318,6 +318,21 @@ protokolliert.
   Trackpad) tot. Fix: nur noch `#`-Hrefs werden aufgeloest, sonst `null`. Ausserdem
   Psst-Headline `-guenstiges Webdesign-` -> `guenstiges Webdesign` (Bindestriche raus).
 
+### Hotfix — 2026-09-02 (2): OG-Image war ein toter Link
+
+- `og:image` / `twitter:image` / JSON-LD-`image` zeigten ueberall auf
+  `https://nicworks.de/img/nic.png` — **diese Datei existiert nicht** (im Repo liegt nur
+  `img/nic.webp` 862x1186 + responsive Varianten). Bestand seit dem ersten OG-Setup, d.h.
+  Social-Previews (Facebook/LinkedIn/Slack/WhatsApp) hatten nie ein Bild.
+- Fix: alle Referenzen auf `img/nic.webp` umgestellt (Startseite, Blog-Index, Beitrags-
+  Template, `build-blog.js`-Default + Article-Schema). WebP wird von allen relevanten
+  Plattformen als OG-Bild gerendert.
+- Ergaenzt: `og:image:type` (`image/webp`), `og:image:width` (862), `og:image:height`
+  (1186), `og:image:alt` — auf Startseite, Blog-Index und pro Beitrag (Beitrags-Template
+  ueber neue Platzhalter, `build-blog.js` leitet Typ aus der Endung ab; `post.image` /
+  `post.imageWidth` / `post.imageHeight` uebersteuern pro Beitrag).
+- `sitemap.xml`: `<lastmod>` der Startseite auf 2026-09-02 (heutiges Update).
+
 ---
 
 ## Geplante Blog-Artikel (20 Themen) — Fokus: Schnelles Geldverdienen, Nischen, AI-lösbar

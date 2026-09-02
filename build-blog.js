@@ -30,8 +30,16 @@ const OUT_DIR = path.join(BLOG_DIR, "posts");
 const ARTICLE_TEMPLATE = fs.readFileSync(path.join(BLOG_DIR, "_template.html"), "utf-8");
 const INDEX_TEMPLATE = fs.readFileSync(path.join(BLOG_DIR, "_index_template.html"), "utf-8");
 const SITE = "https://nicworks.de";
-const DEFAULT_OG_IMAGE = SITE + "/img/nic.png";
+const DEFAULT_OG_IMAGE = SITE + "/img/nic.webp";
 const DEFAULT_OG_IMAGE_ALT = "Niclas Koch, Web- und Grafikdesigner aus Düsseldorf";
+const DEFAULT_OG_IMAGE_W = "862";
+const DEFAULT_OG_IMAGE_H = "1186";
+
+// og:image:type aus der Dateiendung ableiten (Default: webp — nur nic.webp vorhanden)
+function ogImageType(url) {
+  const ext = String(url || "").split(".").pop().toLowerCase();
+  return { jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp", gif: "image/gif" }[ext] || "image/webp";
+}
 
 const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
 
@@ -277,6 +285,9 @@ function main() {
       CANONICAL_URL: url,
       OG_IMAGE: post.image || DEFAULT_OG_IMAGE,
       OG_IMAGE_ALT: post.imageAlt || DEFAULT_OG_IMAGE_ALT,
+      OG_IMAGE_TYPE: ogImageType(post.image || DEFAULT_OG_IMAGE),
+      OG_IMAGE_W: post.imageWidth || (post.image ? "" : DEFAULT_OG_IMAGE_W),
+      OG_IMAGE_H: post.imageHeight || (post.image ? "" : DEFAULT_OG_IMAGE_H),
       OG_ARTICLE_TAGS: renderOgArticleTags(post.tags),
       PUBLISH_DATE: post.date,
       MODIFIED_DATE: post.dateModified || post.date,
