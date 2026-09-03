@@ -235,6 +235,8 @@ body>*{position:relative; z-index:1}
 .article-body a{text-decoration:underline; text-underline-offset:2px}
 .article-body figure{margin:28px 0}
 .article-body figure img{border-radius:14px; border:1px solid var(--border); width:100%}
+/* SVG-Platzhalter sichtbar als „hier kommt ein Bild rein" markieren */
+.article-body figure img[src$=".svg"], .article-hero img[src$=".svg"]{border-style:dashed; opacity:.9}
 .article-body figcaption{
   font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-dim);
   text-transform:uppercase; letter-spacing:.04em; margin-top:8px;

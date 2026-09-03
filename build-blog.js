@@ -85,13 +85,32 @@ function heroFor(post) {
   };
 }
 
-// Erzeugt einen schlichten, gebrandeten SVG-Platzhalter (1200x630), falls noch keiner da ist.
-function ensurePlaceholder(post, absPath) {
-  if (fs.existsSync(absPath)) return;
+/**
+ * Scannt den Artikel-Body nach <img src="/blog/img/*.svg"> und erzeugt für jede noch
+ * fehlende Datei einen beschrifteten Platzhalter (Label = alt-Text). So dokumentiert das
+ * Bild selbst, was dort hin soll — Nic ersetzt die .svg später durch ein echtes Foto.
+ */
+function ensureBodyPlaceholders(bodyHtml) {
+  const re = /<img\b[^>]*\bsrc="\/blog\/img\/([a-z0-9-]+)\.svg"[^>]*>/gi;
+  let m;
+  while ((m = re.exec(bodyHtml))) {
+    const name = m[1];
+    const abs = path.join(IMG_DIR, `${name}.svg`);
+    if (fs.existsSync(abs)) continue;
+    const altMatch = m[0].match(/\balt="([^"]*)"/i);
+    writePlaceholderSvg(abs, {
+      kicker: "PLATZHALTER",
+      title: altMatch && altMatch[1] ? altMatch[1] : name.replace(/-/g, " "),
+      foot: "nicworks.de/blog — hier kommt ein echtes Bild rein",
+    });
+    console.log(`  Platzhalter erzeugt: blog/img/${name}.svg`);
+  }
+}
+
+// Schreibt einen schlichten, gebrandeten SVG-Platzhalter (1200x630).
+function writePlaceholderSvg(absPath, { kicker, title, foot }) {
   if (!fs.existsSync(IMG_DIR)) fs.mkdirSync(IMG_DIR, { recursive: true });
-  const kicker = xmlEsc((post.tags && post.tags[0]) || "Webdesign").toUpperCase();
-  // Titel auf max. 3 Zeilen a ~34 Zeichen umbrechen
-  const words = String(post.title).split(/\s+/);
+  const words = String(title).split(/\s+/);
   const lines = [];
   let cur = "";
   for (const w of words) {
@@ -101,19 +120,27 @@ function ensurePlaceholder(post, absPath) {
   }
   if (cur) lines.push(cur);
   if (words.join(" ").length > lines.join(" ").length) lines[lines.length - 1] += " …";
-  const tspans = lines
-    .map((l, i) => `<tspan x="90" dy="${i === 0 ? 0 : 64}">${xmlEsc(l)}</tspan>`)
-    .join("");
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="${xmlEsc(post.title)}">
+  const tspans = lines.map((l, i) => `<tspan x="90" dy="${i === 0 ? 0 : 64}">${xmlEsc(l)}</tspan>`).join("");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="${xmlEsc(title)}">
   <rect width="1200" height="630" fill="#06060A"/>
   <circle cx="1080" cy="120" r="260" fill="#FFE500" opacity="0.10"/>
   <circle cx="140" cy="560" r="200" fill="#FF5C4D" opacity="0.08"/>
-  <text x="90" y="110" font-family="'JetBrains Mono',ui-monospace,monospace" font-size="24" letter-spacing="4" fill="#FFE500">${kicker}</text>
+  <text x="90" y="110" font-family="'JetBrains Mono',ui-monospace,monospace" font-size="24" letter-spacing="4" fill="#FFE500">${xmlEsc(kicker)}</text>
   <text x="90" y="300" font-family="Georgia,'Times New Roman',serif" font-size="56" font-weight="700" fill="#F3EFE6">${tspans}</text>
-  <text x="90" y="560" font-family="'JetBrains Mono',ui-monospace,monospace" font-size="20" fill="#F3EFE6" opacity="0.55">nicworks.de/blog — Platzhalter, finales Bild folgt</text>
+  <text x="90" y="560" font-family="'JetBrains Mono',ui-monospace,monospace" font-size="20" fill="#F3EFE6" opacity="0.55">${xmlEsc(foot)}</text>
 </svg>
 `;
   fs.writeFileSync(absPath, svg, "utf-8");
+}
+
+// Hero-Platzhalter für einen Beitrag, falls noch keiner da ist.
+function ensurePlaceholder(post, absPath) {
+  if (fs.existsSync(absPath)) return;
+  writePlaceholderSvg(absPath, {
+    kicker: ((post.tags && post.tags[0]) || "Webdesign").toUpperCase(),
+    title: post.title,
+    foot: "nicworks.de/blog — Platzhalter, finales Bild folgt",
+  });
   console.log(`  Platzhalter erzeugt: blog/img/${post.slug}-hero.svg`);
 }
 
@@ -346,6 +373,7 @@ function main() {
       return;
     }
     const rawBody = fs.readFileSync(bodyPath, "utf-8");
+    ensureBodyPlaceholders(rawBody);
     const { html: body, headings } = processHeadings(rawBody);
 
     const related = posts

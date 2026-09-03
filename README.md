@@ -360,6 +360,22 @@ protokolliert.
 - Reihenfolge fix in `heroFor()`: `<img src>` root-relativ (`/blog/img/...`), OG/Schema/
   Sitemap absolut (`https://nicworks.de/...`).
 
+### Hotfix — 2026-09-03 (2): Beiträge ausgearbeitet + Topic-Cluster-Verlinkung
+
+- Alle 4 Beiträge von ~400 auf 510–770 Wörter reinen Body erweitert: klare H2/H3-
+  Struktur, Vergleichstabellen (Kosten, Umfang), je 1–2 In-Content-`<figure>`.
+- **Interne Verlinkung (Topic-Cluster):** `guenstiges-webdesign-kleine-unternehmen-2026`
+  ist der Hub und verlinkt per `.cluster-nav`-Box alle 3 Nischen-Beiträge; jeder
+  Nischen-Beitrag verlinkt kontextuell zurück auf den Hub und auf den passenden
+  Schwester-Beitrag (Tattoo-Kosten ↔ Tattoo-Instagram). Plus die automatische
+  „Weiterlesen"-Sektion — macht 3 verlinkte Beiträge pro Seite.
+- In-Content-Bilder: `build-blog.js` `ensureBodyPlaceholders()` scannt den Body nach
+  `<img src="/blog/img/*.svg">` und erzeugt für jede fehlende Datei einen beschrifteten
+  Platzhalter (Label = alt-Text). Nic ersetzt die `.svg` durch echte Fotos (JPG/WebP).
+- `posts.json`: `readTime` an die Länge angepasst (7–8 Min), `dateModified` = 2026-09-03
+  → erscheint als „Aktualisiert am …" + im `Article`-Schema.
+- CSS: SVG-Platzhalter bekommen `border-style:dashed` (klar als Bild-Slot erkennbar).
+
 ---
 
 ## Geplante Blog-Artikel (20 Themen) — Fokus: Schnelles Geldverdienen, Nischen, AI-lösbar
