@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem('nk-theme'),d=document.documentElement;if(t==='light')d.classList.add('light');else if(t==='dark')d.classList.add('dark');}catch(e){}})();</script>
 <title>Blog — Günstiges Webdesign & Tipps für kleine Unternehmen | Niclas Koch</title>
 <meta name="description" content="Praxisnahe Tipps zu günstigem Webdesign, Website-Kosten und Online-Präsenz für kleine Unternehmen, Tattoo-Studios, Cannabis Social Clubs und Künstler.">
 <meta name="author" content="Niclas Koch">
@@ -24,7 +25,9 @@
 <meta property="og:url" content="https://nicworks.de/blog/">
 
 <link rel="preload" href="/font/Assignate.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/font/Roboto-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/blog/style.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 
 <script type="application/ld+json">
 {
@@ -82,6 +85,9 @@
 </head>
 <body>
 
+<div class="bg-orb a" aria-hidden="true"></div>
+<div class="bg-orb b" aria-hidden="true"></div>
+
 <header class="blog-header">
   <div class="wrap">
     <a href="/" class="blog-brand">NICLAS KOCH — <span>Webdesign</span></a>
@@ -89,44 +95,49 @@
       <a href="/">Start</a>
       <a href="/blog/" class="active">Blog</a>
       <a href="/#footer-area">Kontakt</a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Design wechseln">☀</button>
     </nav>
   </div>
 </header>
 
-<div class="blog-hero">
-  <div class="eyebrow">Blog</div>
+<div class="blog-hero reveal">
+  <p class="eyebrow">Blog</p>
   <h1>Günstiges Webdesign, erklärt.</h1>
   <p>Praxisnahe Tipps zu Website-Kosten, SEO und Online-Präsenz — für kleine Unternehmen, Tattoo-Studios, Cannabis Social Clubs und Künstler. Kein Agentur-Blabla, sondern was wirklich zählt.</p>
-  <div class="price-badge">Websites ab <b>490€</b> — schnelle Umsetzung aus einer Hand</div>
+  <div class="price-badge">Websites ab <b>490 €</b> — schnelle Umsetzung aus einer Hand</div>
 </div>
 
 <div class="post-list">
   <a class="post-card" href="/blog/posts/tattoo-studio-instagram-oder-website.html">
+    <span class="post-thumb"><img src="/blog/img/tattoo-studio-instagram-oder-website-hero.svg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
     <div class="post-meta"><span>2. September 2026</span><span>6 Min Lesezeit</span></div>
     <h2>Tattoo-Studio: Reicht Instagram — oder braucht ihr eine Website?</h2>
     <p>Instagram bringt Reichweite, aber keine Google-Rankings und keine Kontrolle. Warum Tattoo-Studios beides brauchen, was eine Website ab 490 € zusätzlich leistet und wie beide Kanäle zusammenarbeiten.</p>
-    <div style="margin-top:12px;"><span class="tag-pill">Webdesign für Tattoo-Studios</span> <span class="tag-pill">Instagram vs Website</span> <span class="tag-pill">Günstiges Webdesign</span></div>
+    <div class="post-tags"><span class="tag-pill">Webdesign für Tattoo-Studios</span> <span class="tag-pill">Instagram vs Website</span> <span class="tag-pill">Günstiges Webdesign</span></div>
   </a>
 
   <a class="post-card" href="/blog/posts/webdesign-cannabis-social-club-deutschland.html">
+    <span class="post-thumb"><img src="/blog/img/webdesign-cannabis-social-club-deutschland-hero.svg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
     <div class="post-meta"><span>30. August 2026</span><span>6 Min Lesezeit</span></div>
     <h2>Website für Cannabis Social Clubs in Deutschland: Was 2026 wichtig ist</h2>
     <p>Seit dem Cannabisgesetz (CanG) gibt es in Deutschland offiziell registrierte Anbauvereinigungen. Was ihre Website leisten muss — und wo rechtlich besondere Vorsicht gilt.</p>
-    <div style="margin-top:12px;"><span class="tag-pill">Webdesign für Cannabis Social Clubs</span> <span class="tag-pill">Günstiges Webdesign</span></div>
+    <div class="post-tags"><span class="tag-pill">Webdesign für Cannabis Social Clubs</span> <span class="tag-pill">Günstiges Webdesign</span></div>
   </a>
 
   <a class="post-card" href="/blog/posts/website-fuer-tattoo-studio-kosten.html">
+    <span class="post-thumb"><img src="/blog/img/website-fuer-tattoo-studio-kosten-hero.svg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
     <div class="post-meta"><span>23. August 2026</span><span>5 Min Lesezeit</span></div>
     <h2>Website für dein Tattoo-Studio: Was sie kosten sollte und worauf es ankommt</h2>
     <p>Eine Tattoo-Studio-Website lebt von Bildern — und genau die bremsen sie meistens aus. Worauf es bei Webdesign für Tattoo-Studios wirklich ankommt, inklusive realistischer Preise.</p>
-    <div style="margin-top:12px;"><span class="tag-pill">Webdesign für Tattoo-Studios</span> <span class="tag-pill">Günstiges Webdesign</span></div>
+    <div class="post-tags"><span class="tag-pill">Webdesign für Tattoo-Studios</span> <span class="tag-pill">Günstiges Webdesign</span></div>
   </a>
 
   <a class="post-card" href="/blog/posts/guenstiges-webdesign-kleine-unternehmen-2026.html">
+    <span class="post-thumb"><img src="/blog/img/guenstiges-webdesign-kleine-unternehmen-2026-hero.svg" alt="" width="1200" height="630" loading="lazy" decoding="async"></span>
     <div class="post-meta"><span>16. August 2026</span><span>6 Min Lesezeit</span></div>
     <h2>Günstiges Webdesign für kleine Unternehmen: Worauf es 2026 wirklich ankommt</h2>
     <p>Günstiges Webdesign heißt nicht automatisch billig gebaut. Was ein fairer Preis wirklich beinhaltet, welche Baukasten-Fallen es gibt und warum Ladezeit über Sichtbarkeit entscheidet.</p>
-    <div style="margin-top:12px;"><span class="tag-pill">Günstiges Webdesign</span> <span class="tag-pill">KMU</span> <span class="tag-pill">Website Kosten</span></div>
+    <div class="post-tags"><span class="tag-pill">Günstiges Webdesign</span> <span class="tag-pill">KMU</span> <span class="tag-pill">Website Kosten</span></div>
   </a>
 </div>
 
@@ -135,6 +146,23 @@
   <a href="/impressum.html">Impressum</a>
   <a href="/datenschutz.html">Datenschutz</a>
 </footer>
+
+<script>
+(function(){
+  var d=document.documentElement, btn=document.getElementById('theme-toggle');
+  function cur(){ if(d.classList.contains('light'))return'light'; if(d.classList.contains('dark'))return'dark';
+    return matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'; }
+  function set(m){ d.classList.remove('light','dark'); d.classList.add(m);
+    try{localStorage.setItem('nk-theme',m);}catch(e){}
+    if(btn){ btn.textContent = m==='light' ? '☾' : '☀';
+      btn.setAttribute('aria-label', m==='light' ? 'Zu dunklem Design wechseln' : 'Zu hellem Design wechseln'); } }
+  if(btn){ set(cur()); btn.addEventListener('click', function(){ set(cur()==='light'?'dark':'light'); }); }
+  var rev=document.querySelectorAll('.reveal');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px'});
+  rev.forEach(function(el){io.observe(el);});
+  setTimeout(function(){rev.forEach(function(el){el.classList.add('in');});},2500);
+})();
+</script>
 
 </body>
 </html>

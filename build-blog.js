@@ -27,6 +27,9 @@ const BLOG_DIR = path.join(ROOT, "blog");
 const POSTS_JSON = path.join(BLOG_DIR, "posts.json");
 const CONTENT_DIR = path.join(BLOG_DIR, "content");
 const OUT_DIR = path.join(BLOG_DIR, "posts");
+const IMG_DIR = path.join(BLOG_DIR, "img");
+const HERO_W = 1200;
+const HERO_H = 630;
 const ARTICLE_TEMPLATE = fs.readFileSync(path.join(BLOG_DIR, "_template.html"), "utf-8");
 const INDEX_TEMPLATE = fs.readFileSync(path.join(BLOG_DIR, "_index_template.html"), "utf-8");
 const SITE = "https://nicworks.de";
@@ -35,10 +38,83 @@ const DEFAULT_OG_IMAGE_ALT = "Niclas Koch, Web- und Grafikdesigner aus Düsseldo
 const DEFAULT_OG_IMAGE_W = "862";
 const DEFAULT_OG_IMAGE_H = "1186";
 
-// og:image:type aus der Dateiendung ableiten (Default: webp — nur nic.webp vorhanden)
+// og:image:type aus der Dateiendung ableiten
 function ogImageType(url) {
-  const ext = String(url || "").split(".").pop().toLowerCase();
-  return { jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp", gif: "image/gif" }[ext] || "image/webp";
+  const ext = String(url || "").split("?")[0].split(".").pop().toLowerCase();
+  return { jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp", gif: "image/gif", svg: "image/svg+xml" }[ext] || "image/webp";
+}
+
+function xmlEsc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+/**
+ * Beitragsbild ("Hero"). Reihenfolge:
+ *   1. post.image (voll-URL oder /blog/img/...) — das echte Bild, sobald Nic es liefert.
+ *      Dazu optional post.imageWidth / post.imageHeight / post.imageAlt / post.imageCaption.
+ *   2. sonst: Platzhalter /blog/img/<slug>-hero.svg (wird bei Bedarf erzeugt, 1200x630).
+ * Nic kann also einfach eine Datei nach blog/img/ legen und in posts.json `image` setzen.
+ */
+function heroFor(post) {
+  const alt = post.imageAlt || `${post.title} — Beitragsbild`;
+  if (post.image) {
+    const isAbs = /^https?:\/\//.test(post.image);
+    const src = isAbs ? post.image : post.image.replace(/^\/?/, "/"); // <img src>: root-relativ
+    const url = isAbs ? post.image : SITE + src;                       // OG/Schema: absolut
+    return {
+      src, url,
+      w: post.imageWidth || HERO_W,
+      h: post.imageHeight || HERO_H,
+      alt,
+      caption: post.imageCaption || "",
+      type: ogImageType(url),
+      placeholder: false,
+    };
+  }
+  const src = `/blog/img/${post.slug}-hero.svg`;
+  ensurePlaceholder(post, path.join(IMG_DIR, `${post.slug}-hero.svg`));
+  return {
+    src,
+    url: SITE + src,
+    w: HERO_W,
+    h: HERO_H,
+    alt,
+    caption: "Platzhalterbild — finales Foto folgt.",
+    type: "image/svg+xml",
+    placeholder: true,
+  };
+}
+
+// Erzeugt einen schlichten, gebrandeten SVG-Platzhalter (1200x630), falls noch keiner da ist.
+function ensurePlaceholder(post, absPath) {
+  if (fs.existsSync(absPath)) return;
+  if (!fs.existsSync(IMG_DIR)) fs.mkdirSync(IMG_DIR, { recursive: true });
+  const kicker = xmlEsc((post.tags && post.tags[0]) || "Webdesign").toUpperCase();
+  // Titel auf max. 3 Zeilen a ~34 Zeichen umbrechen
+  const words = String(post.title).split(/\s+/);
+  const lines = [];
+  let cur = "";
+  for (const w of words) {
+    if ((cur + " " + w).trim().length > 34 && cur) { lines.push(cur); cur = w; }
+    else cur = (cur + " " + w).trim();
+    if (lines.length === 2) break;
+  }
+  if (cur) lines.push(cur);
+  if (words.join(" ").length > lines.join(" ").length) lines[lines.length - 1] += " …";
+  const tspans = lines
+    .map((l, i) => `<tspan x="90" dy="${i === 0 ? 0 : 64}">${xmlEsc(l)}</tspan>`)
+    .join("");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="${xmlEsc(post.title)}">
+  <rect width="1200" height="630" fill="#06060A"/>
+  <circle cx="1080" cy="120" r="260" fill="#FFE500" opacity="0.10"/>
+  <circle cx="140" cy="560" r="200" fill="#FF5C4D" opacity="0.08"/>
+  <text x="90" y="110" font-family="'JetBrains Mono',ui-monospace,monospace" font-size="24" letter-spacing="4" fill="#FFE500">${kicker}</text>
+  <text x="90" y="300" font-family="Georgia,'Times New Roman',serif" font-size="56" font-weight="700" fill="#F3EFE6">${tspans}</text>
+  <text x="90" y="560" font-family="'JetBrains Mono',ui-monospace,monospace" font-size="20" fill="#F3EFE6" opacity="0.55">nicworks.de/blog — Platzhalter, finales Bild folgt</text>
+</svg>
+`;
+  fs.writeFileSync(absPath, svg, "utf-8");
+  console.log(`  Platzhalter erzeugt: blog/img/${post.slug}-hero.svg`);
 }
 
 const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
@@ -163,7 +239,7 @@ function renderFaqSchema(faq) {
   return `<script type="application/ld+json">\n${JSON.stringify(json, null, 2)}\n</script>`;
 }
 
-function renderArticleSchema(post, url, bodyHtml) {
+function renderArticleSchema(post, url, bodyHtml, hero) {
   const person = { "@type": "Person", "@id": SITE + "/#person", "name": "Niclas Koch", "url": SITE + "/" };
   const json = {
     "@context": "https://schema.org",
@@ -187,7 +263,9 @@ function renderArticleSchema(post, url, bodyHtml) {
     },
     "isPartOf": { "@type": "Blog", "@id": SITE + "/blog/#blog", "name": "Niclas Koch — Webdesign Blog", "url": SITE + "/blog/" },
     "mainEntityOfPage": { "@type": "WebPage", "@id": url },
-    "image": post.image || DEFAULT_OG_IMAGE,
+    "image": hero
+      ? { "@type": "ImageObject", "url": hero.url, "width": hero.w, "height": hero.h }
+      : DEFAULT_OG_IMAGE,
   };
   return `<script type="application/ld+json">\n${JSON.stringify(json, null, 2)}\n</script>`;
 }
@@ -251,9 +329,17 @@ function main() {
   const cards = [];
   const sitemapUrls = [];
 
+  if (!fs.existsSync(IMG_DIR)) fs.mkdirSync(IMG_DIR, { recursive: true });
+  const heroes = {};
+  posts.forEach((p) => { heroes[p.slug] = heroFor(p); });
+
+  const relThumb = (p) =>
+    `<span class="post-thumb"><img src="${heroes[p.slug].src}" alt="" width="${heroes[p.slug].w}" height="${heroes[p.slug].h}" loading="lazy" decoding="async"></span>`;
+
   posts.forEach((post) => {
     validatePost(post);
     const url = `${SITE}/blog/posts/${post.slug}.html`;
+    const hero = heroes[post.slug];
     const bodyPath = path.join(CONTENT_DIR, `${post.slug}.html`);
     if (!fs.existsSync(bodyPath)) {
       console.warn(`WARNUNG: Kein Body-Fragment für "${post.slug}" (erwartet: blog/content/${post.slug}.html) — übersprungen.`);
@@ -268,6 +354,7 @@ function main() {
       .map(
         (p) =>
           `<a class="post-card" href="/blog/posts/${p.slug}.html">\n` +
+          `        ${relThumb(p)}\n` +
           `        <div class="post-meta"><span>${humanDate(p.date)}</span></div>\n` +
           `        <h3>${p.title}</h3>\n` +
           `        <p>${p.description}</p>\n` +
@@ -283,11 +370,16 @@ function main() {
       STANDFIRST: post.standfirst || post.description,
       META_DESCRIPTION: post.description,
       CANONICAL_URL: url,
-      OG_IMAGE: post.image || DEFAULT_OG_IMAGE,
-      OG_IMAGE_ALT: post.imageAlt || DEFAULT_OG_IMAGE_ALT,
-      OG_IMAGE_TYPE: ogImageType(post.image || DEFAULT_OG_IMAGE),
-      OG_IMAGE_W: post.imageWidth || (post.image ? "" : DEFAULT_OG_IMAGE_W),
-      OG_IMAGE_H: post.imageHeight || (post.image ? "" : DEFAULT_OG_IMAGE_H),
+      OG_IMAGE: hero.url,
+      OG_IMAGE_ALT: hero.alt,
+      OG_IMAGE_TYPE: hero.type,
+      OG_IMAGE_W: hero.w,
+      OG_IMAGE_H: hero.h,
+      HERO_IMG: hero.src,
+      HERO_ALT: hero.alt,
+      HERO_FIGCAPTION: hero.caption ? `<figcaption>${hero.caption}</figcaption>` : "",
+      HERO_W: hero.w,
+      HERO_H: hero.h,
       OG_ARTICLE_TAGS: renderOgArticleTags(post.tags),
       PUBLISH_DATE: post.date,
       MODIFIED_DATE: post.dateModified || post.date,
@@ -299,7 +391,7 @@ function main() {
       TOC_HTML: renderToc(headings),
       ARTICLE_BODY: body,
       FAQ_HTML: renderFaqHtml(post.faq),
-      ARTICLE_SCHEMA_JSON: renderArticleSchema(post, url, body),
+      ARTICLE_SCHEMA_JSON: renderArticleSchema(post, url, body, hero),
       BREADCRUMB_SCHEMA_JSON: renderBreadcrumbSchema(post, url),
       FAQ_SCHEMA_JSON: renderFaqSchema(post.faq),
       RELATED_POSTS_HTML: related,
@@ -309,14 +401,22 @@ function main() {
 
     cards.push(
       `  <a class="post-card" href="/blog/posts/${post.slug}.html">\n` +
+      `    <span class="post-thumb"><img src="${hero.src}" alt="" width="${hero.w}" height="${hero.h}" loading="lazy" decoding="async"></span>\n` +
       `    <div class="post-meta"><span>${humanDate(post.date)}</span><span>${post.readTime || "5 Min"} Lesezeit</span></div>\n` +
       `    <h2>${post.title}</h2>\n` +
       `    <p>${post.description}</p>\n` +
-      `    <div style="margin-top:12px;">${(post.tags || []).map((t) => `<span class="tag-pill">${t}</span>`).join(" ")}</div>\n` +
+      `    <div class="post-tags">${(post.tags || []).map((t) => `<span class="tag-pill">${t}</span>`).join(" ")}</div>\n` +
       `  </a>`
     );
 
-    sitemapUrls.push({ loc: url, lastmod: post.dateModified || post.date, changefreq: "yearly", priority: "0.7" });
+    sitemapUrls.push({
+      loc: url,
+      lastmod: post.dateModified || post.date,
+      changefreq: "yearly",
+      priority: "0.7",
+      image: hero.url,
+      imageTitle: post.title,
+    });
   });
 
   const indexHtml = fillTemplate(INDEX_TEMPLATE, {
@@ -375,9 +475,22 @@ function updateSitemap(blogUrls) {
   const sitemapPath = path.join(ROOT, "sitemap.xml");
   let xml = fs.readFileSync(sitemapPath, "utf-8");
 
+  // Image-Sitemap-Namespace am <urlset> sicherstellen
+  if (!xml.includes("xmlns:image=")) {
+    xml = xml.replace(
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
+    );
+  }
+
   // Alles zwischen BLOG-START/BLOG-END Markern ersetzen (falls noch nicht vorhanden, Marker + Block vor </urlset> einfügen)
   const blockLines = blogUrls
-    .map((u) => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`)
+    .map((u) => {
+      const img = u.image
+        ? `\n    <image:image>\n      <image:loc>${xmlEsc(u.image)}</image:loc>\n      <image:title>${xmlEsc(u.imageTitle || "")}</image:title>\n    </image:image>`
+        : "";
+      return `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>${img}\n  </url>`;
+    })
     .join("\n");
   const block = `<!-- BLOG-START (auto-generiert von build-blog.js, nicht von Hand editieren) -->\n${blockLines}\n<!-- BLOG-END -->`;
 

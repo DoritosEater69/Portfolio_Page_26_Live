@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem('nk-theme'),d=document.documentElement;if(t==='light')d.classList.add('light');else if(t==='dark')d.classList.add('dark');}catch(e){}})();</script>
 <title>{{TITLE}}</title>
 <meta name="description" content="{{META_DESCRIPTION}}">
 <meta name="author" content="Niclas Koch">
@@ -33,14 +34,19 @@
 <meta name="twitter:image" content="{{OG_IMAGE}}">
 
 <link rel="preload" href="/font/Assignate.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/font/Inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/font/Roboto-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/font/JetBrainsMono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/blog/style.css">
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 
 {{ARTICLE_SCHEMA_JSON}}
 {{BREADCRUMB_SCHEMA_JSON}}
 {{FAQ_SCHEMA_JSON}}
 </head>
 <body>
+
+<div class="bg-orb a" aria-hidden="true"></div>
+<div class="bg-orb b" aria-hidden="true"></div>
 
 <header class="blog-header">
   <div class="wrap">
@@ -49,25 +55,33 @@
       <a href="/">Start</a>
       <a href="/blog/" class="active">Blog</a>
       <a href="/#footer-area">Kontakt</a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Design wechseln">☀</button>
     </nav>
   </div>
 </header>
 
 <article class="post">
 
-  <div class="article-header">
+  <div class="article-header reveal">
     <nav class="breadcrumb" aria-label="Brotkrümelnavigation">
       <a href="/">Start</a> / <a href="/blog/">Blog</a> / <span>{{TITLE_SHORT}}</span>
     </nav>
-    <div class="article-kicker">{{KICKER}}</div>
+    <p class="article-kicker">{{KICKER}}</p>
     <h1>{{H1}}</h1>
     <p class="article-standfirst">{{STANDFIRST}}</p>
     <div class="article-meta">
       <span class="byline">Von <a href="/#footer-area" rel="author">Niclas Koch</a></span>
-      <span>Veröffentlicht am {{PUBLISH_DATE_HUMAN}}</span>
+      <span>Veröffentlicht am <time datetime="{{PUBLISH_DATE}}">{{PUBLISH_DATE_HUMAN}}</time></span>
       {{UPDATED_LINE}}
       <span>{{READ_TIME}} Lesezeit</span>
     </div>
+  </div>
+
+  <div class="article-hero reveal">
+    <figure>
+      <img src="{{HERO_IMG}}" alt="{{HERO_ALT}}" width="{{HERO_W}}" height="{{HERO_H}}" fetchpriority="high" decoding="async">
+      {{HERO_FIGCAPTION}}
+    </figure>
   </div>
 
   {{TLDR_HTML}}
@@ -80,15 +94,15 @@
 
   {{FAQ_HTML}}
 
-  <div class="cta-box">
+  <div class="cta-box reveal">
     <h3>Lass uns zusammen etwas gestalten</h3>
     <p>Ob Tattoo-Studio, Cannabis Social Club, Künstler-Portfolio oder kleiner Betrieb — schreib mir
       kurz, worum es geht. Du bekommst zeitnah eine ehrliche Einschätzung und ein Angebot ab 490 €.</p>
     <a class="btn" href="/#footer-area">Übers Kontaktformular anfragen →</a>
   </div>
 
-  <aside class="author-box">
-    <img src="/img/nic-420.webp" alt="Niclas Koch, Web- und Grafikdesigner" width="72" height="72" loading="lazy">
+  <aside class="author-box reveal">
+    <img src="/img/nic-420.webp" alt="Niclas Koch, Web- und Grafikdesigner" width="76" height="76" loading="lazy" decoding="async">
     <div>
       <p class="author-box-name">Niclas Koch</p>
       <p class="author-box-bio">Web- &amp; Grafikdesigner aus Düsseldorf. Baut schnelle, individuell
@@ -98,7 +112,7 @@
     </div>
   </aside>
 
-  <div class="related">
+  <div class="related reveal">
     <h2>Weiterlesen</h2>
     <div class="related-grid">
       {{RELATED_POSTS_HTML}}
@@ -112,6 +126,23 @@
   <a href="/impressum.html">Impressum</a>
   <a href="/datenschutz.html">Datenschutz</a>
 </footer>
+
+<script>
+(function(){
+  var d=document.documentElement, btn=document.getElementById('theme-toggle');
+  function cur(){ if(d.classList.contains('light'))return'light'; if(d.classList.contains('dark'))return'dark';
+    return matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'; }
+  function set(m){ d.classList.remove('light','dark'); d.classList.add(m);
+    try{localStorage.setItem('nk-theme',m);}catch(e){}
+    if(btn){ btn.textContent = m==='light' ? '☾' : '☀';
+      btn.setAttribute('aria-label', m==='light' ? 'Zu dunklem Design wechseln' : 'Zu hellem Design wechseln'); } }
+  if(btn){ set(cur()); btn.addEventListener('click', function(){ set(cur()==='light'?'dark':'light'); }); }
+  var rev=document.querySelectorAll('.reveal');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px'});
+  rev.forEach(function(el){io.observe(el);});
+  setTimeout(function(){rev.forEach(function(el){el.classList.add('in');});},2500);
+})();
+</script>
 
 </body>
 </html>

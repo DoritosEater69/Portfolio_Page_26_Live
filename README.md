@@ -333,6 +333,33 @@ protokolliert.
   `post.imageWidth` / `post.imageHeight` uebersteuern pro Beitrag).
 - `sitemap.xml`: `<lastmod>` der Startseite auf 2026-09-02 (heutiges Update).
 
+## Hotfix — 2026-09-03: Blog-Design komplett aus nicworks.de abgeleitet + Beitragsbilder
+
+- **`blog/style.css` neu**, 1:1 aus dem Design der Startseite abgeleitet: volle Token-Palette
+  (`--bg`/`--amber`/`--glass`/`--border`/`--glow` …), `--fs-scale` fuer Skalierung, echte
+  `@font-face` (Assignate / Fraunces / Roboto / JetBrains Mono / Inter), Body mit demselben
+  Radial-Gradient-Hintergrund, `h1,h2,h3` in Assignate/Fraunces, `.eyebrow`/Kicker in
+  JetBrains-Mono-Amber, Glass-Cards mit `backdrop-filter:blur(20px) saturate(150%)` +
+  `box-shadow ... calc(.35*var(--shadow-a))` (wie `.glass`/`.pain-tile`), `.reveal`-Motion
+  mit identischer Kurve, weichgezeichnete `.bg-orb`-Farbkugeln (wie `.bg-dot`).
+- **Light/Dark:** volles Token-Set fuer Light-Mode, greift automatisch per
+  `prefers-color-scheme` **und** ueber einen Theme-Toggle im Blog-Header (persistiert in
+  `localStorage['nk-theme']`, No-Flash-Script im `<head>`). `.reveal` hat `<noscript>`-
+  Fallback + 2,5-s-Timeout, damit Inhalt auch ohne/vor JS sichtbar ist.
+- **Beitragsbild (Hero) pro Artikel:** `<figure>` mit `width`/`height`, `fetchpriority="high"`,
+  eigener Alt-Text; speist zugleich `og:image` + Twitter + `Article`-Schema (`ImageObject`
+  mit Dimensionen). `build-blog.js` erzeugt automatisch einen gebrandeten **SVG-Platzhalter**
+  `blog/img/<slug>-hero.svg` (1200x630), bis Nic echte Fotos liefert. Echtes Bild: Datei
+  nach `blog/img/` legen + `image` (+ optional `imageWidth`/`imageHeight`/`imageAlt`/
+  `imageCaption`) in `posts.json` setzen — **JPG/WebP, nicht SVG** (Social-Scraper mögen
+  kein SVG-`og:image`).
+- **Bild-Sitemap:** `xmlns:image` am `<urlset>`, `<image:image>` pro Blog-URL mit
+  `image:loc` + `image:title` (`build-blog.js`).
+- Index- und "Weiterlesen"-Cards zeigen jetzt Thumbnails; Card-Style als Glass-Card
+  (`.post-thumb`, `aspect-ratio 16/9`).
+- Reihenfolge fix in `heroFor()`: `<img src>` root-relativ (`/blog/img/...`), OG/Schema/
+  Sitemap absolut (`https://nicworks.de/...`).
+
 ---
 
 ## Geplante Blog-Artikel (20 Themen) — Fokus: Schnelles Geldverdienen, Nischen, AI-lösbar
