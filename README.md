@@ -376,6 +376,36 @@ protokolliert.
   → erscheint als „Aktualisiert am …" + im `Article`-Schema.
 - CSS: SVG-Platzhalter bekommen `border-style:dashed` (klar als Bild-Slot erkennbar).
 
+## Hotfix — 2026-09-10: Mission-&-Zielgruppe zweispaltig + Vita auf Tablet wie Mobile
+
+- **Mission & Zielgruppe** (`#proteinup-info` → `.pu-mission-rows`): die zwei Kacheln stehen
+  auf Desktop/Tablet jetzt **nebeneinander, 50 %/50 %** (`.pu-mission-rows` von
+  `flex-direction:column` auf `display:grid; grid-template-columns:1fr 1fr; gap:24px`
+  umgestellt). Beide Kacheln sind **linksbündig** — die „Zielgruppe"-Kachel hatte
+  `.pu-mission-row.reverse{flex-direction:row-reverse; text-align:right}` (Icon rechts, Text
+  rechtsbündig); das ist auf `flex-direction:row; text-align:left` neutralisiert, sodass
+  beide Kacheln identisch aufgebaut sind (Icon links, Text linksbündig). `align-items` der
+  Kachel von `center` auf `flex-start`, Icon-Gap 28→22px.
+- **Mobile (`≤760px`):** `.pu-mission-rows{grid-template-columns:1fr}` → beide Kacheln wieder
+  **untereinander, 100 %** (in den bestehenden `@media (max-width:760px)`-Block gehängt, wo
+  auch `.pp-row` einspaltig wird). Die `≤560px`-Feinheiten (Icon oben, zentriert) bleiben
+  unverändert.
+- **Vita-Zeitleiste auf Tablet:** der Bereich lief zwischen 701–900 px kaputt (Linie im
+  Zickzack mit Ankern bei 30 %/70 %, Inhalt aber schon volle Breite linksbündig, Dots bei
+  30 %/70 %). Der „Mobile"-Modus der Zeitleiste galt bisher nur bis `≤700px`, die
+  Ignite-/Scroll-Progress-Logik dagegen schon ab `≤900px` — genau dieser Mismatch war der
+  Bug. Jetzt überall `≤900px`:
+  - CSS-Block `@media (max-width:700px)` mit den `.zz-*`-Regeln (Ignite-Hint aus, Inhalt
+    `width:calc(100% - 46px)` linksbündig, Dots `left:14px`) → `@media (max-width:900px)`.
+  - `buildZigzagPath()`: `const t = window.innerWidth <= 700` → `<= 900` (setzt alle
+    Pfad-/Dot-X-Anker auf 14 px = gerade Linie links statt Zickzack).
+  - Scroll-Reveal der Einträge: `d = window.innerWidth <= 700 || "zz-left" === o ? 1 : -1`
+    → `<= 900` (alle Einträge sliden von links ein statt gespiegelt).
+  - `rebuildZigzagPath()` nutzte `≤900` bereits — jetzt sind alle vier Stellen konsistent.
+- Verifiziert: Desktop (1920 px) misst `.pu-mission-rows` als Grid 2×463 px, beide Kacheln
+  linksbündig (Icon links, `h5` `text-align:left`), gleiche Höhe. `node --check` auf dem
+  Inline-Script sauber.
+
 ---
 
 ## Geplante Blog-Artikel (20 Themen) — Fokus: Schnelles Geldverdienen, Nischen, AI-lösbar
