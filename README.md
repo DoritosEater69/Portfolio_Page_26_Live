@@ -376,6 +376,22 @@ protokolliert.
   → erscheint als „Aktualisiert am …" + im `Article`-Schema.
 - CSS: SVG-Platzhalter bekommen `border-style:dashed` (klar als Bild-Slot erkennbar).
 
+## Hotfix — 2026-09-10 (2): Galerie-Reihen mit Maus greifbar (Illustration + Fotos)
+
+- Die zwei Galerie-Reihen unter „Design, Fotografie & Illustration" (`#gallery-row-1`
+  Illustrationen, `#gallery-row-2` Fotos) waren auf `≤900px` ein reiner
+  `overflow-x:auto`-Scroller: **per Touch** wischbar, **mit der Maus** aber gar nicht (nur
+  über die dünne Scrollbar). Der bestehende `makeGalleryRowDrag` (Klick-Ziehen) hängt sich
+  nur bei `innerWidth>900` ein und zieht dort das Marquee-`transform`.
+- Neu: `makeGalleryRowScroll(el)` — spiegelt das Event-Modell von `makeGalleryRowDrag`
+  (nur `pointerType==="mouse"`, Schwelle 6px, `pointermove`/`up` am `window`, `dragstart`
+  unterdrückt), manipuliert aber `el.scrollLeft` statt eines Transforms. `cursor` inline
+  `grab`/`grabbing`. Setzt `galleryDragged` wie gehabt, damit ein Drag nicht als
+  Item-Klick die Lightbox öffnet. Wird bei `innerWidth<=900` an beide Reihen gehängt
+  (Touch bleibt unberührt, da der `pointerdown`-Filter Nicht-Maus-Pointer ignoriert).
+- Smoke-Test im Browser: synthetischer Maus-Drag über einer Reihe schiebt `scrollLeft`
+  0 → 200, Cursor fällt nach `pointerup` auf `grab` zurück. `node --check` sauber.
+
 ## Hotfix — 2026-09-10: Mission-&-Zielgruppe zweispaltig + Vita auf Tablet wie Mobile
 
 - **Mission & Zielgruppe** (`#proteinup-info` → `.pu-mission-rows`): die zwei Kacheln stehen
