@@ -424,6 +424,79 @@ protokolliert.
 
 ---
 
+## Hotfix — 2026-09-11: SEO-Keyword-Erweiterung + 17 neue Blogartikel (20-Themen-Plan umgesetzt)
+
+Auf Wunsch Nic: Sichtbarkeit für ein konkretes Keyword-Cluster aufbauen (Remote Webdesigner,
+Webdesigner Düsseldorf, Düsseldorf Grafikdesign, günstiges Webdesign, günstige Shopify-Shops,
+plus die Nischen Cannabis Social Clubs, Friseure, Tattoo-Studios/Tätowierer, Künstler,
+Kunststudenten, Dönerbuden/Pizzerien) — Fokus laut Nic: „schnelle Arbeit, komplett online ohne
+Büro/Agentur", zusätzliches Einkommen über Design-Nebenprojekte.
+
+**Startseite (`index.html`) — Kopf-Keywords:**
+- `<title>`: „Günstiges Webdesign für kleine Unternehmen — ab 490€ | Niclas Koch, Düsseldorf"
+  → „Webdesigner Düsseldorf & Remote — Günstiges Webdesign ab 490€ | Niclas Koch" (Remote +
+  Webdesigner Düsseldorf jetzt explizit vorne, „ab 490€" bleibt als Preis-Anker).
+- Meta-Description, OG-Title/-Description, Twitter-Title/-Description entsprechend neu
+  formuliert (Webdesigner & Grafikdesigner Düsseldorf, remote deutschlandweit, Shopify-Shops
+  ergänzt).
+- Wiederkehrende Nischen-Aufzählung im Fließtext („Tattoo-Studios, Cannabis Social Clubs und
+  Künstler", 6 Vorkommen: Hero, Meta, Schema) um **Friseure** ergänzt.
+- JSON-LD (`Person` + `ProfessionalService`, `@graph`): `knowsAbout` erweitert um „Webdesigner
+  Düsseldorf", „Remote Webdesigner", „Webdesign für Tätowierer", „Webdesign für Friseure",
+  „Webdesign für Kunststudenten", „Grafikdesign Düsseldorf", „Shopify Shop erstellen lassen";
+  `serviceType` um „Shopify Shop Erstellung" ergänzt. Alle JSON-LD-Blöcke nach dem Edit erneut
+  mit `json.loads()` validiert.
+
+**Blog: 17 neue Artikel, bestehende 4 unverändert (jetzt 21 Beiträge gesamt):**
+- Themen-Cluster neu zugeschnitten auf die tatsächlich gewünschten Branchen (ersetzt die alte
+  „Weitere Nischen"-Liste aus der ursprünglichen Planung unten — Bäckerei/Fitness-Coach/
+  Handwerker/Sprachkurs/Dropshipping waren nie geschrieben und passten nicht zu Nics
+  aktuellem Fokus):
+  - **Tattoo-Studios (6, davon 4 neu):** Online-Terminvergabe, 5 häufige Website-Fehler,
+    Tätowierer-Portfolio (Freelancer/Gastspieler), lokale Google-Sichtbarkeit.
+  - **Cannabis Social Clubs (4, davon 3 neu):** mehr Sichtbarkeit/Mitglieder, Mitgliederbereich,
+    Events & Workshops.
+  - **Künstler & Creator (4, alle neu):** Portfolio-Verkauf, Musik-Producer/Beats, Illustrator-
+    Commissions, Creator-Newsletter + Webshop.
+  - **Weitere Nischen (6, alle neu):** Friseure (Online-Buchung), Dönerbude/Imbiss, Pizzeria,
+    Kunststudenten-Portfolio, günstiger Shopify-Shop, Remote-Webdesigner Düsseldorf.
+- Jeder neue Artikel: `posts.json`-Metadaten vollständig (title/metaTitle/description/
+  standfirst/tags/readTime/keyTakeaways/faq mit 3 Q&A), Body-HTML in `blog/content/<slug>.html`
+  mit 4–5 `<h2>` (→ Inhaltsverzeichnis, `renderToc()` braucht ≥3), Preis-Anker „ab 490 €" bzw.
+  „ab 590 €" bei aufwendigeren Themen (Cannabis, Shopify), interne Verlinkung zu 2 verwandten
+  Beiträgen im selben Cluster (`.cluster-nav`).
+- **FAQ bewusst nur in `posts.json`**, nicht zusätzlich im Body — `_template.html`/
+  `build-blog.js` rendern die FAQ-Sektion (`{{FAQ_HTML}}`) sowie das `FAQPage`-JSON-LD-Schema
+  automatisch aus dem `faq`-Array; FAQ-Markup im Body hätte den Abschnitt dupliziert.
+- `node build-blog.js` durchgelaufen: 21 Artikel gebaut, `blog/index.html`, `sitemap.xml`
+  (23 `<loc>`-Einträge) und die 3 Blog-Teaser-Cards auf der Startseite automatisch aktualisiert.
+  17 gebrandete SVG-Platzhalterbilder erzeugt (Nic ersetzt sie durch echte Fotos — Bildauswahl
+  macht Nic selbst).
+- Verifiziert: `posts.json` per `json.loads()` validiert (21 Posts, keine doppelten Slugs,
+  alle Pflichtfelder da), alle 21 generierten Artikel-Seiten enthalten gültiges JSON-LD
+  (Article/BlogPosting + BreadcrumbList + FAQPage) und keine unausgefüllten `{{...}}`-Platz-
+  halter, `sitemap.xml` mit `xmllint` validiert. Stichprobe im Browser (ein Artikel): lädt
+  fehlerfrei, Konsole leer, Inhaltsverzeichnis/FAQ/Meta-Zeile korrekt gerendert.
+- **Deliverable:** `nicworks-seo-blogplan.docx` — Word-Datei mit SEO-Keywords, Title, Meta-
+  Description, Inhaltsverzeichnis, FAQ und Schema-Hinweis für alle 21 Beiträge plus die
+  Startseiten-Keyword-Strategie, an Nic geschickt.
+- **Nicht angefasst:** `datenschutz.html`/`impressum.html`, ProteinUp/Portfolio-Bereich,
+  alles außerhalb `live/`.
+
+## Geplante Blog-Artikel — Status 2026-09-11: umgesetzt (siehe Hotfix oben)
+
+Der ursprüngliche 20-Themen-Plan unten (Tattoo/Cannabis/Künstler/„Weitere Nischen") war die
+erste Grobplanung vom 2026-08-19-Einfrieren. Er ist durch den Hotfix oben ersetzt: alle 20
+Themenplätze sind jetzt tatsächlich geschriebene, live gebaute Artikel in `blog/posts.json` +
+`blog/content/*.html` (nicht mehr nur Stichpunkte mit `[ ] Artikel generieren`). Die konkrete,
+aktuelle Themenliste inkl. URLs, Keywords und FAQ steht in `nicworks-seo-blogplan.docx` sowie
+direkt in `blog/posts.json`. Dieser Abschnitt bleibt nur noch als Archiv der ursprünglichen
+Stichpunkt-Ideen stehen, falls einzelne Nischen-Angles (Monetarisierungs-Framing wie „5x mehr
+verdienen") für spätere Artikel nochmal als Inspiration gebraucht werden.
+
+<details>
+<summary>Ursprüngliche Stichpunkt-Planung vom 2026-08-19 (archiviert, nicht mehr aktuell)</summary>
+
 ## Geplante Blog-Artikel (20 Themen) — Fokus: Schnelles Geldverdienen, Nischen, AI-lösbar
 
 ### TO DO: 20 Blog-Artikel generieren (Seed-Content für wöchentliche Auto-Publication)
@@ -592,32 +665,23 @@ Strategischer Fokus: **Tattoo-Studios, Cannabis Clubs, Künstler + weitere Nisch
     - [ ] Artikel generieren
     - [ ] FAQ + Schema
 
----
+</details>
 
-### Nächste Schritte (Sequential)
+### Nächste Schritte
 
-1. **Artikel für alle 20 Themen generieren** (jeweils ~400-600 Wörter reines Body-HTML)
-   - Inputs: posts.json (Metadaten), blog/content/*.html (Artikel-Bodies)
-   - Generierung: `build-blog.js` (liest JSON + Bodies, schreibt HTML + Schemas)
-   
-2. **FAQ-Section pro Artikel** (mind. 3-5 Q&A aus posts.json `faq`-Array)
-   - FAQPage JSON-LD-Schema automatisch generiert von build-blog.js
-   - Sichtbar in `blog/_template.html` unter `{{FAQ_HTML}}` Platzhalter
-   
-3. **Sitemap.xml aktualisieren** (build-blog.js macht das automatisch)
-   - Alle 20 `/blog/posts/<slug>.html` URLs hinzufügen
-   - Priority 0.7, changefreq yearly für Artikel
-   - `/blog/` selbst: priority 1.0, changefreq weekly
-
+1. ~~Artikel für alle 20 Themen generieren~~ ✅ erledigt 2026-09-11 — 21 Artikel live (20 Nischen-Themen + 1 Cornerstone), siehe Hotfix oben.
+2. ~~FAQ-Section pro Artikel~~ ✅ erledigt — FAQPage-JSON-LD automatisch generiert von `build-blog.js` aus `posts.json`.
+3. ~~Sitemap.xml aktualisieren~~ ✅ erledigt automatisch von `build-blog.js` (23 `<loc>`-Einträge, inkl. Image-Sitemap pro Artikel).
 4. **GitHub Secrets bereitstellen** (Nic muss das machen)
    - `STRATO_FTP_SERVER`, `STRATO_FTP_USERNAME`, `STRATO_FTP_PASSWORD`
    - Danach: Auto-Deploy per `git push` aktiv
-   
+
 5. **GitHub PAT für wöchentliche Trigger** (Nic bereitstellen)
    - Fine-grained PAT (nur Portfolio_Page_26_Live, Contents R/W)
    - Dann: wöchentlicher Trigger einrichten für automatische Artikel-Generierung
-   
+
 6. **Deploy & Verifikation**
    - Nach erstem Auto-Deploy prüfen: `/blog/`, `/blog/posts/*.html`, Fonts, CSS laden korrekt
-   - Google Search Console: Blog-URLs crawl-ready machen
-
+   - Google Search Console: Blog-URLs crawl-ready machen, neue Sitemap einreichen
+   - Echte Fotos für die 17 neuen Artikel liefern (ersetzen die SVG-Platzhalter in `blog/img/`,
+     Bildauswahl macht Nic) — Dateiname nach `blog/img/` legen + `image` in `posts.json` setzen
