@@ -73,7 +73,7 @@ body{
 }
 .light body, :root:not(.dark) body{ background-image:none; }
 
-h1,h2,h3,h4{font-family:Assignate,Fraunces,serif; margin:0; font-weight:700; letter-spacing:.005em}
+h1,h2,h3,h4{font-family:'JetBrains Mono',monospace; margin:0; font-weight:700; letter-spacing:.005em}
 a{color:var(--amber-text); text-decoration:none}
 a:hover{text-decoration:underline}
 img{max-width:100%; height:auto; display:block}
@@ -104,9 +104,21 @@ body>*{position:relative; z-index:1}
 .blog-header .wrap{max-width:1000px; display:flex; align-items:center; justify-content:space-between; gap:16px}
 .blog-brand{font-family:Assignate,sans-serif; font-weight:700; letter-spacing:.02em; font-size:16px; color:var(--text)}
 .blog-brand span{color:var(--amber-text)}
-.blog-nav{display:flex; align-items:center; gap:20px; font-family:'JetBrains Mono',monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:.06em}
-.blog-nav a{color:var(--text-dim)}
-.blog-nav a:hover, .blog-nav a.active{color:var(--amber-text)}
+/* ---------- Blog-Nav: 1:1 vom .side-nav-item der Startseite uebernommen
+   (gleiche Typografie/Farb-/Hover-/Active-Zustaende, nur andere Anordnung -
+   die Blog-Seiten haben eine klassische Sticky-Top-Header statt der
+   Fixed-Bottom-Pill-Nav der Startseite, da hier keine einzelne lange
+   Scroll-Seite vorliegt). Feedback Nic 2026-09-12. */
+.blog-nav{display:flex; align-items:center; gap:clamp(14px,2vw,26px)}
+.blog-nav a{
+  position:relative; display:inline-flex; align-items:center; padding-left:0;
+  font-family:'JetBrains Mono',monospace; font-weight:300;
+  font-size:calc(var(--fs-scale, 1) * 10.5px); letter-spacing:.09em; text-transform:uppercase;
+  color:var(--text-dim); text-decoration:none; white-space:nowrap;
+  transition:color .35s, padding-left .35s, text-shadow .35s;
+}
+@media (hover:hover){ .blog-nav a:hover{ color:var(--text); padding-left:8px; } }
+.blog-nav a.active{ color:var(--amber-text); padding-left:8px; text-shadow:0 0 10px var(--glow); }
 .theme-toggle{
   appearance:none; border:1px solid var(--border); background:var(--glass); color:var(--text-dim);
   width:34px; height:34px; border-radius:999px; cursor:pointer; display:grid; place-items:center;

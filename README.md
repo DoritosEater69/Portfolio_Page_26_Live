@@ -424,6 +424,27 @@ protokolliert.
 
 ---
 
+## Hotfix — 2026-09-12: Blog-Überschriften ohne Sonderschrift + Nav 1:1 von der Startseite
+
+- **Überschriften (`blog/style.css`):** die globale Basisregel `h1,h2,h3,h4{font-family:
+  Assignate,Fraunces,serif}` lief auf Artikel-H1, In-Body-H2/H3, CTA-`h3`, „Häufige Fragen"-
+  `h2` sowie die Post-Card-`h2`/`h3` (Blog-Index + „Weiterlesen") — überall dieselbe
+  Editorial-Serife. Feedback Nic: „nicht die special Schrift, nimm die aus den Eyebrows."
+  Umgestellt auf `'JetBrains Mono',monospace` (identisch zu `.eyebrow`/`.article-kicker`).
+  Bewusst unangetastet, weil keine `<h1>`–`<h4>`: `.article-standfirst` (Lead-Absatz),
+  `.article-body blockquote` (Zitat) — beide bleiben Fraunces, das sind keine Überschriften.
+- **Nav (`.blog-nav`):** 1:1 die Typografie/Farb-/Hover-/Active-Zustände von `.side-nav-item`
+  der Startseite übernommen (JetBrains Mono, `font-weight:300`, 10.5px, `letter-spacing:.09em`,
+  `text-dim` → bei Hover `padding-left:8px` + hellere Farbe, aktive Seite amber mit
+  `text-shadow:0 0 10px var(--glow)`) — Menüpunkte (Start/Blog/Kontakt) unverändert. Bewusst
+  **nicht** übernommen: die `position:fixed; bottom:20px`-Pille der Startseite — die passt zur
+  langen Single-Scroll-Seite dort, nicht zur klassischen Sticky-Top-Header-Struktur der
+  Blog-Seiten (kurze Einzelartikel). Blog behält seinen Sticky-Top-Header, nur die
+  Item-Optik ist jetzt identisch.
+- Verifiziert im Browser (lokaler Server): Artikel-H1 + In-Body-H2 + Blog-Index-Cards jetzt
+  JetBrains Mono, Nav sieht identisch zur Startseite aus. Kein Rebuild nötig (`style.css` wird
+  direkt ausgeliefert, `build-blog.js` fasst es nicht an).
+
 ## Hotfix — 2026-09-11: SEO-Keyword-Erweiterung + 17 neue Blogartikel (20-Themen-Plan umgesetzt)
 
 Auf Wunsch Nic: Sichtbarkeit für ein konkretes Keyword-Cluster aufbauen (Remote Webdesigner,
