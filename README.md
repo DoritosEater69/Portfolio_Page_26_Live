@@ -558,6 +558,18 @@ Assignate/Fraunces für die wenigen Editorial-Headlines, Roboto/Inter als Body-F
   kollidierender SVG-Schrift), TOC bleibt beim Scrollen sichtbar stehen, FAQ/Kontakt/„Weitere
   Beiträge" (3 nebeneinander) korrekt gerendert, Konsole auf `/blog/` und Artikelseite leer.
 
+## Hotfix — 2026-09-11 (4): ProteinUp-Download-Button entfernt
+
+- `#proteinup-outro` enthielt einen Button „Noch nicht genug? Lad's dir runter." (Link auf
+  eine Google-Drive-PDF der ProteinUp-Case-Study). Auf Wunsch Nic entfernt — bei **allen drei**
+  Portfolio-Varianten (`live/`, `bewerbung/`, `creative/`), da identisches Markup.
+- Die `<section id="proteinup-outro">` bleibt als leerer Spacer stehen (trägt
+  `padding-top:100px` — sorgt weiterhin für den Abstand vor dem Stecker/CD-Bereich), nur
+  Button + Wrapper-Div sind raus. `.btn-solid`-CSS bleibt (generische, wiederverwendbare
+  Klasse, in `bewerbung/`/`creative/` an anderer Stelle noch aktiv genutzt).
+- Verifiziert im Browser: Section jetzt leer (0 Kind-Elemente), Höhe weiterhin 100px durch
+  das Padding, keine Konsolenfehler.
+
 ## Geplante Blog-Artikel — Status 2026-09-11: umgesetzt (siehe Hotfix oben)
 
 Der ursprüngliche 20-Themen-Plan unten (Tattoo/Cannabis/Künstler/„Weitere Nischen") war die
