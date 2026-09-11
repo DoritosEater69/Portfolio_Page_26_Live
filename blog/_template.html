@@ -62,34 +62,37 @@
 
 <article class="post">
 
-  <div class="article-header reveal">
-    <nav class="breadcrumb" aria-label="Brotkrümelnavigation">
-      <a href="/">Start</a> / <a href="/blog/">Blog</a> / <span>{{TITLE_SHORT}}</span>
-    </nav>
-    <p class="article-kicker">{{KICKER}}</p>
-    <h1>{{H1}}</h1>
-    <p class="article-standfirst">{{STANDFIRST}}</p>
-    <div class="article-meta">
-      <span class="byline">Von <a href="/#footer-area" rel="author">Niclas Koch</a></span>
-      <span>Veröffentlicht am <time datetime="{{PUBLISH_DATE}}">{{PUBLISH_DATE_HUMAN}}</time></span>
-      {{UPDATED_LINE}}
-      <span>{{READ_TIME}} Lesezeit</span>
+  <div class="article-hero-banner{{HERO_PLACEHOLDER_CLASS}} reveal">
+    <img class="article-hero-banner-img" src="{{HERO_IMG}}" alt="{{HERO_ALT}}" width="{{HERO_W}}" height="{{HERO_H}}" fetchpriority="high" decoding="async">
+    <div class="article-hero-banner-scrim" aria-hidden="true"></div>
+    <div class="article-hero-banner-content">
+      <nav class="breadcrumb" aria-label="Brotkrümelnavigation">
+        <a href="/">Start</a> / <a href="/blog/">Blog</a> / <span>{{TITLE_SHORT}}</span>
+      </nav>
+      <p class="article-kicker">{{KICKER}}</p>
+      <h1>{{H1}}</h1>
+      <p class="article-standfirst">{{STANDFIRST}}</p>
+      <div class="article-meta">
+        <span class="byline">Von <a href="/#footer-area" rel="author">Niclas Koch</a></span>
+        <span>Veröffentlicht am <time datetime="{{PUBLISH_DATE}}">{{PUBLISH_DATE_HUMAN}}</time></span>
+        {{UPDATED_LINE}}
+        <span>{{READ_TIME}} Lesezeit</span>
+      </div>
     </div>
-  </div>
-
-  <div class="article-hero reveal">
-    <figure>
-      <img src="{{HERO_IMG}}" alt="{{HERO_ALT}}" width="{{HERO_W}}" height="{{HERO_H}}" fetchpriority="high" decoding="async">
-      {{HERO_FIGCAPTION}}
-    </figure>
+    {{HERO_FIGCAPTION}}
   </div>
 
   {{TLDR_HTML}}
 
-  {{TOC_HTML}}
-
-  <div class="article-body">
+  <div class="article-layout{{ARTICLE_LAYOUT_CLASS}}">
+    <aside class="article-toc-col">
+      {{TOC_HTML}}
+    </aside>
+    <div class="article-main-col">
+      <div class="article-body">
 {{ARTICLE_BODY}}
+      </div>
+    </div>
   </div>
 
   {{FAQ_HTML}}
@@ -113,7 +116,7 @@
   </aside>
 
   <div class="related reveal">
-    <h2>Weiterlesen</h2>
+    <h2>Weitere Beiträge</h2>
     <div class="related-grid">
       {{RELATED_POSTS_HTML}}
     </div>

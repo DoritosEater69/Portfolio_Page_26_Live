@@ -62,7 +62,7 @@ html{scroll-behavior:smooth}
 body{
   margin:0;
   background:var(--bg); color:var(--text);
-  font-family:Roboto,Inter,system-ui,sans-serif;
+  font-family:Roboto,Inter,sans-serif;
   font-size:calc(var(--fs-scale) * 17px); line-height:1.7;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   overflow-x:hidden;
@@ -102,7 +102,7 @@ body>*{position:relative; z-index:1}
   backdrop-filter:blur(12px) saturate(140%); -webkit-backdrop-filter:blur(12px) saturate(140%);
 }
 .blog-header .wrap{max-width:1000px; display:flex; align-items:center; justify-content:space-between; gap:16px}
-.blog-brand{font-family:Assignate,sans-serif; font-weight:700; letter-spacing:.02em; font-size:16px; color:var(--text)}
+.blog-brand{font-family:Assignate,Fraunces,serif; font-weight:700; letter-spacing:.02em; font-size:16px; color:var(--text)}
 .blog-brand span{color:var(--amber-text)}
 /* ---------- Blog-Nav: 1:1 vom .side-nav-item der Startseite uebernommen
    (gleiche Typografie/Farb-/Hover-/Active-Zustaende, nur andere Anordnung -
@@ -175,14 +175,52 @@ body>*{position:relative; z-index:1}
 .post-card .post-tags{margin-top:14px; display:flex; gap:6px; flex-wrap:wrap}
 
 /* ---------- Artikel ---------- */
-.post{max-width:760px; margin:0 auto}
-.article-header{margin:60px auto 8px; padding:0 24px}
+.post{max-width:none; margin:0 auto}
+
+/* Hero-Banner: Bild als Hintergrund, Breadcrumb/Kicker/H1/Standfirst/Meta als Overlay.
+   Feedback Nic 2026-09-12: "oben Hero-Background-Image, Schrift drin". Scrim-Gradient
+   ueber color-mix(--bg) statt fester Farbe, damit er in Light/Dark automatisch passt
+   (gleiche Technik wie .blog-header). */
+.article-hero-banner{
+  position:relative; margin:0 0 8px; min-height:clamp(420px, 58vh, 620px);
+  display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; background:var(--bg-2);
+}
+.article-hero-banner-img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
+}
+/* Platzhalter-SVGs tragen selbst schon einen Titel-Text eingebrannt (fuer Card-Thumbnails/
+   OG-Bild gedacht) - als Hero-Hintergrund wuerde der mit dem echten H1-Overlay kollidieren.
+   .is-placeholder (von build-blog.js aus hero.placeholder gesetzt) blendet die SVG hier komplett
+   aus und zeigt stattdessen nur noch die dekorativen Amber/Rost-Farbkreise als CSS-Gradient -
+   keine doppelte/kollidierende Schrift mehr. Sobald Nic ein echtes Foto einsetzt, verschwindet
+   die Klasse automatisch (hero.placeholder wird dann false) und das Foto zeigt normal. */
+.article-hero-banner.is-placeholder .article-hero-banner-img{ opacity:0; }
+.article-hero-banner.is-placeholder{
+  background:
+    radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--amber) 16%, transparent), transparent 55%),
+    radial-gradient(circle at 10% 95%, color-mix(in srgb, var(--rust) 12%, transparent), transparent 50%),
+    var(--bg-2);
+}
+.article-hero-banner-scrim{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(180deg,
+    color-mix(in srgb, var(--bg) 10%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 55%, transparent) 55%,
+    color-mix(in srgb, var(--bg) 95%, transparent) 100%);
+}
+.article-hero-banner-content{position:relative; z-index:2; width:100%; max-width:1000px; margin:0 auto; padding:56px 24px 40px}
+.article-hero-banner-caption{
+  position:relative; z-index:2; align-self:flex-end; display:inline-block; margin:0 24px 14px 0;
+  font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-dim);
+  text-transform:uppercase; letter-spacing:.04em; background:var(--glass); border:1px solid var(--border);
+  border-radius:999px; padding:5px 12px; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+}
 .breadcrumb{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--text-dim);
   letter-spacing:.04em; margin-bottom:22px}
 .breadcrumb a{color:var(--text-dim)}
 .breadcrumb a:hover{color:var(--amber-text)}
 .breadcrumb span{opacity:.7}
-.article-header h1{
+.article-hero-banner-content h1{
   font-size:clamp(calc(var(--fs-scale)*28px), calc(var(--fs-scale)*4.6vw), calc(var(--fs-scale)*42px));
   line-height:1.12; margin:0 0 18px;
 }
@@ -197,15 +235,6 @@ body>*{position:relative; z-index:1}
 }
 .article-meta .byline a{color:var(--text-dim); text-decoration:underline}
 .article-meta .byline a:hover{color:var(--amber-text)}
-
-/* Hero-Bild */
-.article-hero{max-width:1000px; margin:28px auto 0; padding:0 24px}
-.article-hero figure{margin:0; border-radius:18px; overflow:hidden; border:1px solid var(--border); background:var(--bg-2)}
-.article-hero img{width:100%; aspect-ratio:1200/630; object-fit:cover}
-.article-hero figcaption{
-  font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-dim);
-  text-transform:uppercase; letter-spacing:.04em; padding:10px 4px 0;
-}
 
 /* TL;DR */
 .tldr{max-width:760px; margin:32px auto 8px; padding:0 24px}
@@ -222,8 +251,19 @@ body>*{position:relative; z-index:1}
 .tldr li{margin-bottom:9px; color:var(--text)}
 .tldr li:last-child{margin-bottom:0}
 
-/* Inhaltsverzeichnis */
-.toc{max-width:760px; margin:26px auto 8px; padding:0 24px}
+/* Zweispaltiges Lese-Layout: links 30% Inhaltsverzeichnis (sticky), rechts 70% Content.
+   Feedback Nic 2026-09-12. .no-toc (von build-blog.js gesetzt, wenn <3 H2 -> kein TOC)
+   faellt auf eine Spalte zurueck, statt eine leere 30%-Spalte stehen zu lassen. */
+.article-layout{
+  max-width:1000px; margin:0 auto; padding:0 24px;
+  display:grid; grid-template-columns:30% 1fr; gap:40px; align-items:start;
+}
+.article-layout.no-toc{grid-template-columns:1fr}
+.article-layout.no-toc .article-toc-col{display:none}
+.article-toc-col{position:sticky; top:86px}
+
+/* Inhaltsverzeichnis (jetzt in der linken Spalte, kein eigenes max-width/margin mehr) */
+.toc{margin:26px 0 8px; padding:0}
 .toc-inner{border:1px solid var(--border); border-radius:14px; background:var(--glass); padding:18px 22px}
 .toc-title{font-family:'JetBrains Mono',monospace; font-size:11.5px; text-transform:uppercase;
   letter-spacing:.08em; color:var(--text-dim); margin:0 0 10px}
@@ -232,8 +272,8 @@ body>*{position:relative; z-index:1}
 .toc a{color:var(--text-dim)}
 .toc a:hover{color:var(--amber-text)}
 
-/* Body */
-.article-body{max-width:760px; margin:30px auto 48px; padding:0 24px; font-size:calc(var(--fs-scale)*17px)}
+/* Body (jetzt in der rechten Spalte, kein eigenes max-width/margin mehr) */
+.article-body{margin:30px 0 8px; padding:0; font-size:calc(var(--fs-scale)*17px)}
 .article-body>h2{
   font-size:calc(var(--fs-scale)*27px); margin:48px 0 14px; line-height:1.2; scroll-margin-top:96px;
 }
@@ -294,14 +334,14 @@ body>*{position:relative; z-index:1}
   box-shadow:0 8px 32px rgb(0 0 0 / calc(.3 * var(--shadow-a)));
 }
 .author-box img{width:76px; height:76px; border-radius:50%; object-fit:cover; flex-shrink:0; border:1px solid var(--border)}
-.author-box-name{font-family:Assignate,Fraunces,serif; font-weight:700; font-size:calc(var(--fs-scale)*18px); margin:0 0 6px}
+.author-box-name{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:calc(var(--fs-scale)*18px); margin:0 0 6px}
 .author-box-bio{margin:0 0 10px; color:var(--text-dim); font-size:calc(var(--fs-scale)*14px)}
 .author-box a{font-family:'JetBrains Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em}
 
 /* verwandte Beiträge / Cluster */
 .related{max-width:760px; margin:0 auto 40px; padding:0 24px}
 .related h2{font-size:calc(var(--fs-scale)*18px); margin:0 0 16px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.05em; font-family:'JetBrains Mono',monospace; font-weight:500}
-.related-grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.related-grid{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
 .related .post-card{padding:20px}
 .related .post-card h3{font-size:calc(var(--fs-scale)*16px); margin:0 0 8px; color:var(--text); line-height:1.3}
 .related .post-card p{margin:0; color:var(--text-dim); font-size:calc(var(--fs-scale)*13.5px)}
@@ -322,9 +362,19 @@ footer.blog-footer{
 footer.blog-footer a{color:var(--text-dim); margin:0 8px}
 footer.blog-footer a:hover{color:var(--amber-text)}
 
+/* Zweispalten-Layout (TOC links/Content rechts) faellt unterhalb 860px auf eine Spalte
+   zurueck - TOC steht dann normal ueber dem Content statt sticky daneben. */
+@media (max-width:860px){
+  .article-layout{grid-template-columns:1fr; gap:24px}
+  .article-toc-col{position:static; top:auto}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+}
+
 @media (max-width:600px){
   body{font-size:calc(var(--fs-scale)*16px)}
   .blog-hero{margin:40px auto 30px}
-  .article-header{margin:40px auto 8px}
   .blog-nav{gap:14px; font-size:11.5px}
+  .article-hero-banner{min-height:clamp(320px, 52vh, 460px)}
+  .article-hero-banner-content{padding:32px 20px 28px}
+  .related-grid{grid-template-columns:1fr}
 }

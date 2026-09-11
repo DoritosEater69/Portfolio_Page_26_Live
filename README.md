@@ -424,7 +424,7 @@ protokolliert.
 
 ---
 
-## Hotfix — 2026-09-12: Blog-Überschriften ohne Sonderschrift + Nav 1:1 von der Startseite
+## Hotfix — 2026-09-11 (2): Blog-Überschriften ohne Sonderschrift + Nav 1:1 von der Startseite
 
 - **Überschriften (`blog/style.css`):** die globale Basisregel `h1,h2,h3,h4{font-family:
   Assignate,Fraunces,serif}` lief auf Artikel-H1, In-Body-H2/H3, CTA-`h3`, „Häufige Fragen"-
@@ -503,6 +503,60 @@ Büro/Agentur", zusätzliches Einkommen über Design-Nebenprojekte.
   Startseiten-Keyword-Strategie, an Nic geschickt.
 - **Nicht angefasst:** `datenschutz.html`/`impressum.html`, ProteinUp/Portfolio-Bereich,
   alles außerhalb `live/`.
+
+## Hotfix — 2026-09-11 (3): Blog-Schriftarten-Audit + Artikel-Template-Umbau (Hero-Banner, 2-Spalten-Layout)
+
+Feedback Nic: „Check im Blogbereich bitte alle Schriftarten, die dürfen nicht von Startseite
+abweichen" + „Template umbauen — oben Hero-Background-Image mit Schrift drin ... darunter
+links 30% Inhaltsverzeichnis sticky / rechts 70% Content, danach FAQ 100%, Kontaktbereich mit
+"Niclas Koch" in Eyebrow-Schriftart, 'Weiterlesen' → 'Weitere Beiträge', 3 Beiträge nebeneinander".
+
+**Schriftarten-Audit** (`blog/style.css` gegen `index.html` @font-face + alle `font-family:`-
+Vorkommen diffed): zwei echte Abweichungen gefunden und behoben, alles andere war schon
+identisch (JetBrains Mono für Eyebrows/Meta/Nav, Fraunces für Standfirst/Blockquote,
+Assignate/Fraunces für die wenigen Editorial-Headlines, Roboto/Inter als Body-Fallback):
+- `body{font-family:Roboto,Inter,system-ui,sans-serif}` → `Roboto,Inter,sans-serif` (die
+  Startseite hat kein `system-ui` im Stack, war eine Blog-eigene Ergänzung).
+- `.blog-brand{font-family:Assignate,sans-serif}` → `Assignate,Fraunces,serif` (Startseite
+  nutzt für Assignate-Elemente durchgängig `Assignate,Fraunces,serif` als Fallback-Kette).
+- `'Youth Signature'` (Startseite: `.footer-signature`, riesige Cursiv-Unterschrift im
+  Footer) ist im Blog bewusst **nicht** nachgezogen — dafür gibt es im Blog aktuell keine
+  Entsprechung, kein `@font-face` dafür geladen (kein unnötiger Font-Download).
+
+**Artikel-Template (`blog/_template.html` + `blog/style.css` + `build-blog.js`):**
+- **Hero-Banner:** Breadcrumb/Kicker/H1/Standfirst/Meta liegen jetzt als Overlay auf dem
+  Beitragsbild (`.article-hero-banner`, Bild `position:absolute` + Scrim-Gradient aus
+  `color-mix(in srgb, var(--bg) …%, transparent)` — dieselbe Technik wie `.blog-header`,
+  daher automatisch Light/Dark-konsistent ohne eigene Override-Regel). Ersetzt die bisherige
+  Reihenfolge (Text-Block, dann separate Bildbox darunter).
+  - **Platzhalter-SVG-Problem gefunden + gefixt:** die SVG-Platzhalter tragen selbst schon
+    Titel-Text eingebrannt (für Card-Thumbnails/OG-Bild gedacht) — als Hero-Hintergrund kollidierte
+    der sichtbar mit dem echten H1-Overlay (doppelte, versetzte Schrift, siehe Screenshot-Check).
+    Neue Klasse `.is-placeholder` (von `build-blog.js` aus `hero.placeholder` gesetzt): blendet
+    die SVG komplett aus, zeigt stattdessen nur zwei dezente Amber-/Rost-Radialgradienten als
+    Textur. Verschwindet automatisch, sobald Nic ein echtes Foto einträgt (`hero.placeholder`
+    wird dann `false`).
+  - `{{HERO_FIGCAPTION}}` war ein `<figcaption>` außerhalb eines `<figure>` (ungültiges HTML
+    nach dem Umbau) → auf `<span class="article-hero-banner-caption">` umgestellt, als kleines
+    Badge unten rechts im Banner.
+- **Zweispaltiges Lese-Layout:** neuer Wrapper `.article-layout` (Grid `30% 1fr`) mit
+  `.article-toc-col` (`position:sticky; top:86px`, unter der Sticky-Header-Höhe) links und
+  `.article-main-col` (Artikel-Body) rechts. Fällt bei `≤860px` auf eine Spalte zurück
+  (TOC dann normal im Textfluss, nicht mehr sticky). Neue Klasse `.no-toc`
+  (`build-blog.js`: gesetzt, wenn `headings.length < 3`, also wenn `renderToc()` ohnehin
+  nichts ausgibt) verhindert eine leere 30%-Spalte bei künftigen kurzen Artikeln — aktuell
+  betrifft das keinen der 21 Beiträge (alle haben 4–5 H2).
+- FAQ, CTA-Box und Autoren-Box bleiben **außerhalb** von `.article-layout`, also weiterhin
+  volle Breite unter dem Zweispalten-Bereich.
+- `.author-box-name` („Niclas Koch" im Kontaktbereich): `Assignate,Fraunces,serif` →
+  `'JetBrains Mono',monospace` (Eyebrow-Schriftart, wie gewünscht).
+- „Weiterlesen" → „Weitere Beiträge"; `.related-grid` von `repeat(auto-fit,minmax(230px,1fr))`
+  auf explizit `repeat(3,1fr)` (Desktop), `repeat(2,1fr)` bei `≤860px`, `1fr` bei `≤600px`.
+- `node build-blog.js` erneut durchgelaufen (alle 21 Artikel neu gebaut), keine unausgefüllten
+  `{{...}}`-Platzhalter, alle JSON-LD-Blöcke weiterhin valide.
+- Verifiziert im Browser: Hero-Banner mit Overlay-Text sauber lesbar (Platzhalter-Textur statt
+  kollidierender SVG-Schrift), TOC bleibt beim Scrollen sichtbar stehen, FAQ/Kontakt/„Weitere
+  Beiträge" (3 nebeneinander) korrekt gerendert, Konsole auf `/blog/` und Artikelseite leer.
 
 ## Geplante Blog-Artikel — Status 2026-09-11: umgesetzt (siehe Hotfix oben)
 
