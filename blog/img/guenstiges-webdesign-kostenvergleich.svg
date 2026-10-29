@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Kostenvergleich: handgebaute Website mit Einmalpreis gegen Baukasten mit monatlichem Abo über drei Jahre">
+  <rect width="1200" height="630" fill="#06060A"/>
+  <circle cx="1080" cy="120" r="260" fill="#FFE500" opacity="0.10"/>
+  <circle cx="140" cy="560" r="200" fill="#FF5C4D" opacity="0.08"/>
+  <text x="90" y="110" font-family="'JetBrains Mono',ui-monospace,monospace" font-size="24" letter-spacing="4" fill="#FFE500">PLATZHALTER</text>
+  <text x="90" y="300" font-family="Georgia,'Times New Roman',serif" font-size="56" font-weight="700" fill="#F3EFE6"><tspan x="90" dy="0">Kostenvergleich: handgebaute</tspan><tspan x="90" dy="64">Website mit Einmalpreis gegen</tspan><tspan x="90" dy="64">Baukasten …</tspan></text>
+  <text x="90" y="560" font-family="'JetBrains Mono',ui-monospace,monospace" font-size="20" fill="#F3EFE6" opacity="0.55">nicworks.de/blog — hier kommt ein echtes Bild rein</text>
+</svg>

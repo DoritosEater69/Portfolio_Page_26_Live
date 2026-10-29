@@ -1,0 +1,5 @@
+# Blog versteckt: Seiten bleiben erreichbar, sollen aber nicht in Suchmaschinen landen.
+# Zum Einblenden diese Datei loeschen (und BLOG_HIDDEN in build-blog.js auf false setzen).
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow"
+</IfModule>

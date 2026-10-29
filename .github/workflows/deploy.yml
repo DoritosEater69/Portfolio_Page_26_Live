@@ -1,0 +1,48 @@
+name: Deploy to Strato (nicworks.de)
+
+# Läuft bei jedem Push auf main - laedt den aktuellen Stand von live/ automatisch
+# per FTP/FTPS auf den Strato-Webspace hoch. Die Zugangsdaten liegen als
+# verschluesselte GitHub-Secrets in DIESEM Repository (Settings -> Secrets and
+# variables -> Actions) - Claude/Nic's Automations-Session sieht sie nie im Klartext.
+#
+# Benoetigte Secrets (in GitHub selbst anlegen, s. README.md "Auto-Deploy"):
+#   STRATO_FTP_SERVER    z.B. ftp.nicworks.de (oder die von Strato genannte FTP-Adresse)
+#   STRATO_FTP_USERNAME  FTP-Benutzername aus dem Strato-Kundenmenue
+#   STRATO_FTP_PASSWORD  FTP-Passwort aus dem Strato-Kundenmenue
+#   STRATO_FTP_SERVER_DIR (optional) Zielverzeichnis auf dem Webspace, Standard "/"
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: FTPS Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.STRATO_FTP_SERVER }}
+          username: ${{ secrets.STRATO_FTP_USERNAME }}
+          password: ${{ secrets.STRATO_FTP_PASSWORD }}
+          server-dir: ${{ secrets.STRATO_FTP_SERVER_DIR || '/' }}
+          protocol: ftps
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.DS_Store
+            **/node_modules/**
+            README.md
+            GITHUB-SETUP.md
+            build-blog.js
+            font.zip
+            img.zip
+            blog/_template.html
+            blog/_index_template.html
+            blog/posts.json
+            blog/content/**

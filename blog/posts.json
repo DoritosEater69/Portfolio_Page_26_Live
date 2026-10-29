@@ -1,0 +1,484 @@
+[
+  {
+    "slug": "guenstiges-webdesign-kleine-unternehmen-2026",
+    "title": "Günstiges Webdesign für kleine Unternehmen: Worauf es 2026 wirklich ankommt",
+    "metaTitle": "Günstiges Webdesign für kleine Unternehmen: Worauf es 2026 wirklich ankommt",
+    "description": "Günstiges Webdesign heißt nicht automatisch billig gebaut. Was ein fairer Preis wirklich beinhaltet, welche Baukasten-Fallen es gibt und warum Ladezeit über Sichtbarkeit entscheidet.",
+    "standfirst": "Günstig heißt nicht billig gebaut. Dieser Überblick zeigt, was bei Webdesign ab 490 € realistisch drin ist, wo Baukästen langfristig teuer werden und warum die Ladezeit über deine Sichtbarkeit bei Google entscheidet.",
+    "date": "2026-08-16",
+    "tags": ["Günstiges Webdesign", "KMU", "Website Kosten"],
+    "readTime": "8 Min",
+    "keyTakeaways": [
+      "Eine schlanke, individuell gestaltete Website ist ab 490 € realistisch, wenn eine Person ohne Agentur-Overhead arbeitet.",
+      "Baukästen (Wix, Jimdo) sind kurzfristig billiger, kosten aber laufende Abo-Gebühren und meist Performance.",
+      "Ladezeit und Core Web Vitals wirken direkt auf Google-Ranking und Absprungrate — nicht erst \"später optimieren\".",
+      "Vor der Beauftragung klären: Wem gehört die Website, welche Technik steckt dahinter, welche laufenden Kosten entstehen?"
+    ],
+    "faq": [
+      { "q": "Was kostet eine günstige, aber professionelle Website?", "a": "Für eine schlanke, individuell gestaltete Website für ein kleines Unternehmen sind ab 490€ realistisch, wenn ein Einzelner ohne Agentur-Overhead arbeitet. Baukasten-Systeme sind günstiger, kosten dich aber laufende Abo-Gebühren und meistens Performance." },
+      { "q": "Ist eine Website vom Baukasten (Wix, Jimdo etc.) nicht auch günstig?", "a": "Kurzfristig ja, langfristig oft nicht: Baukästen verlangen monatliche Gebühren auf Dauer, laden häufig langsamer (schlechtere Core Web Vitals) und lassen sich schwerer individuell an dein Business anpassen." },
+      { "q": "Wie schnell ist eine Website fertig?", "a": "Bei einer klar umrissenen Ein- bis Mehrseiten-Website sind 1-2 Wochen von Briefing bis Live-Schaltung realistisch, wenn Inhalte (Texte, Bilder) frühzeitig vorliegen." }
+    ],
+    "dateModified": "2026-09-03"
+  },
+
+  {
+    "slug": "website-fuer-tattoo-studio-kosten",
+    "title": "Website für dein Tattoo-Studio: Was sie kosten sollte und worauf es ankommt",
+    "metaTitle": "Website für Tattoo-Studios: Kosten & worauf es beim Webdesign ankommt",
+    "description": "Eine Tattoo-Studio-Website lebt von Bildern — und genau die bremsen sie meistens aus. Worauf es bei Webdesign für Tattoo-Studios wirklich ankommt, inklusive realistischer Preise.",
+    "standfirst": "Eine Tattoo-Studio-Website lebt von Bildern — und genau die machen sie meistens langsam. Was eine gute Studio-Website enthalten muss, wie viele Fotos schnell bleiben und was das Ganze realistisch kostet.",
+    "date": "2026-08-23",
+    "tags": ["Webdesign für Tattoo-Studios", "Günstiges Webdesign"],
+    "readTime": "7 Min",
+    "keyTakeaways": [
+      "Eine bildlastige One-Pager-Website mit Galerie, Künstler-Profilen und Terminanfrage ist ab 490 € realistisch.",
+      "Portfolio nach Stil sortieren (Fineline, Realistic, Blackwork) statt endloser, unsortierter Bilderflut.",
+      "WebP/AVIF, responsive Bildgrößen und Lazy Loading halten auch viele Fotos schnell.",
+      "Instagram ersetzt keine Website: kein Google-Ranking für \"Tattoo Studio [Stadt]\", keine Kontrolle über Layout und Ladezeit."
+    ],
+    "faq": [
+      { "q": "Was kostet eine Website für ein Tattoo-Studio?", "a": "Für eine bildlastige One-Pager-Website mit Galerie, Künstler-Profilen und Terminanfrage sind ab 490€ realistisch — je nach Umfang (mehrere Künstler, Online-Buchung, Shop für Merch) steigt der Preis mit dem Funktionsumfang." },
+      { "q": "Reicht nicht einfach ein Instagram-Profil?", "a": "Instagram ist super für Reichweite, aber du hast keine Kontrolle über Algorithmus, Layout oder Google-Auffindbarkeit. Eine eigene Website rankt bei Google, lädt schneller als eine Instagram-Bio-Verlinkung und wirkt professioneller bei Erstkontakt." },
+      { "q": "Wie bleiben viele Bilder trotzdem schnell?", "a": "Mit modernen Bildformaten (WebP/AVIF), korrekten Bildgrößen pro Endgerät (responsive Bilder) und Lazy Loading — also Bilder erst laden, wenn sie tatsächlich sichtbar werden." }
+    ],
+    "dateModified": "2026-09-03"
+  },
+
+  {
+    "slug": "tattoo-studio-instagram-oder-website",
+    "title": "Tattoo-Studio: Reicht Instagram — oder braucht ihr eine Website?",
+    "metaTitle": "Tattoo-Studio: Instagram oder eigene Website? (Kosten ab 490 €)",
+    "description": "Instagram bringt Reichweite, aber keine Google-Rankings und keine Kontrolle. Warum Tattoo-Studios beides brauchen, was eine Website ab 490 € zusätzlich leistet und wie beide Kanäle zusammenarbeiten.",
+    "standfirst": "Instagram ist für Tattoo-Studios fast Pflicht — aber als einzige Online-Präsenz hat es klare Grenzen. Dieser Beitrag zeigt, was eine eigene Website ab 490 € zusätzlich bringt und wie du beide Kanäle zusammen spielst.",
+    "date": "2026-09-02",
+    "tags": ["Webdesign für Tattoo-Studios", "Instagram vs Website", "Günstiges Webdesign"],
+    "readTime": "7 Min",
+    "keyTakeaways": [
+      "Instagram gehört dir nicht: über Reichweite, Layout und Auffindbarkeit entscheidet der Algorithmus.",
+      "Nur eine eigene Website rankt bei Google für lokale Suchen wie \"Tattoo Studio [Stadt]\".",
+      "Website und Instagram zusammen: Feed einbetten, in der Bio verlinken, Anfragen übers Formular bündeln.",
+      "Eine schlanke Studio-Website mit Galerie und Terminanfrage ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Reicht für ein Tattoo-Studio nicht einfach Instagram?", "a": "Für Inspiration und Reichweite ist Instagram stark, aber du hast keine Kontrolle über Algorithmus, Layout und Google-Auffindbarkeit. Eine eigene Website rankt bei lokalen Suchen, lädt schneller als eine Link-in-Bio-Seite und wirkt beim Erstkontakt professioneller." },
+      { "q": "Was kostet eine Website für ein Tattoo-Studio?", "a": "Für eine schlanke Seite mit Galerie, Künstler-Profilen und Terminanfrage sind ab 490 € realistisch. Mit Online-Buchung, mehreren Künstlerseiten oder einem Merch-Shop steigt der Preis mit dem tatsächlichen Funktionsumfang." },
+      { "q": "Kann ich meinen Instagram-Feed auf der Website zeigen?", "a": "Ja. Der Feed lässt sich einbetten, sodass neue Arbeiten automatisch auch auf der Website erscheinen. Wichtig ist, die Einbindung technisch sauber zu lösen, damit sie die Ladezeit nicht ausbremst." },
+      { "q": "Was ist wichtiger: erst Website oder erst mehr Instagram-Follower?", "a": "Beides zahlt aufeinander ein. Die Website ist die feste Basis (Google, Kontakt, Buchung), Instagram bringt laufend neue Leute darauf. Bei knappem Budget zuerst eine schlanke Website — sie arbeitet dauerhaft, auch ohne täglichen Post." }
+    ],
+    "dateModified": "2026-09-03"
+  },
+
+  {
+    "slug": "tattoo-terminvergabe-online-website",
+    "title": "Online-Terminvergabe fürs Tattoo-Studio: Website statt Telefon-Chaos",
+    "metaTitle": "Online-Terminvergabe für Tattoo-Studios: Website statt Telefon-Chaos",
+    "description": "Ein Terminanfrage-Formular auf der Website läuft rund um die Uhr weiter. Was eine gute Online-Terminvergabe fürs Tattoo-Studio ab 490 € können muss.",
+    "standfirst": "Anrufe während der Arbeit am Kunden verpuffen auf der Mailbox. Eine Website mit strukturierter Terminanfrage nimmt Anfragen rund um die Uhr an — was sie können muss und was sie kostet.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Tattoo-Studios", "Online-Terminvergabe", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Ein strukturiertes Terminanfrage-Formular läuft rund um die Uhr, auch während der Arbeit am Kunden.",
+      "Wichtige Felder: Wunschmotiv, Größe, Wunschzeitraum, Künstler-Auswahl, optional Referenzbild-Upload.",
+      "Für die meisten Studios reicht ein Anfrageformular — ein starrer Online-Kalender passt selten zu individuellen Motiven.",
+      "Ein sauberes Anfrageformular mit Galerie und Künstler-Auswahl ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Reicht ein einfaches Kontaktformular nicht auch?", "a": "Technisch ja, aber ein generisches Kontaktformular liefert nur Fließtext. Ein strukturiertes Terminanfrage-Formular mit festen Feldern (Motiv, Größe, Wunschzeitraum) spart beim Sichten der Anfragen deutlich Zeit und wirkt professioneller." },
+      { "q": "Was kostet eine Website mit Terminanfrage fürs Tattoo-Studio?", "a": "Für Galerie, Künstler-Profile und ein strukturiertes Anfrageformular sind ab 490 € realistisch. Eine echte Kalenderbuchung mit Online-Anzahlung kostet je nach Zahlungsanbieter-Anbindung mehr." },
+      { "q": "Kann das Formular Referenzbilder annehmen?", "a": "Ja, ein Datei-Upload für Referenzbilder lässt sich problemlos einbauen — wichtig ist nur ein sauberes Limit bei Dateigröße und -typ, damit das Postfach nicht verstopft." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "tattoo-website-haeufige-fehler",
+    "title": "5 häufige Website-Fehler bei Tattoo-Studios (und wie du sie in 1 Tag behebst)",
+    "metaTitle": "5 häufige Website-Fehler bei Tattoo-Studios — und die schnelle Lösung",
+    "description": "Unsortierte Bilder, tote Kontaktformulare, riesige Fotodateien: die fünf häufigsten Website-Fehler bei Tattoo-Studios und wie sie sich in einem Tag beheben lassen.",
+    "standfirst": "Viele Tattoo-Studio-Websites verlieren Anfragen durch vermeidbare Fehler, nicht durch fehlendes Talent. Die fünf häufigsten Probleme — und die jeweils schnelle Lösung.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Tattoo-Studios", "Website Fehler", "Günstiges Webdesign"],
+    "readTime": "6 Min",
+    "keyTakeaways": [
+      "Portfolio nach Stil sortieren (Fineline, Realistic, Blackwork) statt einer unsortierten Bilderflut.",
+      "Ein totes oder generisches Kontaktformular kostet direkt Anfragen — ein strukturiertes Formular senkt die Hürde.",
+      "Unkomprimierte Fotos bremsen die Ladezeit massiv; WebP/AVIF lösen das ohne Qualitätsverlust.",
+      "Fehlendes technisches SEO-Grundgerüst verhindert Sichtbarkeit bei \"Tattoo Studio [Stadt]\", auch bei starkem Design."
+    ],
+    "faq": [
+      { "q": "Welcher Fehler kostet am meisten Anfragen?", "a": "Meist eine Kombination aus unsortiertem Portfolio und fehlender oder toter Terminanfrage — Interessenten finden nicht, wonach sie suchen, und haben keinen einfachen Weg, Kontakt aufzunehmen." },
+      { "q": "Lassen sich diese Fehler wirklich in einem Tag beheben?", "a": "Bei einer bereits bestehenden Website ja — Portfolio neu sortieren, Formular reparieren und Bilder komprimieren sind überschaubare, klar abgrenzbare Aufgaben ohne kompletten Website-Neubau." },
+      { "q": "Wie finde ich heraus, ob meine Website zu langsam lädt?", "a": "Kostenlose Tools wie Google PageSpeed Insights zeigen konkrete Ladezeit-Werte und benennen die größten Bremsen, meist unkomprimierte Bilder." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "taetowierer-portfolio-website-freelancer",
+    "title": "Website für Tätowierer: Eigenes Portfolio statt nur Studio-Seite",
+    "metaTitle": "Website für Tätowierer: Eigenes Portfolio-Website ab 490 €",
+    "description": "Gastspieler und wechselnde Tätowierer brauchen eine eigene, personenbezogene Website statt nur auf der Studio-Seite mitzulaufen. Was sie enthalten sollte und was sie kostet.",
+    "standfirst": "Wer als Tätowierer zwischen Studios wechselt oder als Gast arbeitet, braucht eine Website, die mit einem mitzieht — unabhängig vom aktuellen Studio. So sieht eine sinnvolle Umsetzung ab 490 € aus.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Tätowierer", "Webdesign für Tattoo-Studios", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Eine Studio-Website zeigt mehrere Artists gemeinsam — der eigene Stil geht oft unter, und beim Studiowechsel verschwindet das Portfolio.",
+      "Eine eigene Website gehört dauerhaft dir, unabhängig davon, wo du gerade arbeitest oder als Gast tätowierst.",
+      "Wichtig: sortiertes Portfolio, aktuelle Gastspiel-Standorte, direkter Kontaktweg, kurze persönliche Vorstellung.",
+      "Eine schlanke Ein-Personen-Portfolio-Seite ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Warum reicht die Website des Studios nicht aus?", "a": "Auf einer Studio-Website läuft dein Portfolio meist gemeinsam mit anderen Artists — dein Stil geht in der Masse unter, und beim Studiowechsel verschwindet dein bisheriges Portfolio von der Seite." },
+      { "q": "Was sollte auf einer Tätowierer-Portfolio-Seite stehen?", "a": "Ein nach Stil sortiertes Portfolio, aktuelle Standorte bzw. Gastspiele, ein direkter Kontaktweg unabhängig vom Studio und eine kurze persönliche Vorstellung mit Spezialisierung." },
+      { "q": "Was kostet eine eigene Portfolio-Seite als Tätowierer?", "a": "Da eine einzelne Portfolio-Seite schlanker ist als eine volle Studio-Website mit mehreren Künstler-Profilen, ist sie meist am unteren Ende der Preisspanne realistisch: ab 490 €." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "tattoo-studio-google-my-business-lokale-suche",
+    "title": "Tattoo-Studio bei Google finden: Website + lokale Suche richtig nutzen",
+    "metaTitle": "Tattoo-Studio lokal bei Google gefunden werden: Website & Google-Profil",
+    "description": "Wer \"Tattoo Studio [Stadt]\" sucht, landet zuerst in der Google-Kartenansicht. Wie Website und Google Business Profil zusammenspielen müssen, um dort sichtbar zu sein.",
+    "standfirst": "Ohne eigene Website mit sauberer lokaler Anbindung bleibt die Google-Kartenansicht für dein Studio leer. Was für lokale Sichtbarkeit bei Tattoo-Studios wirklich zählt.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Tattoo-Studios", "Lokales SEO", "Günstiges Webdesign"],
+    "readTime": "6 Min",
+    "keyTakeaways": [
+      "Lokale Google-Suche (\"Tattoo Studio [Stadt]\") ist für Tattoo-Recherche zentral, nicht nur Instagram.",
+      "Website und Google Business Profil brauchen exakt übereinstimmende Angaben (Name, Adresse, Telefon).",
+      "Ein LocalBusiness-Schema auf der Website hilft Google, Adresse und Öffnungszeiten korrekt zuzuordnen.",
+      "Technisches SEO gehört bei einer sauber gebauten Website ab 490 € zum Grundgerüst, nicht als teures Extra."
+    ],
+    "faq": [
+      { "q": "Reicht ein Google Business Profil ohne eigene Website?", "a": "Das Profil zeigt nur Basisinfos und wenige Fotos. Für ein sortiertes Portfolio, Künstler-Profile und eine Terminanfrage braucht es zusätzlich eine eigene Website — beide zusammen ergänzen sich." },
+      { "q": "Was ist ein LocalBusiness-Schema?", "a": "Strukturierte Daten im Quelltext der Website, die Google maschinenlesbar mitteilen, wo das Studio liegt, wann es geöffnet hat und wie es heißt — das unterstützt die korrekte Zuordnung in der lokalen Suche." },
+      { "q": "Was kostet eine Website mit lokalem SEO-Grundgerüst?", "a": "Eine schlanke Studio-Website mit korrekt eingebundenen lokalen Daten und Anbindung ans Google-Profil ist ab 490 € realistisch — das gehört zu einer sauber gebauten Seite dazu." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "webdesign-cannabis-social-club-deutschland",
+    "title": "Website für Cannabis Social Clubs in Deutschland: Was 2026 wichtig ist",
+    "metaTitle": "Webdesign für Cannabis Social Clubs (Anbauvereinigungen) in Deutschland",
+    "description": "Seit dem Cannabisgesetz (CanG) gibt es in Deutschland offiziell registrierte Anbauvereinigungen. Was ihre Website leisten muss — und wo rechtlich besondere Vorsicht gilt.",
+    "standfirst": "Seit dem Cannabisgesetz gibt es offiziell registrierte Anbauvereinigungen. Was ihre Website leisten muss, wo bei Werbung rechtlich besondere Vorsicht gilt und womit du bei den Kosten rechnen kannst.",
+    "date": "2026-08-30",
+    "tags": ["Webdesign für Cannabis Social Clubs", "Günstiges Webdesign"],
+    "readTime": "7 Min",
+    "keyTakeaways": [
+      "Für Mitgliederinfo, Kontakt, Vereinsstruktur und Pflichtangaben (Impressum, Datenschutz) ist eine eigene, seriöse Website sinnvoll.",
+      "Öffentliche Werbung für Konsum oder Anbau bleibt in Deutschland eingeschränkt — die Website auf sachliche Vereinsinfos beschränken. Das ist keine Rechtsberatung.",
+      "Die Kosten sind vergleichbar mit anderen kleinen Vereinen: ab 490 € für eine schlanke Informationsseite mit Kontaktformular und rechtssicheren Pflichtseiten."
+    ],
+    "faq": [
+      { "q": "Braucht ein Cannabis Social Club überhaupt eine Website?", "a": "Ja — für Mitgliederinformation, Kontakt, Vereinsstruktur und rechtlich vorgeschriebene Pflichtangaben (Impressum, Datenschutz) ist eine eigene, seriöse Website sinnvoll, unabhängig von Social-Media-Kanälen." },
+      { "q": "Darf eine Anbauvereinigung für Cannabis werben?", "a": "Hier gilt besondere Vorsicht: Öffentliche Werbung für den Konsum oder Anbau von Cannabis ist in Deutschland weiterhin eingeschränkt bzw. untersagt. Eine Website sollte sich auf sachliche Vereinsinformationen beschränken. Das ist keine Rechtsberatung — kläre die genauen Grenzen im Zweifel mit einem spezialisierten Anwalt." },
+      { "q": "Was kostet eine Website für eine Anbauvereinigung?", "a": "Vergleichbar mit anderen kleinen Vereinen/Unternehmen: ab 490 € für eine schlanke, seriöse Informationsseite mit Mitgliederbereich-Vorbereitung, Kontaktformular und rechtssicheren Pflichtseiten." }
+    ],
+    "dateModified": "2026-09-03"
+  },
+
+  {
+    "slug": "cannabis-social-club-mehr-besucher-webdesign",
+    "title": "Cannabis Social Club: Mit der richtigen Website mehr Mitglieder erreichen",
+    "metaTitle": "Cannabis Social Club Website: Lokale Sichtbarkeit für Anbauvereinigungen",
+    "description": "Viele Anbauvereinigungen nach dem CanG sind online kaum sichtbar. Wie eine seriöse Website und lokale Auffindbarkeit dabei helfen, ohne gegen Werbebeschränkungen zu verstoßen.",
+    "standfirst": "Das CanG ist neu, die meisten Anbauvereinigungen haben noch keine durchdachte Online-Präsenz. Wie First-Mover-Vorteil, lokale Sichtbarkeit und rechtssichere Inhalte zusammenspielen.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Cannabis Social Clubs", "Lokales SEO", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Das CanG ist neu — wer jetzt eine seriöse Website aufbaut, sichert sich einen First-Mover-Vorteil.",
+      "Sinnvolle Inhalte: Aufnahmebedingungen, Vereinsstruktur, Kontakt, Pflichtangaben — keine Werbung für Konsum/Anbau. Das ist keine Rechtsberatung.",
+      "Lokale Auffindbarkeit (Adresse, Google-Business-Profil, technisches SEO) sorgt dafür, dass der Club bei \"Cannabis Social Club [Stadt]\" erscheint.",
+      "Eine schlanke, seriöse Informationsseite ist ab 590 € realistisch."
+    ],
+    "faq": [
+      { "q": "Warum ist Sichtbarkeit für Anbauvereinigungen gerade jetzt ein Vorteil?", "a": "Das Cannabisgesetz ist neu, die meisten Vereinigungen haben noch keine durchdachte Online-Präsenz. Wer jetzt eine seriöse, gut auffindbare Website aufbaut, sichert sich einen Vorsprung, bevor der Bereich online umkämpfter wird." },
+      { "q": "Was darf auf der Website stehen?", "a": "Sachliche Vereinsinformationen: was eine Anbauvereinigung ist, Aufnahmebedingungen, Kontakt, Pflichtangaben. Öffentliche Werbung für Konsum oder Anbau bleibt eingeschränkt. Das ist keine Rechtsberatung." },
+      { "q": "Was kostet die Website für einen Cannabis Social Club?", "a": "Eine schlanke, seriöse Informationsseite mit Kontaktformular, rechtssicheren Pflichtseiten und klarer Struktur für Aufnahmebedingungen ist ab 590 € realistisch." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "cannabis-social-club-mitgliederbereich-website",
+    "title": "Mitgliederbereich auf der CSC-Website: Was technisch & rechtlich sinnvoll ist",
+    "metaTitle": "Mitgliederbereich für Cannabis Social Clubs: Digitaler Aufnahmeprozess",
+    "description": "Ein digitaler Aufnahmeantrag statt Papierformular spart Anbauvereinigungen Verwaltungsaufwand. Was ein Mitgliederbereich technisch leisten kann und worauf rechtlich zu achten ist.",
+    "standfirst": "Anbauvereinigungen müssen ihre Mitgliederstruktur sauber dokumentieren. Wie ein digitaler Mitgliederbereich diesen Prozess vereinfacht, ohne teure Spezialsoftware.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Cannabis Social Clubs", "Mitgliederverwaltung", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Ein digitaler Aufnahmeantrag ist schneller für Interessenten und weniger Verwaltungsaufwand für den Vorstand.",
+      "Ein passwortgeschützter Mitgliederbereich trennt interne Vereinsinfos sauber vom öffentlichen Bereich.",
+      "Öffentlicher Bereich muss weiterhin die Werbebeschränkungen einhalten — das ist keine Rechtsberatung.",
+      "Ein Mitgliederbereich mit digitalem Aufnahmeformular ist ab 590 € realistisch."
+    ],
+    "faq": [
+      { "q": "Ersetzt eine Website die vereinsrechtlichen Pflichten?", "a": "Nein, sie erleichtert nur die Organisation. Rechtliche Pflichten (Satzung, Aufnahmeprüfung, Datenschutz) bleiben bestehen — die Website bildet den Prozess digital ab, ersetzt ihn aber nicht. Das ist keine Rechtsberatung." },
+      { "q": "Wie werden Mitgliederdaten datenschutzkonform verarbeitet?", "a": "Über eine DSGVO-konforme Speicherung und Verarbeitung der erhobenen Daten, mit entsprechenden Hinweisen in der Datenschutzerklärung. Bei Detailfragen lohnt sich Rücksprache mit einem Anwalt oder Datenschutzbeauftragten." },
+      { "q": "Was kostet ein Mitgliederbereich für einen Cannabis Social Club?", "a": "Eine Website mit öffentlichem Informationsbereich, digitalem Aufnahmeformular und einfachem passwortgeschütztem Mitgliederbereich ist ab 590 € realistisch." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "cannabis-social-club-events-website",
+    "title": "Events & Workshops des Cannabis Social Clubs online ankündigen",
+    "metaTitle": "Termine & Events für Cannabis Social Clubs strukturiert online zeigen",
+    "description": "Mitgliederversammlungen und Infoabende gehen in Chatgruppen schnell unter. Wie eine zentrale Terminseite auf der CSC-Website für verlässliche Kommunikation sorgt.",
+    "standfirst": "Sobald ein Verein wächst, wird eine einzelne Chatgruppe unübersichtlich. Was eine gute Terminübersicht auf der Website enthalten sollte — und was rechtlich zu beachten ist.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Cannabis Social Clubs", "Veranstaltungen", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Eine feste Terminseite ist jederzeit auffindbar, unabhängig von der Aktivität in einer Chatgruppe.",
+      "Wichtig: Datum, Uhrzeit, Ort, Kurzbeschreibung — und eine klare Trennung öffentlich/intern.",
+      "Bei öffentlich beworbenen Terminen weiterhin keine Werbung für Konsum/Anbau. Das ist keine Rechtsberatung.",
+      "Eine Website mit strukturierter Terminübersicht ist ab 590 € realistisch."
+    ],
+    "faq": [
+      { "q": "Sollten alle Vereinstermine öffentlich auf der Website stehen?", "a": "Nein — interne Vereinstermine gehören in einen passwortgeschützten Mitgliederbereich, nur allgemeine Infoabende oder Ähnliches eignen sich für den öffentlichen Bereich." },
+      { "q": "Was muss bei öffentlich beworbenen Terminen beachtet werden?", "a": "Der Fokus sollte auf sachlicher Information liegen, nicht auf Bewerbung von Konsum oder Anbau — das gilt für Termine genauso wie für den Rest der Website. Das ist keine Rechtsberatung." },
+      { "q": "Was kostet eine Website mit Terminübersicht für einen CSC?", "a": "Eine Website mit öffentlichem Info-Bereich, strukturierter Terminübersicht und optionalem Mitgliederbereich ist ab 590 € realistisch." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "kuenstler-portfolio-website-verkaufen",
+    "title": "Künstler-Portfolio-Website ab 490€: Werke online zeigen und verkaufen",
+    "metaTitle": "Künstler-Portfolio-Website: Werke online zeigen und verkaufen ab 490€",
+    "description": "Ein Instagram-Profil zeigt Werke, verkauft sie aber selten. Wie eine eigene Portfolio-Website als 24/7-Ausstellungsraum funktioniert und was sie ab 490 € enthalten sollte.",
+    "standfirst": "Eine eigene Portfolio-Website hängt nicht vom Algorithmus ab und führt Interessenten direkt zum Kauf oder zur Anfrage. Drei Wege, damit online Geld zu verdienen.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Künstler", "Online Kunstverkauf", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Jedes Werk braucht Titel, Technik, Maße, Verfügbarkeit — und einen klaren nächsten Schritt (Anfragen, Kaufen, Print bestellen).",
+      "Drei Monetarisierungswege: Direktverkauf, Print-on-Demand, Auftragsarbeiten (Commissions).",
+      "Eine eigene Website macht unabhängig von Social-Media-Algorithmen und -Sperrungen.",
+      "Ein kuratiertes Portfolio mit Werkdetails und Anfrageweg ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Wie unterscheidet sich eine Portfolio-Website von Instagram?", "a": "Instagram zeigt Werke, aber ohne strukturierte Verkaufsinformationen (Preis, Verfügbarkeit, Maße) und ohne Kontrolle über Layout oder Algorithmus. Eine eigene Website führt Interessenten gezielt zum nächsten Schritt." },
+      { "q": "Wie verkaufe ich Kunst über meine Website?", "a": "Drei gängige Wege: Direktverkauf über ein Anfrage- oder Shop-Modul, Print-on-Demand ohne eigenen Lagerbestand, oder Auftragsarbeiten über eine eigene Commission-Seite." },
+      { "q": "Was kostet eine Künstler-Portfolio-Website?", "a": "Für ein kuratiertes Portfolio mit Werkdetails und einfachem Anfrageweg sind ab 490 € realistisch. Ein integriertes Shop-Modul erhöht den Aufwand je nach Zahlungsabwicklung." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "musik-producer-website-beats-verkaufen",
+    "title": "Website für Musik-Producer: Beats & Sounddesign professionell präsentieren",
+    "metaTitle": "Website für Musik-Producer: Beats verkaufen ohne Marktplatz-Provision",
+    "description": "SoundCloud und Spotify bringen Streams, aber kaum direkten Umsatz. Wie eine eigene Website Musik-Producern hilft, Beats und Lizenzen ohne Vermittlungsprovision zu verkaufen.",
+    "standfirst": "Auf Streaming-Plattformen hast du kaum Kontrolle über Layout oder Verkaufsprozess. Was eine Producer-Website ab 490 € enthalten sollte, um Beats direkt zu verkaufen.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Künstler", "Musik Producer", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Eine eigene Website erlaubt Direktverkauf von Beats ohne Vermittlungsprovision eines Marktplatzes.",
+      "Wichtig: eingebetteter Player, Beat-Katalog mit klaren Lizenzmodellen, direkter Checkout oder strukturierte Anfrage.",
+      "Unterschiedliche Lizenzstufen (MP3-Lease, WAV-Lease, Exclusive) lassen sich als klare Produktvarianten abbilden.",
+      "Eine Website mit Player, Katalog und Anfrage/Checkout ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Warum reicht SoundCloud/Spotify nicht für den Verkauf?", "a": "Auf Marktplätzen behältst du kaum Kontrolle über Layout und Verkaufsprozess, und bei Lizenzverkäufen über Vermittler wird meist eine Provision einbehalten. Eine eigene Website erlaubt Direktverkauf." },
+      { "q": "Wie bilde ich unterschiedliche Beat-Lizenzen ab?", "a": "Als klare Produktvarianten mit eindeutiger Beschreibung der Nutzungsrechte, z. B. MP3-Lease, WAV-Lease und Exclusive Rights mit jeweils eigenem Preis." },
+      { "q": "Was kostet eine Website für Musik-Producer?", "a": "Für eine Website mit eingebettetem Player, Beat-Katalog und strukturierter Anfrage/einfachem Checkout sind ab 490 € realistisch." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "illustrator-commissions-website",
+    "title": "Commission-Seite für Illustratoren: Aufträge über die eigene Website annehmen",
+    "metaTitle": "Commission-Website für Illustratoren: Mehr Aufträge, weniger Chaos",
+    "description": "Auftragsarbeiten über DMs und Kommentare zu koordinieren wird schnell unübersichtlich. Was eine gute Commission-Seite für Illustratoren enthält, inklusive Deposit-Modell.",
+    "standfirst": "Eine klar strukturierte Commission-Seite mit Preisliste und Ablauf senkt die Hemmschwelle für Erstkontakt und filtert unverbindliche Anfragen. So geht's ab 490 €.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Künstler", "Commissions", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Eine klare Preisliste und ein sichtbarer Ablauf senken die Hemmschwelle für Erstkontakt.",
+      "Wichtig: Preisliste nach Auftragsart, Ablauf (Anfrage → Angebot → Anzahlung → Skizze → Feedback → Finalisierung).",
+      "Ein 50-%-Deposit-Modell schützt vor Zeitverlust bei abgebrochenen Aufträgen.",
+      "Eine Website mit Portfolio, Preisliste und Anfrageformular ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Warum verringert eine Commission-Seite unverbindliche Anfragen?", "a": "Wenn Preise und Ablauf schon auf der Seite stehen, müssen Interessenten nicht erst nachfragen — wer trotzdem anfragt, hat die Preisspanne meist bereits akzeptiert." },
+      { "q": "Wie schützt ein Deposit-Modell vor Zeitverlust?", "a": "Ohne Anzahlung investierst du Zeit in Skizzen, bevor Geld geflossen ist. Ein klar kommuniziertes 50-%-Deposit-Modell setzt diese Erwartung von Anfang an." },
+      { "q": "Was kostet eine Commission-Website?", "a": "Eine Website mit Portfolio, Preisliste und strukturiertem Anfrageformular ist ab 490 € realistisch. Ein automatisierter Anzahlungs-Checkout mit Zahlungsanbindung kommt optional dazu." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "creator-newsletter-webshop-website",
+    "title": "Newsletter + Webshop für Creator: Unabhängig von Social-Media-Algorithmen",
+    "metaTitle": "Creator-Website: Newsletter & Webshop statt nur Social-Media-Follower",
+    "description": "Follower auf Instagram oder TikTok gehören der Plattform, nicht dir. Wie eine eigene Website mit Newsletter und kleinem Webshop aus Followern zahlende Fans macht.",
+    "standfirst": "Eine E-Mail-Liste ist das Einzige, was dir bei einem Plattformwechsel wirklich gehört. Wie Website, Newsletter und Webshop zusammen einen funktionierenden Trichter ergeben.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Künstler", "Creator", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Follower gehören der Plattform — eine eigene E-Mail-Liste gehört dir und bleibt bei einem Plattformwechsel erhalten.",
+      "Website als Andockstelle: Newsletter-Anmeldung, kleiner Webshop, zentrale Landingpage statt Link-in-Bio-Tools.",
+      "Trichter: Reichweite über Social Media → Website mit Newsletter → regelmäßige Produkte/Drops über den Newsletter bewerben.",
+      "Eine Website mit Newsletter-Anbindung und schlankem Webshop-Modul ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Warum ist eine E-Mail-Liste wichtiger als mehr Follower?", "a": "Ein Newsletter-Abonnent hat sich aktiv entschieden, von dir zu hören — die Öffnungsrate liegt über der organischen Reichweite eines Social-Media-Posts, und die Liste gehört dir unabhängig von der Plattform." },
+      { "q": "Reicht ein einfaches Link-in-Bio-Tool nicht aus?", "a": "Für den Anfang ja, aber eine eigene Landingpage mit Newsletter-Anmeldung und Webshop wirkt professioneller und lässt sich individuell gestalten, statt in einem generischen Tool-Layout zu stecken." },
+      { "q": "Was kostet eine Website mit Newsletter und Webshop?", "a": "Eine Website mit Newsletter-Anbindung und einem schlanken Webshop-Modul für einige wenige Produkte ist ab 490 € realistisch. Ein größerer Produktkatalog läuft eher über eine Shopify-Anbindung." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "friseur-salon-website-online-buchung",
+    "title": "Website für Friseure: Online-Buchung ab 490€ für volle Terminbücher",
+    "metaTitle": "Webdesign für Friseure: Website mit Online-Buchung ab 490€",
+    "description": "Viele Kunden buchen inzwischen lieber online als anzurufen, gerade außerhalb der Öffnungszeiten. Was eine Friseur-Website mit Online-Buchung ab 490 € können muss.",
+    "standfirst": "Ein leerer Terminkalender kostet einen Friseursalon jeden Tag Geld. Wie ein Online-Buchungssystem auf der Website diese Lücke füllt — und was es kostet.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Friseure", "Online-Buchung", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Ein Online-Buchungssystem läuft rund um die Uhr — auch wenn während eines Termins niemand ans Telefon gehen kann.",
+      "Wichtig: Service-Auswahl mit Zeitangabe, Mitarbeiter-Auswahl, automatische Erinnerung, Echtzeit-Verfügbarkeit.",
+      "Weniger Telefonzeit an der Rezeption lässt sich direkt in mehr Kundentermine umwandeln.",
+      "Eine Website mit Leistungsübersicht und Online-Buchung ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Warum verliert ein Salon ohne Online-Buchung Kunden?", "a": "Während eines laufenden Termins kann niemand ans Telefon gehen — ein spürbarer Teil der Interessenten ruft nicht noch einmal an, sondern bucht direkt beim nächsten Salon mit Online-Buchung." },
+      { "q": "Reduziert Online-Buchung wirklich No-Shows?", "a": "Automatische Erinnerungen per E-Mail oder SMS vor dem Termin senken die No-Show-Quote spürbar, da Kunden aktiv erinnert werden statt es zu vergessen." },
+      { "q": "Was kostet eine Friseur-Website mit Online-Buchung?", "a": "Eine Website mit Leistungsübersicht, Team-Vorstellung und angebundenem Online-Buchungssystem ist ab 490 € realistisch, abhängig vom gewählten Buchungssystem-Anbieter." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "doenerbude-imbiss-website-online-bestellen",
+    "title": "Website für die Dönerbude: Online bestellen ohne Liefer-App-Provision",
+    "metaTitle": "Website für Imbiss & Dönerbude: Online bestellen ohne hohe Provision",
+    "description": "Bis zu 30% Provision pro Bestellung fressen bei Liefer-Apps die Marge auf. Wie eine eigene Bestellseite für die Dönerbude diese Abhängigkeit reduziert, ab 490 €.",
+    "standfirst": "Liefer-Apps bringen neue Laufkundschaft — aber Stammkunden lassen sich über einen eigenen Bestellweg deutlich günstiger bedienen. Was eine Imbiss-Website dafür braucht.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Gastronomie", "Online-Bestellsystem", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Liefer-Apps verlangen 25–30% Provision pro Bestellung — bei knappen Margen ein spürbarer Unterschied.",
+      "Eine eigene Bestellseite ergänzt Liefer-Apps, statt sie zu ersetzen: neue Kundschaft über Apps, Stammkunden direkt.",
+      "Wichtig: übersichtliche Speisekarte mit Fotos, einfacher Bestellweg, klare Öffnungszeiten, Mobil-Optimierung.",
+      "Eine Website mit Speisekarte, Standort und strukturierter Bestellannahme ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Sollte ich Liefer-Apps komplett aufgeben?", "a": "Nein — Liefer-Apps bleiben für neue Laufkundschaft sinnvoll. Eine eigene Bestellseite ergänzt sie, indem Stammkunden zunehmend direkt und ohne Provision bestellen." },
+      { "q": "Wie bewerbe ich den eigenen Bestellweg?", "a": "Über QR-Codes auf Flyern oder an der Theke lässt sich der eigene Bestellweg zusätzlich zu den Liefer-Apps bewerben, ohne dass Kunden lange suchen müssen." },
+      { "q": "Was kostet eine Bestellseite für einen Imbiss?", "a": "Eine Website mit Speisekarte, Standort, Öffnungszeiten und strukturierter Bestellannahme ist ab 490 € realistisch. Eine vollständige Online-Zahlung mit Live-Status kommt als Ausbaustufe dazu." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "pizzeria-website-online-bestellsystem",
+    "title": "Website für die Pizzeria: Eigenes Bestellsystem statt hoher Liefer-Provision",
+    "metaTitle": "Website für Pizzerien: Eigenes Online-Bestellsystem ab 490€",
+    "description": "Auch bei Pizzerien kostet jede Bestellung über Liefer-Apps eine hohe Provision. Was eine eigene Pizzeria-Website mit direktem Bestellweg ab 490 € enthalten sollte.",
+    "standfirst": "Schon eine Verschiebung eines Teils der Stammkundschaft auf den eigenen Bestellweg macht sich in der Marge bemerkbar. Was eine Pizzeria-Website dafür braucht.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Gastronomie", "Online-Bestellsystem", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Bei hohem Bestellvolumen macht sich eine 25–30% Liefer-App-Provision besonders stark in der Marge bemerkbar.",
+      "Wichtig: digitale Speisekarte mit allen Beläge-Kombinationen, klarer Lieferradius, Abholung oder Lieferung wählbar.",
+      "Ein sauberes technisches SEO-Grundgerüst hilft, auch außerhalb der Liefer-Apps bei \"Pizza [Stadt]\" gefunden zu werden.",
+      "Eine Website mit digitaler Speisekarte und strukturiertem Bestellweg ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Lohnt sich eine eigene Bestellseite auch bei kleinem Bestellvolumen?", "a": "Ja, aber der Effekt ist bei hohem Bestellvolumen am größten — je mehr Bestellungen im Monat, desto größer die absolute Summe an gesparter Provision." },
+      { "q": "Wie kommuniziere ich den Lieferradius klar?", "a": "Am besten mit einer einfachen Karten- oder PLZ-Übersicht direkt auf der Bestellseite, damit keine unnötigen Anfragen von außerhalb des Liefergebiets entstehen." },
+      { "q": "Was kostet eine Pizzeria-Website mit Bestellsystem?", "a": "Eine Website mit digitaler Speisekarte, Liefergebiet-Angabe und strukturiertem Bestellweg ist ab 490 € realistisch. Eine vollständige Zahlungsabwicklung mit Live-Status kommt als Ausbaustufe dazu." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "portfolio-website-kunststudenten-guenstig",
+    "title": "Portfolio-Website für Kunststudenten: Günstig online sichtbar werden",
+    "metaTitle": "Portfolio-Website für Kunststudenten ab 490€: Günstig & professionell",
+    "description": "Ein PDF-Portfolio liegt unbeachtet im Postfach. Wie Kunststudierende mit schmalem Budget trotzdem eine professionelle Portfolio-Website ab 490 € bekommen.",
+    "standfirst": "Für Bewerbungsmappen, Auftraggeber und das eigene Netzwerk brauchst du als Kunststudent eine Online-Präsenz — aber das Budget ist eng. So geht schlank und trotzdem professionell.",
+    "date": "2026-09-11",
+    "tags": ["Webdesign für Kunststudenten", "Webdesign für Künstler", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Eine Website ist dauerhaft unter einer eigenen Adresse erreichbar — im Gegensatz zu einem PDF, das man jedes Mal neu verschicken muss.",
+      "Wichtig: kuratierte Werkauswahl (10–15 Stücke), kurzes „Über mich\", Kontaktmöglichkeit, optional Lebenslauf zum Download.",
+      "Eine seriöse Website erleichtert den Einstieg in erste bezahlte Auftragsarbeiten neben dem Studium.",
+      "Ein schlankes Studierenden-Portfolio ist ab 490 € realistisch."
+    ],
+    "faq": [
+      { "q": "Reicht nicht einfach ein Instagram-Account als Kunststudent?", "a": "Für Reichweite ja, aber bei Bewerbungen und ernsthaften Auftraggebern wirkt eine eigene Website professioneller und ist unter einer merkfähigen Adresse dauerhaft auffindbar." },
+      { "q": "Wie viele Arbeiten sollten im Portfolio sein?", "a": "10–15 kuratierte, starke Stücke wirken überzeugender als eine vollständige Sammlung aller Studienarbeiten." },
+      { "q": "Was kostet eine Portfolio-Website für Studierende?", "a": "Für ein kuratiertes Portfolio mit „Über mich\" und Kontaktmöglichkeit sind ab 490 € realistisch — bewusst schlank gehalten, ohne bei Gestaltung oder Ladezeit Abstriche zu machen." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "guenstiger-shopify-shop-kleine-unternehmen",
+    "title": "Günstiger Shopify-Shop: Was er kosten sollte und was wirklich drinsteckt",
+    "metaTitle": "Günstiger Shopify-Shop einrichten lassen: Kosten & worauf es ankommt",
+    "description": "Shopify bringt Zahlungsabwicklung und Versand bereits mit — aber \"Shopify\" allein sagt nichts über Preis oder Qualität. Was ein sauber eingerichteter Shopify-Shop ab 590 € enthält.",
+    "standfirst": "Für kleine bis mittlere Produktkataloge ist Shopify oft die schnellste, wartungsärmste Lösung. Worauf es bei der Einrichtung wirklich ankommt und wo die Kosten entstehen.",
+    "date": "2026-09-11",
+    "tags": ["Shopify", "Günstige Shopify Shops", "Günstiges Webdesign"],
+    "readTime": "6 Min",
+    "keyTakeaways": [
+      "Shopify bringt Zahlungsabwicklung, Versandberechnung und Lagerbestand bereits mit, statt sie individuell zu programmieren.",
+      "Wichtig: individuelles Design statt sichtbarem Standard-Theme, saubere Produktstruktur, rechtssichere Pflichtseiten.",
+      "Neben der Einrichtung läuft eine monatliche Shopify-Plattformgebühr — zusätzliche Apps können laufende Kosten erhöhen.",
+      "Ein individuell gestalteter Shopify-Shop mit sauberer Struktur ist ab 590 € realistisch."
+    ],
+    "faq": [
+      { "q": "Woran erkennt man einen unindividuellen Shopify-Shop?", "a": "Meist am sichtbaren Standard-Theme-Look, den viele Shopify-Shops unbearbeitet übernehmen. Individuelles Design hebt sich davon klar ab und wirkt vertrauenswürdiger." },
+      { "q": "Welche laufenden Kosten kommen bei Shopify dazu?", "a": "Die monatliche Shopify-Plattformgebühr läuft unabhängig von der Design-Leistung weiter. Zusätzliche kostenpflichtige Apps für Spezialfunktionen können die laufenden Kosten weiter erhöhen — hier lohnt sich ein kritischer Blick auf den tatsächlichen Bedarf." },
+      { "q": "Was kostet ein individuell eingerichteter Shopify-Shop?", "a": "Für einen individuell gestalteten Shopify-Shop mit sauberer Produktstruktur und rechtssicheren Pflichtseiten sind ab 590 € realistisch." }
+    ],
+    "dateModified": "2026-09-11"
+  },
+
+  {
+    "slug": "remote-webdesigner-duesseldorf-warum",
+    "title": "Remote-Webdesigner aus Düsseldorf: Warum der Standort keine Rolle mehr spielt",
+    "metaTitle": "Remote-Webdesigner Düsseldorf: Deutschlandweit ohne Büro & Agentur",
+    "description": "Ein Webdesign-Projekt braucht heute kein Büro mehr. Warum ein Webdesigner aus Düsseldorf deutschlandweit remote arbeitet und was das für Auftraggeber bedeutet.",
+    "standfirst": "Briefing, Feedback und Übergabe laufen komplett digital ab — der Standort des Webdesigners spielt für die Zusammenarbeit kaum noch eine Rolle. Was Remote-Zusammenarbeit konkret bedeutet.",
+    "date": "2026-09-11",
+    "tags": ["Remote Webdesigner", "Webdesigner Düsseldorf", "Günstiges Webdesign"],
+    "readTime": "5 Min",
+    "keyTakeaways": [
+      "Der komplette Ablauf eines Website-Projekts lässt sich ohne persönliches Treffen abwickeln — Briefing, Feedback, Übergabe digital.",
+      "Kein Büro-Overhead ist ein Grund, warum Preise ab 490 € realistisch sind, ohne bei Qualität Abstriche zu machen.",
+      "Düsseldorf bleibt fester Standort — persönlicher Kontakt ist weiterhin möglich, remote ist ein zusätzliches Angebot.",
+      "Bei klar umrissenem Projektumfang und früh vorliegenden Inhalten ist eine Website in 1–2 Wochen realistisch."
+    ],
+    "faq": [
+      { "q": "Ist Remote-Zusammenarbeit genauso zuverlässig wie ein lokales Büro?", "a": "Ja — Video-Calls, geteilte Links für Feedback-Runden und digitale Dateiübergabe decken den kompletten Projektablauf ab, ohne dass ein physisches Treffen nötig ist." },
+      { "q": "Ist ein persönliches Treffen trotzdem möglich?", "a": "Ja, Düsseldorf bleibt fester Standort. Remote bedeutet zusätzlich möglich, nicht ausschließlich online — wer lokalen Kontakt bevorzugt, kann das weiterhin haben." },
+      { "q": "Wie lange dauert ein Remote-Webdesign-Projekt?", "a": "Bei klar umrissenem Umfang und früh vorliegenden Inhalten (Texte, Bilder, Logo) ist eine Website in 1–2 Wochen realistisch, unabhängig vom Standort der Auftraggeberin oder des Auftraggebers." }
+    ],
+    "dateModified": "2026-09-11"
+  }
+]
