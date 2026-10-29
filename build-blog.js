@@ -501,7 +501,12 @@ function updateHomeTeaser(posts) {
   fs.writeFileSync(indexPath, html, "utf-8");
 }
 
+// Blog versteckt: keine Blog-URLs in die Sitemap (Seiten bleiben erreichbar, aber unverlinkt + noindex via blog/.htaccess).
+// Zum Einblenden auf false setzen, build-blog.js laufen lassen und die hidden-Attribute in index.html/404.html entfernen.
+const BLOG_HIDDEN = true;
+
 function updateSitemap(blogUrls) {
+  if (BLOG_HIDDEN) blogUrls = [];
   const sitemapPath = path.join(ROOT, "sitemap.xml");
   let xml = fs.readFileSync(sitemapPath, "utf-8");
 
@@ -522,7 +527,7 @@ function updateSitemap(blogUrls) {
       return `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>${img}\n  </url>`;
     })
     .join("\n");
-  const block = `<!-- BLOG-START (auto-generiert von build-blog.js, nicht von Hand editieren) -->\n${blockLines}\n<!-- BLOG-END -->`;
+  const block = `<!-- BLOG-START (auto-generiert von build-blog.js, nicht von Hand editieren) -->\n${BLOG_HIDDEN ? "<!-- Blog versteckt (BLOG_HIDDEN in build-blog.js) -->" : blockLines}\n<!-- BLOG-END -->`;
 
   if (xml.includes("<!-- BLOG-START")) {
     xml = xml.replace(/<!-- BLOG-START[\s\S]*?BLOG-END -->/, block);
