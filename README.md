@@ -570,6 +570,21 @@ Assignate/Fraunces für die wenigen Editorial-Headlines, Roboto/Inter als Body-F
 - Verifiziert im Browser: Section jetzt leer (0 Kind-Elemente), Höhe weiterhin 100px durch
   das Padding, keine Konsolenfehler.
 
+## Hotfix — 2026-10-29 (2): Blog-Links komplett aus Menü + 404 entfernt
+
+- Live war der Navi-Link „Blog“ trotz `hidden` sichtbar: `display:flex` der Navi-Items überschrieb das Attribut
+  (die `[hidden]`-Regel fehlte im gemergten Commit „Blog raus“). Jetzt sind beide Navi-Links (Desktop + Mobil)
+  und der 404-Button „Zum Blog“ **aus dem HTML entfernt**; zusätzlich `[hidden]{display:none!important}` in
+  `index.html`/`404.html`, damit der weiter versteckte `#blog-teaser` sicher unsichtbar bleibt.
+- Wieder einblenden: Links in `index.html` (Side-Nav + Mobile-Nav) und `404.html` neu einfügen.
+
+## Hotfix — 2026-10-30: Rezension Maurice Fey verlinkt
+
+- Der Autorenname „Maurice Fey — Künstler“ in der Rezension (Bereich Bewertungen, `index.html`) ist jetzt ein Link auf
+  https://mauricefey.com/ (öffnet in neuem Tab, `rel="noopener"`), damit Besucher die umgesetzte Seite direkt sehen.
+- Umsetzung: optionales `url`-Feld im `REVIEWS`-Array; Rezensionen ohne `url` (Fellbox) bleiben reiner Text.
+  Stil `.review-author a`: erbt Farbe/Versalien, unterstrichen.
+
 ## Geplante Blog-Artikel — Status 2026-09-11: umgesetzt (siehe Hotfix oben)
 
 Der ursprüngliche 20-Themen-Plan unten (Tattoo/Cannabis/Künstler/„Weitere Nischen") war die
