@@ -585,6 +585,17 @@ Assignate/Fraunces für die wenigen Editorial-Headlines, Roboto/Inter als Body-F
 - Umsetzung: optionales `url`-Feld im `REVIEWS`-Array; Rezensionen ohne `url` (Fellbox) bleiben reiner Text.
   Stil `.review-author a`: erbt Farbe/Versalien, unterstrichen.
 
+## Hotfix — 2026-11-06: Webprojekte-Slider wieder sichtbar
+
+- `PROJECTS` in `index.html` war leer, deshalb blendete das Skript Überschrift „Webprojekte“ und `#proj-track` aus.
+  Jetzt mit drei freigegebenen Projekten gefüllt: **Coiffeur Le Figaro Webshop**, **BMB Deutschland**, **Maurice Fey**
+  (Texte, Tools, Links aus der Bewerbungsseite übernommen). Andere Webprojekte dürfen nicht gezeigt werden.
+- Bild `img/inline/inline-092.webp` (Maurice Fey) aus `bewerbung/` ergänzt, 086/087 waren schon vorhanden.
+- Tablet/Mobil: Scrollbalken lief beim Wischen nicht mit (nur Pfeil-Animation und `touchend` aktualisierten ihn,
+  Schwung danach ging verloren). Passiver `scroll`-Listener am Slider ergänzt, wie in der Bewerbungsseite.
+  Geprüft bei 1440, 1024, 768, 390 und 360 px: kein horizontaler Überlauf, alle Slides erreichbar, Lightbox ok.
+- Hochladen: `index.html` und `img/inline/inline-092.webp`.
+
 ## Geplante Blog-Artikel — Status 2026-09-11: umgesetzt (siehe Hotfix oben)
 
 Der ursprüngliche 20-Themen-Plan unten (Tattoo/Cannabis/Künstler/„Weitere Nischen") war die
